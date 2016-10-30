@@ -16,10 +16,10 @@ Object.keys(locales).forEach(function (lang) {
 import {checkLogin} from '../../lib_bz/functions/user'
 import fastclick from 'fastclick'
 import App from './App'
-import Login from './components/Login'
+// import Main from './components/Main'
 
 const routes = [
-  { path: '/Login', name: 'Login', component: Login }
+  // { path: '/', name: 'Main', component: Main }
 ]
 
 const router = new VueRouter(
