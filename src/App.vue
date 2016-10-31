@@ -4,7 +4,7 @@
       <div class="ui borderless main menu bar-above">
         <div class="ui container">
           <a @click="backToMain" href="javascript:;" class="header item logo-font-bz no-highlight">
-            <img v-show="show_bar" transition="expand" class="logo first-logo" src="../static/assets/logo.svg">
+            <img v-show="show_bar" class="logo first-logo" src="../static/assets/logo.svg">
             <div id="header">Follow Center</div>
           </a>
           <div class="right menu ">
@@ -18,7 +18,7 @@
             <div v-show="user_name" class="ui simple dropdown item user-imfor-bz">
               <img :src="avatar" class="ui avatar image">
               <div class="menu login-menu-bz">
-                <a v-link="{ name:'God', params:{god_name: user_name}}" class="item">我发布的</a>
+                <router-link :to="{ name:'God', params:{god_name: user_name}}" class="item">我发布的</router-link>
                 <a @click="logout" class="item">退出登录</a>
               </div>
             </div>
@@ -29,11 +29,11 @@
           </div>
         </div>
       </div>
-      <nav v-show="show_bar" transition="expand" class="ui borderless main menu fix-bz bar-blow">
+      <nav v-show="show_bar" class="ui borderless main menu fix-bz bar-blow">
         <div class="ui container bar-selection">
-          <a v-link="{'name': 'Recommand', params: {'cat': 'recommand'}}" :class="{'active': this.$route.name==='Recommand'}" class="item navi-bz move-left-bz">寻他</a>
-          <a v-show="user_name!=''" v-link="{ name:'MyGods', params: {'cat': 'all'}}" :class="{'active': this.$route.name==='MyGods'}" class="item navi-bz">已跟踪</a>
-          <a v-show="user_name!=''" v-link="{ name:'Collect'}" :class="{'active': this.$route.name==='Collect'}" class="item navi-bz">收藏</a>
+          <router-link :to="{'name': 'Recommand', params: {'cat': 'recommand'}}" :class="{'active': this.$route.name==='Recommand'}" class="item navi-bz move-left-bz">寻他</router-link>
+          <router-link v-show="user_name!=''" :to="{ name:'MyGods', params: {'cat': 'all'}}" :class="{'active': this.$route.name==='MyGods'}" class="item navi-bz">已跟踪</router-link>
+          <router-link v-show="user_name!=''" :to="{ name:'Collect'}" :class="{'active': this.$route.name==='Collect'}" class="item navi-bz">收藏</router-link>
           <a :class="{'active': path_name==='biography'}" href="/biography" class="item navi-bz">传记</a>
         </div>
       </nav>
@@ -93,13 +93,13 @@
         return store.state.unread_message_count
       },
       user_name () {
-        return store.state.user_info.user_name
+        return store.state.p.user_info.user_name
       },
       avatar () {
-        return store.state.user_info.picture
+        return store.state.p.user_info.picture
       }
     },
-    ready () {
+    created () {
       this.$store.dispatch('getUserInfo')
       $('.fix-bz').visibility(
         {
@@ -226,7 +226,7 @@
   a:hover, a:focus, a:active {
     color: #168454;
   }
-  // 全局的人物名字----------------------------
+  /* 全局的人物名字---------------------------- */
   .user-name-a {
     color: rgba(0,0,0,.8);
     transition: color 0.3s linear;
@@ -234,7 +234,7 @@
   .user-name-a:hover {
     color: rgba(0,0,0,.6);
   }
-  // 设置社交图标------------------------------
+  /* 设置社交图标------------------------------ */
   i.icon.god-icon-bz {
     transition: color 0.3s;
     color: #999999;
@@ -264,9 +264,9 @@
     color: #36465D;
   }
   i.icon.facebook.god-icon-bz:hover {
-color: #3B5998;
+    color: #3B5998;
   }
-  // 设置导航--------------------------------
+  /* 设置导航-------------------------------- */
   .ui.menu.bar-above {
     margin-bottom: 0;
     border: none;

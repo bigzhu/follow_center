@@ -7,37 +7,19 @@ import 'whatwg-fetch'
 
 // state
 export const state = {
-  transactions: []
+  registered_count: -1
 }
 // mutations
 export const mutations = {
-  SET_TRANSACTIONS (state, transactions) {
-    state.transactions = transactions
+  SET_REGISTERED_COUNT (state, registered_count) {
+    state.registered_count = registered_count
   }
 }
 // actions
 export const actions = {
-  getTransactions ({ state, commit }, status) {
-    window.fetch('/api_transactions', {
-      credentials: 'same-origin',
-      method: 'get',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(function (response) {
-      commit('SET_LOADING', false)
-      return response
-    }).then(function (response) {
-      console.log(response)
-      return response.json()
-    }).then(function (data) {
-      if (data.error !== '0') {
-        commit('SET_ERROR', data.error)
-      } else {
-        commit('SET_TRANSACTIONS', data.datas)
-      }
+  getRegisteredCount ({ state, commit, dispatch }, status) {
+    return dispatch('get', '/api_registered').then(function (data) {
+      commit('SET_REGISTERED_COUNT', data.datas)
     })
   }
 }
