@@ -3,11 +3,6 @@
     <div class='ui center aligned basic segment history-bz'>
       <old></old>
     </div>
-    <!--
-    <div v-show='messages.length != 0 ' class='ui center aligned basic segment'>
-      <input @click='toggleFilterPic' type='checkbox'> 要有图</input>
-    </div>
-    -->
     <message v-for='message in messages' :message='message' v-ref:c_messages>
     </message>
 
@@ -45,10 +40,10 @@
         return store.state.new_loading
       },
       messages () {
-        return store.state.messages
+        return this.$store.state.messages
       }
     },
-    ready: function () {
+    created: function () {
       this.newMessage(5, true) // 让用户尽快看到东西
       this.newMessage(get_count, true)
       this.bindScroll()
@@ -97,7 +92,7 @@
         if (this.messages.length > 0) {
           after = this.messages[this.messages.length - 1].created_at
         }
-        this.$store.dispatch('queryNew', {after: after, limit: limit})
+        this.$store.dispatch('getNew', {after: after, limit: limit})
       }
     }
   }
