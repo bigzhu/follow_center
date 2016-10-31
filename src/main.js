@@ -15,11 +15,11 @@ Object.keys(locales).forEach(function (lang) {
 import {checkLogin} from '../../lib_bz/functions/user'
 import fastclick from 'fastclick'
 import App from './App'
-// import Main from './components/Main'
+import Main from './components/Main'
 import UserNameLogin from './components/UserNameLogin'
 
 const routes = [
-  // { path: '/', name: 'Main', component: Main }
+  { path: '/', name: 'Main', component: Main },
   { path: '/Login', name: 'UserNameLogin', component: UserNameLogin }
 ]
 

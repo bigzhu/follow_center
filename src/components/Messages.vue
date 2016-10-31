@@ -1,0 +1,123 @@
+<style lang='less'>
+  .invisible_bz {/*隐藏占位*/
+    visibility:hidden;
+  };
+  .ui.segment.history-bz {
+    padding: 0;
+  }
+  .ui.segment.history-bz:first-child {
+    margin-top: 1em;
+  }
+</style>
+<template>
+  <div>
+    <div class='ui center aligned basic segment history-bz'>
+      <old></old>
+    </div>
+    <!--
+    <div v-show='messages.length != 0 ' class='ui center aligned basic segment'>
+      <input @click='toggleFilterPic' type='checkbox'> 要有图</input>
+    </div>
+    -->
+    <message v-for='message in messages' :message='message' v-ref:c_messages>
+    </message>
+
+    <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !new_loading}"></div>
+    <bottom-loader :el="$el" element_class=".ui.fluid.card" :call_back="call_back"></bottom-loader>
+  </div>
+</template>
+
+<script>
+  var get_count = 50
+  import store from '../store'
+  import $ from 'jquery'
+  import _ from 'underscore'
+  import Old from './Old.vue'
+  import BottomLoader from 'bz-bottom-loader'
+  import Message from './Message.vue'
+  import {queryNew, removeFromMessages, recordLastMessage} from '../store/actions'
+
+  module.exports = {
+    vuex: {
+      actions: {
+        queryNew,
+        removeFromMessages,
+        recordLastMessage
+      }
+    },
+    components: {
+      Old,
+      Message,
+      BottomLoader
+    },
+    events: {
+      'unfollow': function (god_id) { // 监听unfollow事件，移除已经unfollow的god的message
+        this.removeFromMessages(god_id)
+      }
+    },
+    data: function () {
+      return {
+      }
+    },
+    computed: {
+      new_loading () {
+        return store.state.new_loading
+      },
+      messages () {
+        return store.state.messages
+      }
+    },
+    ready: function () {
+      this.newMessage(5, true) // 让用户尽快看到东西
+      this.newMessage(get_count, true)
+      this.bindScroll()
+    },
+    methods: {
+      bindScroll: function () {
+        var v = this
+        var messages_element = $(v.$el)
+        $(window).scroll(
+          _.throttle(
+            function () {
+              v.$dispatch('checkBar')
+              messages_element.children('div > .ui.fluid.card').each(
+                function () {
+                  var message, message_position, scroll_bottom
+                  message_position = $(this).offset().top
+                  scroll_bottom = $(window).scrollTop() + $(window).height()
+                  message_position = parseInt(message_position / 50, 10)
+                  scroll_bottom = parseInt(scroll_bottom / 50, 10)
+                  if (message_position === scroll_bottom) {
+                    message = $(this)[0].__vue__.message
+                    v.recordLastMessage(message.created_at)
+                    // let color = random.color()
+                    // $('#id_' + message.id).addClass(color)
+                  }
+                }
+              )
+              if ($(this).scrollTop() === 0) {
+                null
+              }
+            }, 100
+          )
+        )
+      },
+      call_back: function () {
+        // 解救强迫症，记录最后一条的time
+        let created_at = this.messages[this.messages.length - 1].created_at
+        this.recordLastMessage(created_at)
+        this.newMessage(get_count)
+      },
+      newMessage: function (limit = null, is_init = false) {
+        if (this.messages.length > 0 && is_init) {
+          return
+        }
+        let after = null
+        if (this.messages.length > 0) {
+          after = this.messages[this.messages.length - 1].created_at
+        }
+        this.queryNew({after: after, limit: limit})
+      }
+    }
+  }
+</script>
