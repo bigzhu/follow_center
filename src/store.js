@@ -46,7 +46,7 @@ export const mutations = {
 export const actions = {
   getRegisteredCount ({ state, commit, dispatch }, status) {
     return dispatch('get', '/api_registered').then(function (data) {
-      commit('SET_REGISTERED_COUNT', data.datas)
+      commit('SET_REGISTERED_COUNT', data.registered_count)
     })
   }
 }
