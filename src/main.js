@@ -16,11 +16,11 @@ import {checkLogin} from '../../lib_bz/functions/user'
 import fastclick from 'fastclick'
 import App from './App'
 // import Main from './components/Main'
-import BzLogin from 'bz-login'
+import UserNameLogin from './components/UserNameLogin'
 
 const routes = [
   // { path: '/', name: 'Main', component: Main }
-  { path: '/Login', name: 'BzLogin', component: BzLogin }
+  { path: '/Login', name: 'UserNameLogin', component: UserNameLogin }
 ]
 
 const router = new VueRouter(
