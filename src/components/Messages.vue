@@ -1,14 +1,3 @@
-<style lang='less'>
-  .invisible_bz {/*隐藏占位*/
-    visibility:hidden;
-  };
-  .ui.segment.history-bz {
-    padding: 0;
-  }
-  .ui.segment.history-bz:first-child {
-    margin-top: 1em;
-  }
-</style>
 <template>
   <div>
     <div class='ui center aligned basic segment history-bz'>
@@ -35,16 +24,8 @@
   import Old from './Old.vue'
   import BottomLoader from 'bz-bottom-loader'
   import Message from './Message.vue'
-  import {queryNew, removeFromMessages, recordLastMessage} from '../store/actions'
 
   module.exports = {
-    vuex: {
-      actions: {
-        queryNew,
-        removeFromMessages,
-        recordLastMessage
-      }
-    },
     components: {
       Old,
       Message,
@@ -52,7 +33,7 @@
     },
     events: {
       'unfollow': function (god_id) { // 监听unfollow事件，移除已经unfollow的god的message
-        this.removeFromMessages(god_id)
+        this.$store.dispatch('removeFromMessages', god_id)
       }
     },
     data: function () {
@@ -89,7 +70,7 @@
                   scroll_bottom = parseInt(scroll_bottom / 50, 10)
                   if (message_position === scroll_bottom) {
                     message = $(this)[0].__vue__.message
-                    v.recordLastMessage(message.created_at)
+                    v.$store.dispatch('recordLastMessage', message.created_at)
                     // let color = random.color()
                     // $('#id_' + message.id).addClass(color)
                   }
@@ -105,7 +86,7 @@
       call_back: function () {
         // 解救强迫症，记录最后一条的time
         let created_at = this.messages[this.messages.length - 1].created_at
-        this.recordLastMessage(created_at)
+        this.$store.dispatch('recordLastMessage', created_at)
         this.newMessage(get_count)
       },
       newMessage: function (limit = null, is_init = false) {
@@ -116,8 +97,19 @@
         if (this.messages.length > 0) {
           after = this.messages[this.messages.length - 1].created_at
         }
-        this.queryNew({after: after, limit: limit})
+        this.$store.dispatch('queryNew', {after: after, limit: limit})
       }
     }
   }
 </script>
+<style>
+  .invisible_bz {/*隐藏占位*/
+    visibility:hidden;
+  };
+  .ui.segment.history-bz {
+    padding: 0;
+  }
+  .ui.segment.history-bz:first-child {
+    margin-top: 1em;
+  }
+</style>

@@ -63,10 +63,10 @@
 </style>
 
 <template>
-  <div id="id_{{message.id}}" class="ui fluid card message-bz">
+  <div :id="'id_'+ message.id" class="ui fluid card message-bz">
     <div class="content article-bz">
-      <a target="_blank" href="{{href}}">
-        <i class="right floated {{message.m_type}} icon god-icon-bz icon-bz"></i>
+      <a target="_blank" :href="href">
+        <i :class="'right floated ' + message.m_type + ' icon god-icon-bz icon-bz'"></i>
       </a>
       <time-len :the_time="message.created_at" class="right floated meta time-bz"></time-len>
       <img :src="avatar" class="ui avatar image show-god-info">
@@ -85,7 +85,6 @@
 </template>
 
 <script>
-  import {recordLastMessage, queryGod, collect, uncollect} from '../store/actions'
   import store from '../store'
   import $ from 'jquery'
   import GodCard from './GodCard'
@@ -97,14 +96,6 @@
   import TimeLen from 'bz-time-len'
 
   export default {
-    vuex: {
-      actions: {
-        collect,
-        uncollect,
-        queryGod,
-        recordLastMessage
-      }
-    },
     props: {
       message: {
         type: Object,
@@ -184,7 +175,7 @@
           {
             once: true,
             onTopVisible: function (event) {
-              _this.recordLastMessage(_this.message.created_at)
+              _this.$store.dispatch('recordLastMessage', _this.message.created_at)
               // let color = random.color()
               // $(_this.$el).addClass(color)
             }
@@ -193,13 +184,15 @@
       },
       toggleCollect: function (message) {
         if (message.collect) {
-          this.uncollect(message.id, this.uncollectDone(message))
+          // this.$store.dispatch('uncollect', message.id, this.uncollectDone(message))
+          this.$store.dispatch('uncollect', message.id)
         } else {
-          this.collect(message.id, this.collectDone(message))
+          // this.$store.dispatch('collect', message.id, this.collectDone(message))
+          this.$store.dispatch('collect', message.id)
         }
       },
       getGodInfo: function () {
-        this.queryGod(this.message.user_name)
+        this.$store.dispatch('queryGod', this.message.user_name)
       },
       collectDone: function (message) {
         message.collect = 1
