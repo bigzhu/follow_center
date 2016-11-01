@@ -250,7 +250,7 @@ export const actions = {
       commit('REFLASH_TIME_LEN')
     })
   },
-  getCat ({ state, commit, dispatch }, call_back = null, just_my = null) {
+  getCat ({ state, commit, dispatch }, just_my = null) {
     let parm = {
       just_my: just_my
     }
@@ -260,6 +260,11 @@ export const actions = {
       } else {
         commit('SET_CATS', data.cats)
       }
+    })
+  },
+  getNotMyGods ({ state, commit, dispatch }, cat) {
+    return dispatch('get', {url: '/api_not_my_gods', body: cat}).then(function (data) {
+      commit('SET_CAT_GODS', cat, data.gods)
     })
   }
 }

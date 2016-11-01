@@ -39,7 +39,6 @@
 
 <script>
   import Vue from 'vue'
-  import store from '../store'
   import $ from 'jquery'
   import GodItem from './GodItem'
   import Cat from './Cat'
@@ -80,7 +79,7 @@
             this.loading = true
           }
           let _this = this
-          this.$store.dispatch('queryNotMyGods', this.$route.params.cat).then(function (data) {
+          this.$store.dispatch('getNotMyGods', this.$route.params.cat).then(function (data) {
             _this.disableGodLoading()
           })
           this.stat = 'button'
@@ -93,7 +92,7 @@
         this.loading = true
       }
       let _this = this
-      this.$store.dispatch('queryNotMyGods', this.$route.params.cat).then(function (data) {
+      this.$store.dispatch('getNotMyGods', this.$route.params.cat).then(function (data) {
         _this.disableGodLoading()
       })
       $('body').visibility()
@@ -124,15 +123,15 @@
     computed: {
       loading: {
         get: function () {
-          return store.state.loading
+          return this.$store.state.loading
         },
         set: function (loading) {
-          store.dispatch('SET_LOADING', loading)
+          this.$store.commit('SET_LOADING', loading)
         }
       },
       not_my_gods () {
-        if (store.state.cat_gods[this.$route.params.cat]) {
-          return store.state.cat_gods[this.$route.params.cat]
+        if (this.$store.state.cat_gods[this.$route.params.cat]) {
+          return this.$store.state.cat_gods[this.$route.params.cat]
         } else {
           return []
         }
@@ -144,7 +143,7 @@
         return this.message.href
       },
       god_info: function () {
-        let god_info = store.state.god_infos[this.message.user_name.toLowerCase()]
+        let god_info = this.$store.state.god_infos[this.message.user_name.toLowerCase()]
         if (god_info) {
           return god_info
         }

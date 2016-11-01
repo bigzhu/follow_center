@@ -23,15 +23,14 @@
 </template>
 
 <script>
-  import store from '../store'
   export default {
     props: ['just_my', 'route_name'],
     computed: {
       cats: function () {
         if (this.just_my) {
-          return store.state.my_cats
+          return this.$store.state.my_cats
         } else {
-          return store.state.cats
+          return this.$store.state.cats
         }
       },
       link: function () {
