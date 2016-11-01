@@ -48,7 +48,8 @@ export const mutations = {
   SET_CAT_MY_GODS (state, cat, gods) {
     Vue.set(state.cat_my_gods, cat, gods)
   },
-  SET_CAT_GODS (state, cat, gods) {
+  SET_CAT_GODS (state, {cat, gods}) {
+    console.log(gods)
     Vue.set(state.cat_gods, cat, gods)
   },
   UNSHIFT_NOT_MY_GOD (state, cat, god) {
@@ -263,8 +264,12 @@ export const actions = {
     })
   },
   getNotMyGods ({ state, commit, dispatch }, cat) {
-    return dispatch('get', {url: '/api_not_my_gods', body: cat}).then(function (data) {
-      commit('SET_CAT_GODS', cat, data.gods)
+    let parm = {
+      cat: cat
+    }
+    return dispatch('get', {url: '/api_not_my_gods', body: parm}).then(function (data) {
+      console.log(data)
+      commit('SET_CAT_GODS', {cat: cat, gods: data.gods})
     })
   }
 }
