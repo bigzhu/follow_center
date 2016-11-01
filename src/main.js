@@ -18,9 +18,11 @@ import App from './App'
 import Main from './components/Main'
 import UserNameLogin from './components/UserNameLogin'
 import Recommand from './components/Recommand'
+import Collect from './components/Collect'
 
 const routes = [
   { path: '/', name: 'Main', component: Main },
+  { path: '/Collect', name: 'Collect', component: Collect },
   { path: '/Recommand/:cat', name: 'Recommand', component: Recommand },
   { path: '/Login', name: 'UserNameLogin', component: UserNameLogin }
 ]

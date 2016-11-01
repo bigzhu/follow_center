@@ -6,7 +6,7 @@
     <div class="ui stackable grid">
       <div class="row">
         <div class="eleven wide column no-padding-bz">
-          <messages :call_back="show"></messages>
+          <messages @on:get_done="show"></messages>
         </div>
         <div class="five wide column computer only ">
         </div>
@@ -16,15 +16,10 @@
 </template>
 
 <script>
-  import '../style/mobile.less'
+  import '../assets/mobile.css'
   import $ from 'jquery'
-  // import store from '../store'
   import Messages from './CollectMessages.vue'
   export default {
-    vuex: {
-      actions: {
-      }
-    },
     components: {
       Messages
     },

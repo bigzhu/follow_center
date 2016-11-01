@@ -97,9 +97,6 @@ export const mutations = {
   REMOVE_FROM_MY_GODS (state, god_id) { // 移除这个god
     state.my_gods = _.without(state.my_gods, _.findWhere(state.my_gods, {id: god_id}))
   },
-  SET_LOADING (state, loading) {
-    state.loading = loading
-  },
   SET_GOD_INFOS (state, god_info) {
     Vue.set(state.god_infos, god_info.name.toLowerCase(), god_info)
   },
@@ -270,6 +267,12 @@ export const actions = {
     return dispatch('get', {url: '/api_not_my_gods', body: parm}).then(function (data) {
       console.log(data)
       commit('SET_CAT_GODS', {cat: cat, gods: data.gods})
+    })
+  },
+  getCollect ({ state, commit, dispatch }) {
+    return dispatch('get', '/api_collect').then(function (data) {
+      commit('SET_COLLECT_MESSAGES', data.messages)
+      return data
     })
   }
 }
