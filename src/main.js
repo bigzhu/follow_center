@@ -17,9 +17,11 @@ import fastclick from 'fastclick'
 import App from './App'
 import Main from './components/Main'
 import UserNameLogin from './components/UserNameLogin'
+import Recommand from './components/Recommand'
 
 const routes = [
   { path: '/', name: 'Main', component: Main },
+  { path: '/Recommand', name: 'Recommand', component: Recommand },
   { path: '/Login', name: 'UserNameLogin', component: UserNameLogin }
 ]
 

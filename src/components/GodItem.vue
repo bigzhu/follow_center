@@ -1,143 +1,5 @@
-<style lang="less">
-  .ui.segment.recommand-god-bz {
-    padding: 0;
-    border: none;
-    overflow: hidden;
-    border-radius: 0.06em;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.13);
-  }
-  .god-detail-bz {
-    margin: 1em;
-  }
-  .god-icon-bz {
-    float: right;
-    font-size: 0.9rem;
-  }
-  .god-icon-bz a {
-    color: #999999;
-  }
-  .god-icon-bz a:hover {
-    i.icon.icon-hover-twitter {
-      color: #41ABE1;
-      transition: color 0.3s linear;
-    }
-    i.icon.icon-hover-github {
-      color: rgba(0, 0, 0, 0.8);
-      transition: color 0.3s linear;
-    }
-    i.icon.icon-hover-instagram {
-      color: #7E4532;
-      transition: color 0.3s linear;
-    }
-    i.icon.icon-hover-tumblr {
-      color: #205081;
-      transition: color 0.3s linear;
-    }
-    i.icon.icon-hover-facebook {
-      color: #3B5998;
-      transition: color 0.3s linear;
-    }
-  }
-  .god-name-bz {
-    display: inline-block;
-    padding-right: 0.8em;
-  }
-  .followers-number-bz {
-    color: rgba(0,0,0,.5);
-    font-size: 0.9rem;
-  }
-  .followers-number-bz:hover {
-    color: rgba(0,0,0,.7);
-  }
-  .god-discription-bz {
-    margin: 1em 0em;
-  }
-  .ui.bottom.button.button-to-follow-bz {
-    border-radius: 0.06em;
-    position: absolute!important;
-    bottom: 2em;
-    right: 2em;
-    width: 9em;
-  }
-  .god-avatar-bz {  
-    height: 300px;
-    width: 300px;
-    position: relative;
-    float: left;
-    background-image:linear-gradient(90deg,#F5F3F8,#E6E4E9);
-    margin-right: 1em;
-  }
-  .my-god-avatar-bz {
-    .god-avatar-bz;
-    height: 180px;
-    width: 180px;
-  }
-  .avatar-img-bz {
-    max-height: 100%;  
-    max-width: 100%; 
-    width: auto;
-    height: auto;
-    position: absolute;  
-    top: 0;  
-    bottom: 0;  
-    left: 0;  
-    right: 0;  
-    margin: auto;
-  }
-  .hide-god-bz {
-    position: absolute;
-    bottom: 2.3em;
-    right: 11em;
-    color: rgba(0,0,0,.5);
-    transition: visibility 0s, opacity 0.3s linear;
-    opacity: 0;
-  }
-  .ui.segment:hover {
-    .hide-god-bz {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-  .hide-god-bz:hover {
-    color: #168454;
-  }
-  @media (max-width : 767px) {
-    .god-detail-bz{
-      margin: 0 1em 1em 1em;
-    }
-    .ui.bottom.button.button-to-follow-bz {
-      width: 100%;
-      position: static!important;
-    }
-    .god-avatar-bz {  
-      position: static;
-      float: none;
-      background-image:none;
-      margin-right: 0em;
-    }
-    .my-god-avatar-bz {
-      height: 300px;
-      width: 300px;
-      position: static;
-      float: none;
-      background-image:none;
-      margin-right: 0em;
-    }
-    .god-name-bz {
-      padding-right: 100%;
-      display: block;
-    }
-    .hide-god-bz {
-      position: static;
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-</style>
-
 <template>
   <div class="ui segment recommand-god-bz">
-
     <div class="ui stackable grid">
       <div :class="{'four wide column':is_my, 'six wide column':!is_my}" >
         <div :class="{'my-god-avatar-bz':is_my, 'god-avatar-bz':!is_my}">
@@ -148,8 +10,8 @@
       </div>
       <div :class="{'twelve wide column':is_my, 'ten wide column':!is_my}">
         <div class="god-detail-bz">
-    <slot>
-    </slot>
+          <slot>
+          </slot>
           <div class="god-icon-bz">
             <social-badge v-show="god.twitter_user" :call_back="setGodInfo" :info="god.twitter_user"></social-badge>
             <social-badge v-show="god.github_user" :call_back="setGodInfo" :info="god.github_user"></social-badge>
@@ -182,18 +44,12 @@
 </template>
 
 <script>
-  import {addRemark} from '../store/actions'
   import Follow from './Follow'
   import GodRemark from './GodRemark'
   import SocialBadge from './SocialBadge'
-  import '../style/mobile.less'
+  import '../assets/mobile.css'
   // import store from '../store'
   export default {
-    vuex: {
-      actions: {
-        addRemark
-      }
-    },
     props: {
       god: {
       },
@@ -261,3 +117,141 @@
     }
   }
 </script>
+
+<style>
+  .ui.segment.recommand-god-bz {
+    padding: 0;
+    border: none;
+    overflow: hidden;
+    border-radius: 0.06em;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.13);
+  }
+  .god-detail-bz {
+    margin: 1em;
+  }
+  .god-icon-bz {
+    float: right;
+    font-size: 0.9rem;
+  }
+  .god-icon-bz a {
+    color: #999999;
+  }
+  .god-icon-bz a:hover i.icon.icon-hover-twitter {
+    color: #41ABE1;
+    transition: color 0.3s linear;
+  }
+  .god-icon-bz a:hover i.icon.icon-hover-github {
+    color: rgba(0, 0, 0, 0.8);
+    transition: color 0.3s linear;
+  }
+  .god-icon-bz a:hover i.icon.icon-hover-instagram {
+    color: #7E4532;
+    transition: color 0.3s linear;
+  }
+  .god-icon-bz a:hover i.icon.icon-hover-tumblr {
+    color: #205081;
+    transition: color 0.3s linear;
+  }
+  .god-icon-bz a:hover i.icon.icon-hover-facebook {
+    color: #3B5998;
+    transition: color 0.3s linear;
+  }
+  .god-name-bz {
+    display: inline-block;
+    padding-right: 0.8em;
+  }
+  .followers-number-bz {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 0.9rem;
+  }
+  .followers-number-bz:hover {
+    color: rgba(0, 0, 0, 0.7);
+  }
+  .god-discription-bz {
+    margin: 1em 0em;
+  }
+  .ui.bottom.button.button-to-follow-bz {
+    border-radius: 0.06em;
+    position: absolute!important;
+    bottom: 2em;
+    right: 2em;
+    width: 9em;
+  }
+  .god-avatar-bz {
+    height: 300px;
+    width: 300px;
+    position: relative;
+    float: left;
+    background-image: linear-gradient(90deg, #f5f3f8, #e6e4e9);
+    margin-right: 1em;
+  }
+  .my-god-avatar-bz {
+    height: 300px;
+    width: 300px;
+    position: relative;
+    float: left;
+    background-image: linear-gradient(90deg, #f5f3f8, #e6e4e9);
+    margin-right: 1em;
+    height: 180px;
+    width: 180px;
+  }
+  .avatar-img-bz {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  .hide-god-bz {
+    position: absolute;
+    bottom: 2.3em;
+    right: 11em;
+    color: rgba(0, 0, 0, 0.5);
+    transition: visibility 0s, opacity 0.3s linear;
+    opacity: 0;
+  }
+  .ui.segment:hover .hide-god-bz {
+    visibility: visible;
+    opacity: 1;
+  }
+  .hide-god-bz:hover {
+    color: #168454;
+  }
+  @media (max-width: 767px) {
+    .god-detail-bz {
+      margin: 0 1em 1em 1em;
+    }
+    .ui.bottom.button.button-to-follow-bz {
+      width: 100%;
+      position: static!important;
+    }
+    .god-avatar-bz {
+      position: static;
+      float: none;
+      background-image: none;
+      margin-right: 0em;
+    }
+    .my-god-avatar-bz {
+      height: 300px;
+      width: 300px;
+      position: static;
+      float: none;
+      background-image: none;
+      margin-right: 0em;
+    }
+    .god-name-bz {
+      padding-right: 100%;
+      display: block;
+    }
+    .hide-god-bz {
+      position: static;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+</style>

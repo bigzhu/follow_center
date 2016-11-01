@@ -1,6 +1,3 @@
-<style lang="less">
-</style>
-
 <template>
   <div class="ui segment newgod-info">
     <div v-show="adding" class="ui active inverted dimmer">
@@ -38,21 +35,11 @@
 </template>
 
 <script>
-  import store from '../store'
-  import {queryCat, addGod, checkSocial, queryNotMyGods} from '../store/actions'
   import CountUp from 'bz-count-up'
   import Follow from './Follow'
   import SocialBadge from './SocialBadge'
 
   export default {
-    vuex: {
-      actions: {
-        queryNotMyGods,
-        addGod,
-        queryCat,
-        checkSocial
-      }
-    },
     props: {
       god_name: {
         type: String,
@@ -144,14 +131,18 @@
       },
       add: function () {
         this.adding = true
-        this.addGod(this.god_name, this.$route.params.cat, this.startCheck)
+        // this.addGod(this.god_name, this.$route.params.cat, this.startCheck)
+        this.$store.dispatch('addGod', {god_name: this.god_name, cat: this.$route.params.cat, startCheck: this.startCheck})
       },
       startCheck: function (god_info) {
         this.setGodInfo(god_info)
 
         this.adding = false
         this.twitter_loading = true
-        this.checkSocial(this.god_name, 'twitter', this.twitterDone)
+        let _this = this
+        this.$store.dispatch('checkSocial', { god_name: this.god_name, type: 'twitter' }).then(function (data) {
+          _this.twitterDone()
+        })
       },
       twitterDone: function (info) {
         this.twitter_loading = false
@@ -159,7 +150,10 @@
           this.twitter_info = info
           this.setInfo(info)
         }
-        this.checkSocial(this.god_name, 'github', this.githubDone)
+        let _this = this
+        this.$store.dispatch('checkSocial', { god_name: this.god_name, type: 'github' }).then(function (data) {
+          _this.githubDone()
+        })
         this.github_loading = true
       },
       githubDone: function (info) {
@@ -168,7 +162,10 @@
           this.github_info = info
           this.setInfo(info)
         }
-        this.checkSocial(this.god_name, 'instagram', this.instagramDone)
+        let _this = this
+        this.$store.dispatch('checkSocial', { god_name: this.god_name, type: 'instagram' }).then(function (data) {
+          _this.instagramDone()
+        })
         this.instagram_loading = true
       },
       instagramDone: function (info) {
@@ -177,7 +174,10 @@
           this.instagram_info = info
           this.setInfo(info)
         }
-        this.checkSocial(this.god_name, 'tumblr', this.tumblrDone)
+        let _this = this
+        this.$store.dispatch('checkSocial', { god_name: this.god_name, type: 'tumblr' }).then(function (data) {
+          _this.tumblrDone()
+        })
         this.tumblr_loading = true
       },
       tumblrDone: function (info) {
@@ -186,7 +186,10 @@
           this.tumblr_info = info
           this.setInfo(info)
         }
-        this.checkSocial(this.god_name, 'facebook', this.facebookDone)
+        let _this = this
+        this.$store.dispatch('checkSocial', { god_name: this.god_name, type: 'facebook' }).then(function (data) {
+          _this.facebookDone()
+        })
         this.facebook_loading = true
       },
       facebookDone: function (info) {
@@ -200,8 +203,8 @@
       allDone: function (info) {
         this.disabled = false
         this.createGod()
-        store.dispatch('UNSHIFT_NOT_MY_GOD', this.$route.params.cat, this.god_info)
-        this.queryCat()
+        this.$store.commit('UNSHIFT_NOT_MY_GOD', this.$route.params.cat, this.god_info)
+        this.$store.dispatch('queryCat')
         // this.queryNotMyGods(this.$route.params.cat)
         if (this.call_back) {
           this.call_back()
@@ -234,3 +237,6 @@
     }
   }
 </script>
+
+<style>
+</style>

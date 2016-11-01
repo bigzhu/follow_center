@@ -1,29 +1,3 @@
-<style lang="less">
-  .remark-bz {
-    color: rgba(0, 0, 0, 0.5)
-  }
-  .remark-edit-bz {
-    color: #757575;
-    transition: visibility 0s, opacity 0.3s linear;
-    opacity: 0;
-  }
-  .ui.segment:hover {
-    .remark-edit-bz {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-  .ui.button.save-remark-bz {
-    border-radius: 0.06em;
-  }
-  @media (max-width : 767px) {
-    .remark-edit-bz {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-</style>
-
 <template>
   <div>
     <div v-html="remark" v-show="!is_edit && remark" class="remark-bz"></div>
@@ -36,17 +10,9 @@
 </template>
 
 <script>
-  import {addRemark} from '../store/actions'
   import $ from 'jquery'
   import Vue from 'vue'
   export default {
-    vuex: {
-      getters: {
-      },
-      actions: {
-        addRemark
-      }
-    },
     props: {
       remark: {
         required: true,
@@ -78,9 +44,35 @@
       },
       save: function () {
         this.remark = $(this.$el).find('.remark-edit-content').html()
-        this.addRemark(this.god_id, this.remark)
+        this.$store.dispatch('addRemark', {god_id: this.god_id, remark: this.remark})
         this.is_edit = false
       }
     }
   }
 </script>
+
+<style>
+  .remark-bz {
+    color: rgba(0, 0, 0, 0.5)
+  }
+  .remark-edit-bz {
+    color: #757575;
+    transition: visibility 0s, opacity 0.3s linear;
+    opacity: 0;
+  }
+  .ui.segment:hover {
+    .remark-edit-bz {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+  .ui.button.save-remark-bz {
+    border-radius: 0.06em;
+  }
+  @media (max-width : 767px) {
+    .remark-edit-bz {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+</style>

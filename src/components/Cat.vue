@@ -1,6 +1,3 @@
-<style lang="less">
-</style>
-
 <template>
   <div>
     <div class="large monitor only">
@@ -11,29 +8,23 @@
         </router-link>
       </div>
     </div>
+    <!--
     <div class="ui form mobile only">
       <div class="field">
-        <select v-model="$route.params.cat" @change="selectCat" class="ui dropdown">
+        <select v-model="$route.params.cat||''" @change="selectCat" class="ui dropdown">
           <option v-if="$route.params.cat === 'all'" selected disabled hidden value="all">请选择分类</option>
           <option v-if="$route.params.cat === 'recommand'" selected disabled hidden value="recommand">请选择分类</option>
           <option v-for="cat in cats" >{{cat.cat}}</option>
         </select>
       </div>
     </div>
+    -->
   </div>
 </template>
 
 <script>
-  import {queryCat} from '../store/actions'
   import store from '../store'
   export default {
-    vuex: {
-      getters: {
-      },
-      actions: {
-        queryCat
-      }
-    },
     props: ['just_my', 'route_name'],
     computed: {
       cats: function () {
@@ -58,7 +49,8 @@
       }
     },
     mounted () {
-      this.queryCat(this.disableCatLoading, this.just_my)
+      // this.queryCat(this.disableCatLoading, this.just_my)
+      this.$store.dispatch('queryCat', this.just_my)
     },
     methods: {
       disableCatLoading: function () {
@@ -70,3 +62,6 @@
 
   }
 </script>
+
+<style>
+</style>

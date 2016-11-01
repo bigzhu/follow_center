@@ -1,45 +1,3 @@
-<style lang="less">
-  .clear-button-bz {
-    color: inherit!important;
-    background-color: inherit!important;
-    box-shadow:0 0 0 1px rgba(34,36,38,.15) inset!important;
-  }
-  .ui.basic.negative.button.clear {
-    .clear-button-bz
-  }
-  .ui.basic.positive.button.clear {
-    .clear-button-bz
-  }
-
-  // 左边的menu与顶部距离
-  .ui.grid>.row>.column.top-margin {
-    margin-top: 1em;
-  }
-  // 添加新的跟踪目标按钮样式
-  .ui.segment.add-newgod-bz {
-    padding: 0;
-  }
-  .ui.segment.add-newgod:first-child {
-    margin-top: 1em;
-  }
-  .newgod-style {
-    width: 100%;
-    color: #515151;
-  }
-  .ui.inverted.dimmer.transparent-bz { 
-    background-color: inherit;
-  }
-  .ui.add-newgod-style {
-    .newgod-style;
-  }
-  .ui.add-newgod-style:hover {
-    .newgod-style;
-    color: #494949;
-  }
-  .ui.add-newgod-style:focus {
-    .newgod-style;
-  }
-</style>
 <template>
   <div class="ui main container">
     <div class="ui stackable grid">
@@ -71,16 +29,16 @@
             </div>
           </div>
           <add-god :god_name="god_name" :call_back="addDone" v-show="stat==='adding'"></add-god>
-          <god-item v-for="god in not_my_gods| orderBy 'created_date' -1" :god="god">
+          <god-item v-for="god in not_my_gods" :god="god">
           </god-item>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 <script>
   import Vue from 'vue'
-  import {queryNotMyGods, collect, uncollect} from '../store/actions'
   import store from '../store'
   import $ from 'jquery'
   import GodItem from './GodItem'
@@ -88,13 +46,6 @@
   import AddGod from './AddGod'
 
   export default {
-    vuex: {
-      actions: {
-        queryNotMyGods,
-        collect,
-        uncollect
-      }
-    },
     props: {
       message: {
         type: Object,
@@ -128,7 +79,10 @@
           if (this.not_my_gods.length === 0) {
             this.loading = true
           }
-          this.queryNotMyGods(this.$route.params.cat, this.disableGodLoading)
+          let _this = this
+          this.$store.dispatch('queryNotMyGods', this.$route.params.cat).then(function (data) {
+            _this.disableGodLoading()
+          })
           this.stat = 'button'
         },
         deep: true
@@ -138,7 +92,10 @@
       if (this.not_my_gods.length === 0) {
         this.loading = true
       }
-      this.queryNotMyGods(this.$route.params.cat, this.disableGodLoading)
+      let _this = this
+      this.$store.dispatch('queryNotMyGods', this.$route.params.cat).then(function (data) {
+        _this.disableGodLoading()
+      })
       $('body').visibility()
     },
     attached: function () {
@@ -233,9 +190,13 @@
       },
       toggleCollect: function (message) {
         if (message.collect) {
-          this.uncollect(message.id, this.uncollectDone(message))
+          this.$store.dispatch('uncollect', message.id).then(function (data) {
+            this.uncollectDone(data.message)
+          })
         } else {
-          this.collect(message.id, this.collectDone(message))
+          this.$store.dispatch('collect', message.id).then(function (data) {
+            this.collectDone(data.message)
+          })
         }
       },
       getGodInfo: function () {
@@ -250,3 +211,50 @@
     }
   }
 </script>
+
+<style>
+  .clear-button-bz {
+    color: inherit!important;
+    background-color: inherit!important;
+    box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.15) inset !important;
+  }
+  .ui.basic.negative.button.clear {
+    color: inherit!important;
+    background-color: inherit!important;
+    box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.15) inset !important;
+  }
+  .ui.basic.positive.button.clear {
+    color: inherit!important;
+    background-color: inherit!important;
+    box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.15) inset !important;
+  }
+  .ui.grid > .row > .column.top-margin {
+    margin-top: 1em;
+  }
+  .ui.segment.add-newgod-bz {
+    padding: 0;
+  }
+  .ui.segment.add-newgod:first-child {
+    margin-top: 1em;
+  }
+  .newgod-style {
+    width: 100%;
+    color: #515151;
+  }
+  .ui.inverted.dimmer.transparent-bz {
+    background-color: inherit;
+  }
+  .ui.add-newgod-style {
+    width: 100%;
+    color: #515151;
+  }
+  .ui.add-newgod-style:hover {
+    width: 100%;
+    color: #515151;
+    color: #494949;
+  }
+  .ui.add-newgod-style:focus {
+    width: 100%;
+    color: #515151;
+  }
+</style>
