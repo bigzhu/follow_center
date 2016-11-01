@@ -21,7 +21,7 @@ import Recommand from './components/Recommand'
 
 const routes = [
   { path: '/', name: 'Main', component: Main },
-  { path: '/Recommand', name: 'Recommand', component: Recommand },
+  { path: '/Recommand/:cat', name: 'Recommand', component: Recommand },
   { path: '/Login', name: 'UserNameLogin', component: UserNameLogin }
 ]
 
