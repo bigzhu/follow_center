@@ -2,7 +2,7 @@
 </style>
 <template>
   <div>
-    <message v-for="message in messages" :message='message' v-ref:c_messages>
+    <message v-for="message in messages" :message='message'>
     </message>
   </div>
 </template>
@@ -43,7 +43,7 @@
         return store.state.collect_messages
       }
     },
-    ready: function () {
+    mounted () {
       if (this.messages.length === 0) {
         this.loading = true
       }

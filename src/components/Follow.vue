@@ -54,7 +54,7 @@
         desc: ''
       }
     },
-    ready: function () {
+    mounted () {
       this.checkStatus()
     },
     methods: {

@@ -57,7 +57,7 @@
         key: ''
       }
     },
-    ready () {
+    mounted () {
       if (this.$route.params.id) {
         this.queryRichText(this.$route.params.id)
       } else {

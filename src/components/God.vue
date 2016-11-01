@@ -58,7 +58,7 @@
         return {id: 0}
       }
     },
-    ready () {
+    mounted () {
       this.queryGod(this.$route.params.god_name)
       $('body').visibility()
     },

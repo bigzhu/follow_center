@@ -9,9 +9,9 @@
     <div class="ui stackable grid">
       <div class="six wide column">
         <div class="god-avatar-bz">
-          <a v-link="{ name: 'God', params: { god_name: god_name }}" class="header god-name-bz user-name-a">
+          <router-link :to="{ name: 'God', params: { god_name: god_name }}" class="header god-name-bz user-name-a">
             <img :src="avatar" class="avatar-img-bz">
-          </a>
+          </router-link>
         </div>
       </div>
       <div class="ten wide column">
@@ -23,9 +23,9 @@
             <social-badge :loading="tumblr_loading" :info="tumblr_info"></social-badge>
             <social-badge :loading="facebook_loading" :info="facebook_info"></social-badge>
           </div>
-          <a v-link="{ name: 'God', params: { god_name: god_name }}" class="header newgod-name user-name-a">
+          <router-link :to="{ name: 'God', params: { god_name: god_name }}" class="header newgod-name user-name-a">
             <h3>{{god_name}}</h3>
-          </a>
+          </router-link>
           <a class="followers-number-bz">
             ? 人关注
           </a>
@@ -108,7 +108,7 @@
         this.add()
       }
     },
-    ready () {
+    mounted () {
     },
     methods: {
       init: function () {

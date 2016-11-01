@@ -16,7 +16,7 @@
       }
     },
     props: ['god_name', 'search_key'],
-    ready () {
+    mounted () {
     },
     methods: {
       old: function () {

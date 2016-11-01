@@ -140,7 +140,7 @@
         return (window.bz_url || '') + '/api_sp/' + window.btoa(window.btoa(this.av))
       }
     },
-    ready: function () {
+    mounted () {
       this.setGodInfo()
       $(this.$el).find('.button').popup(
         {

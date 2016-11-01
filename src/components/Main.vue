@@ -58,7 +58,7 @@
         return store.state.registered_count
       }
     },
-    created () {
+    mounted () {
       this.$store.dispatch('getRegisteredCount')
       $('body').visibility()
     },

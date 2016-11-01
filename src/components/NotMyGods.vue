@@ -40,7 +40,7 @@
       return {
       }
     },
-    ready () {
+    mounted () {
       this.queryNotMyGods()
       $('body').visibility()
     },

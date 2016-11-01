@@ -24,7 +24,7 @@
         type: String
       }
     },
-    ready () {
+    mounted () {
       this.queryGod(this.god_name)
     },
     computed: {

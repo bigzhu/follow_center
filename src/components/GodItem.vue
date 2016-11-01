@@ -141,9 +141,9 @@
     <div class="ui stackable grid">
       <div :class="{'four wide column':is_my, 'six wide column':!is_my}" >
         <div :class="{'my-god-avatar-bz':is_my, 'god-avatar-bz':!is_my}">
-          <a v-link="{ name: 'God', params: { god_name: god.name }}" class="header god-name-bz user-name-a">
+          <router-link :to="{ name: 'God', params: { god_name: god.name }}" class="header god-name-bz user-name-a">
             <img :src="avatar" class="avatar-img-bz">
-          </a>
+          </router-link>
         </div>
       </div>
       <div :class="{'twelve wide column':is_my, 'ten wide column':!is_my}">
@@ -157,9 +157,9 @@
             <social-badge v-show="god.instagram_user" :call_back="setGodInfo" :info="god.instagram_user" ></social-badge>
             <social-badge v-show="god.facebook_user" :call_back="setGodInfo" :info="god.facebook_user"></social-badge>
           </div>
-          <a v-link="{ name: 'God', params: { god_name: god.name }}" class="header god-name-bz user-name-a">
+          <router-link :to="{ name: 'God', params: { god_name: god.name }}" class="header god-name-bz user-name-a">
             <h3>{{god.name}}</h3>
-          </a>
+          </router-link>
           <a class="followers-number-bz">
             {{god.followed_count}} 人关注
           </a>
@@ -202,7 +202,7 @@
     },
     watch: {
     },
-    ready () {
+    mounted () {
       this.setGodInfo()
     },
     directives: {

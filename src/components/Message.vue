@@ -70,16 +70,16 @@
       </a>
       <time-len :the_time="message.created_at" class="right floated meta time-bz"></time-len>
       <img :src="avatar" class="ui avatar image show-god-info">
-      <a v-link="{ name: 'God', params: { god_name: message.user_name }}" class="user-name-a">
+      <router-link :to="{ name: 'God', params: { god_name: message.user_name }}" class="user-name-a">
         {{message.name}}
-      </a>
+      </router-link>
       <god-card :god="god_info" :god_id="god_info.god_id" :popup="true">
       </god-card>
       <component class="content-bz" :is="message.m_type" :message="message"></component>
     </div>
     <div class="like-bz">
       <a @click="toggleCollect(message)" :class="{'hidden-bz':!message.collect}" class="bookmark-bz"><i :class="{'remove':!message.collect, 'light-bz': message.collect}" class="bookmark icon"></i></a>
-      <a class="more-infor-bz hidden-bz" v-link="{ name:'TheMessage', params:{id:message.id}}"><i class="ellipsis horizontal icon"></i></a>
+      <router-link :to="{ name:'TheMessage', params:{id:message.id}}" class="more-infor-bz hidden-bz"><i class="ellipsis horizontal icon"></i></router-link>
     </div>
   </div>
 </template>
@@ -123,7 +123,7 @@
         collected: false
       }
     },
-    ready: function () {
+    mounted () {
       // this.visibility()
     },
     attached: function () {

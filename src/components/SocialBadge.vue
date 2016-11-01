@@ -62,7 +62,7 @@
       return {
       }
     },
-    ready () {
+    mounted () {
     },
     methods: {
       click: function () {

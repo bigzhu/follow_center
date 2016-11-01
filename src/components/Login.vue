@@ -126,7 +126,7 @@
         oauths: [ 'github', 'twitter', 'facebook', 'qq' ]
       }
     },
-    ready () {
+    mounted () {
     },
     attached: function () {
       // var tool_tips_target = $(this.$el).find('.download-app')

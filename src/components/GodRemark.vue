@@ -64,7 +64,7 @@
         is_edit: false
       }
     },
-    ready () {
+    mounted () {
     },
     methods: {
       edit: function () {

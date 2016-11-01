@@ -3,7 +3,7 @@
 
 <template>
   <div class="ui container">
-    <a v-link="{name:'BioEditorNew'}" class="ui button">New</a>
+    <router-link :to="{name:'BioEditorNew'}" class="ui button">New</router-link>
     <div v-for="rich in rich_list" class="ui items">
       <div @click="go(rich.id)" class="item">
         <div class="image">
@@ -48,7 +48,7 @@
       return {
       }
     },
-    ready () {
+    mounted () {
       this.queryRichList()
     },
     methods: {

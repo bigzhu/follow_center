@@ -31,7 +31,7 @@
         return store.state.the_message
       }
     },
-    ready: function () {
+    mounted () {
       this.queryTheMessage(this.$route.params.id)
       $('body').visibility()
     },

@@ -99,7 +99,7 @@
         return store.state.p.user_info.picture
       }
     },
-    created () {
+    mounted () {
       this.$store.dispatch('getUserInfo')
       $('.fix-bz').visibility(
         {

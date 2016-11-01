@@ -3,7 +3,7 @@
     <div class='ui center aligned basic segment history-bz'>
       <old></old>
     </div>
-    <message v-for='message in messages' :message='message' v-ref:c_messages>
+    <message v-for='message in messages' :message='message'>
     </message>
 
     <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !new_loading}"></div>
@@ -43,7 +43,7 @@
         return this.$store.state.messages
       }
     },
-    created: function () {
+    mounted () {
       this.newMessage(5, true) // 让用户尽快看到东西
       this.newMessage(get_count, true)
       this.bindScroll()
@@ -55,7 +55,6 @@
         $(window).scroll(
           _.throttle(
             function () {
-              v.$dispatch('checkBar')
               messages_element.children('div > .ui.fluid.card').each(
                 function () {
                   var message, message_position, scroll_bottom

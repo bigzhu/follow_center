@@ -6,9 +6,9 @@
       <div class="row">
         <div class="four wide column top-margin">
           <cat route_name="PublicGod">
-            <a v-link="{'name': 'PublicGod', params: {'cat': 'all'}}" :class="{'active': $route.params.cat === 'all'}" class="item">
+            <router-link :to="{'name': 'PublicGod', params: {'cat': 'all'}}" :class="{'active': $route.params.cat === 'all'}" class="item">
               all
-            </a>
+            </router-link>
 
           </cat>
         </div>
@@ -76,7 +76,7 @@
         deep: true
       }
     },
-    ready: function () {
+    mounted () {
       this.queryGods(this.$route.params.cat, this.disableGodLoading)
       $('body').visibility()
     },

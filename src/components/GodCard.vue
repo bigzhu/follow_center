@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'popup': popup, 'transition': popup, 'centered': !pop }" class="ui card column card-radius">
+  <div :class="{ 'popup': popup, 'transition': popup, 'centered': !popup }" class="ui card column card-radius">
     <div v-show="god.god_id === 0" class="ui active inverted dimmer">
       <div class="ui text loader">Loading</div>
     </div>
@@ -7,13 +7,13 @@
       <div class="ui text loader">Loading</div>
     </div>
 
-    <a v-link="{ name: 'God', params: { god_name: god.name }}" :class="{'ui': popup, 'small': popup, 'centered': popup}" class="image">
+    <router-link :to="{ name: 'God', params: { god_name: god.name }}" :class="{'ui': popup, 'small': popup, 'centered': popup}" class="image">
       <img :src="avatar" class="ui centered image avatar-bz">
-    </a>
+    </router-link>
     <div class="content delete-border">
-      <a v-link="{ name: 'God', params: { god_name: god.name }}" class="user-name-a">
+      <router-link :to="{ name: 'God', params: { god_name: god.name }}" class="user-name-a">
         <h3>{{god.name}}</h3>
-      </a>
+      </router-link>
       <div class="description" v-html="desc"></div>
     </div>
     <div class="extra content god-icon-bz delete-border">
@@ -39,7 +39,7 @@
         deep: true
       }
     },
-    ready () {
+    mounted () {
       this.setGodInfo()
     },
     computed: {

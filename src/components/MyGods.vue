@@ -98,7 +98,7 @@
         key: ''
       }
     },
-    ready () {
+    mounted () {
       if (this.my_gods.length === 0) {
         this.loading = true
       }

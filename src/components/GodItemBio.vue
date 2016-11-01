@@ -202,7 +202,7 @@
         this.setGodInfo()
       }
     },
-    ready () {
+    mounted () {
       console.log('setGodInfo')
       this.setGodInfo()
     },

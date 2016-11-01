@@ -13,9 +13,9 @@
     <tbody>
       <tr v-for="apply_del in apply_dels">
         <td>
-          <a v-link="{ name: 'God', params: { god_name: apply_del.god_name }}">
-          {{apply_del.god_name}}
-        </a>
+          <router-link :to="{ name: 'God', params: { god_name: apply_del.god_name }}">
+            {{apply_del.god_name}}
+          </router-link>
         </td>
         <td>
           <button class="ui {{apply_del.type}} button">
@@ -56,7 +56,7 @@
         apply_dels: []
       }
     },
-    ready () {
+    mounted () {
       this.getApplyDel()
     },
     methods: {

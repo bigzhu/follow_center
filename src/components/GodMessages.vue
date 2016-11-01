@@ -9,7 +9,7 @@
     <div class='ui center aligned basic segment history-bz'>
       <old :god_name="god_name"></old>
     </div>
-    <message v-for="message in messages" :message='message' v-ref:c_messages>
+    <message v-for="message in messages" :message='message'>
     </message>
 
     <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !new_loading}"></div>
@@ -58,7 +58,7 @@
         return store.state.gods_messages[this.god_name]
       }
     },
-    ready: function () {
+    mounted () {
       this.filterGodMessages(this.god_name)
       this.newMessage({god_name: this.god_name})
     },

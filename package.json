@@ -12,7 +12,7 @@
   "dependencies": {
     "autolinker": "^1.2.1",
     "bz-bottom-loader": "^2.0.1",
-    "bz-count-up": "^1.0.5",
+    "bz-count-up": "^2.0.3",
     "bz-login": "^2.0.7",
     "bz-semantic-ui-card": "^2.0.1",
     "bz-semantic-ui-dimmer": "^2.0.2",
@@ -35,7 +35,6 @@
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-stage-2": "^6.18.0",
     "babel-register": "^6.18.0",
-    "bz-count-up": "^1.0.5",
     "bz-oauth2-button": "^2.0.6",
     "bz-semantic-ui-dropdown": "^2.0.0",
     "bz-semantic-ui-grid": "^1.0.1",

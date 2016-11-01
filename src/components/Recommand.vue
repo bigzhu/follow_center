@@ -134,7 +134,7 @@
         deep: true
       }
     },
-    ready: function () {
+    mounted () {
       if (this.not_my_gods.length === 0) {
         this.loading = true
       }

@@ -9,7 +9,7 @@
     <div class='ui center aligned basic segment'>
       <old :god_name="god_name" :search_key="search_key"></old>
     </div>
-    <message v-for="message in messages" :message='message' v-ref:c_messages>
+    <message v-for="message in messages" :message='message'>
     </message>
 
     <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !new_loading}"></div>
@@ -52,7 +52,7 @@
         return store.state.explore_messages
       }
     },
-    ready: function () {
+    mounted () {
       this.newMessage(5) // 让用户尽快看到东西
       this.newMessage(99)
     },

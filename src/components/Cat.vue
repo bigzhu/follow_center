@@ -6,9 +6,9 @@
     <div class="large monitor only">
       <div class="ui secondary vertical pointing menu loading">
         <slot></slot>
-        <a v-link="{'name': route_name, params: {'cat': cat.cat}}" v-for="cat in cats" :class="{'active': $route.params.cat === cat.cat}" class="item">
+        <router-link :to="{'name': route_name, params: {'cat': cat.cat}}" v-for="cat in cats" :class="{'active': $route.params.cat === cat.cat}" class="item">
           {{cat.cat}}
-        </a>
+        </router-link>
       </div>
     </div>
     <div class="ui form mobile only">
@@ -57,7 +57,7 @@
       return {
       }
     },
-    ready () {
+    mounted () {
       this.queryCat(this.disableCatLoading, this.just_my)
     },
     methods: {

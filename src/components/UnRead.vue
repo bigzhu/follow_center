@@ -31,7 +31,7 @@
       return {
       }
     },
-    ready () {
+    mounted () {
       $(this.$el).popup()
     },
     methods: {

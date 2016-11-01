@@ -9,7 +9,7 @@
     <div class='ui center aligned basic segment'>
       <old :god_name="god_name" :search_key="search_key"></old>
     </div>
-    <message v-for="message in messages" :message='message' v-ref:c_messages>
+    <message v-for="message in messages" :message='message'>
     </message>
 
     <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !new_loading}"></div>
@@ -61,7 +61,7 @@
         return store.state.search_messages
       }
     },
-    ready: function () {
+    mounted () {
       this.filterSearchMessages(this.search_key)
       this.newMessage({search_key: this.search_key})
     },

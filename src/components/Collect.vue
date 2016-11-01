@@ -35,7 +35,7 @@
     },
     computed: {
     },
-    ready () {
+    mounted () {
       $('body').visibility()
     },
     methods: {
