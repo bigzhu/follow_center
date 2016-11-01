@@ -34,6 +34,24 @@
     }
   }
 </script>
+
 <style>
+  .fix-circle-bz {
+    position: fixed;
+    right: 1.5em;
+    background: none;
+    border: 1px solid #DADADA;
+  }
+  .fix-circle-bz:hover {
+    border: 1px solid #515151;
+    background: #dedede;
+  }
+  .fixed.button.top-bz {
+    position: fixed;
+    right: 1.5em;
+    background: none;
+    border: 1px solid #DADADA;
+    bottom: 1.5em;    
+  }
 </style>
 
