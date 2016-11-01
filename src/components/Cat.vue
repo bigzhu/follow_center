@@ -49,8 +49,7 @@
       }
     },
     mounted () {
-      // this.queryCat(this.disableCatLoading, this.just_my)
-      this.$store.dispatch('queryCat', this.just_my)
+      this.$store.dispatch('getCat', this.just_my)
     },
     methods: {
       disableCatLoading: function () {
