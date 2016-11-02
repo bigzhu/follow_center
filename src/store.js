@@ -45,7 +45,7 @@ export const mutations = {
   SET_REGISTERED_COUNT (state, registered_count) {
     state.registered_count = registered_count
   },
-  SET_CAT_MY_GODS (state, cat, gods) {
+  SET_CAT_MY_GODS (state, {cat, gods}) {
     Vue.set(state.cat_my_gods, cat, gods)
   },
   SET_CAT_GODS (state, {cat, gods}) {
@@ -94,7 +94,7 @@ export const mutations = {
   REMOVE_FROM_MY_MESSAGES (state, god_id) { // 移除这个god
     state.messages = _.without(state.messages, _.findWhere(state.messages, {god_id: god_id}))
   },
-  REMOVE_FROM_MY_GODS (state, god_id) { // 移除这个god
+  DELETE_MY_GOD (state, god_id) { // 移除这个god
     state.my_gods = _.without(state.my_gods, _.findWhere(state.my_gods, {id: god_id}))
   },
   SET_GOD_INFOS (state, god_info) {
@@ -265,7 +265,6 @@ export const actions = {
       cat: cat
     }
     return dispatch('get', {url: '/api_not_my_gods', body: parm}).then(function (data) {
-      console.log(data)
       commit('SET_CAT_GODS', {cat: cat, gods: data.gods})
     })
   },
@@ -273,6 +272,12 @@ export const actions = {
     return dispatch('get', '/api_collect').then(function (data) {
       commit('SET_COLLECT_MESSAGES', data.messages)
       return data
+    })
+  },
+  getMyGods ({ state, commit, dispatch }, cat) {
+    let parm = {cat: cat}
+    return dispatch('get', {url: '/api_my_gods', body: parm}).then(function (data) {
+      commit('SET_CAT_MY_GODS', {cat: cat, gods: data.gods})
     })
   }
 }

@@ -18,7 +18,7 @@
 </template>
 
 <script>
-  import _ from 'underscore'
+  import _ from 'lodash'
   import Autolinker from 'autolinker'
   import replaceSocial from '../functions/replaceSocial.js'
 

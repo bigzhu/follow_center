@@ -21,7 +21,7 @@
 
 <script>
   // import store from '../store'
-  import _ from 'underscore'
+  import _ from 'lodash'
   export default {
     props: ['message'],
     computed: {

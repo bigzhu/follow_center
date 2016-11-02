@@ -31,7 +31,7 @@
 </template>
 
 <script>
-  import _ from 'underscore'
+  import _ from 'lodash'
   import Autolinker from 'autolinker'
   export default {
     props: ['message'],

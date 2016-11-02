@@ -15,7 +15,7 @@
   var get_count = 50
   import store from '../store'
   import $ from 'jquery'
-  import _ from 'underscore'
+  import _ from 'lodash'
   import Old from './Old.vue'
   import BottomLoader from 'bz-bottom-loader'
   import Message from './Message.vue'
