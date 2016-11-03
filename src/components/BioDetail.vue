@@ -49,42 +49,41 @@
     },
     mounted () {
       this.$store.dispatch('getGod', this.god_name)
+      this.getBio()
     },
     computed: {
-      bio: function () {
-        let bio = this.getBio()
-        console.log(bio)
-        if (bio) {
-          if (!bio.text) {
-            console.log('no text')
-            this.getDetail()
-          }
-          return bio
-        } else {
-          this.$store.dispatch('getRichList')
-          return {}
-        }
-      },
       god_info () {
         let god_info = this.$store.state.god_infos[this.god_name.toLowerCase()]
         if (god_info) {
           return god_info
         }
         return {id: 0, name: ''}
+      },
+      bio () {
+        let self = this
+        let bio = _.find(this.$store.state.p.rich_list, function (d) { return d.key.toLowerCase() === self.god_name.toLowerCase() })
+        if (bio) return bio
+        else return {title_img: ''}
       }
     },
     methods: {
       getDetail: function () {
         let self = this
         this.$store.dispatch('getRichText', {key: this.god_name}).then(function (data) {
-          console.log(data.rich_text[0].text)
-          self.getBio().text = data.rich_text[0].text
-          // self.bio.text = data.rich_text[0].text
+          self.bio.text = data.rich_text[0].text
         })
       },
       getBio: function () {
         let self = this
-        return _.find(this.$store.state.p.rich_list, function (d) { return d.key.toLowerCase() === self.god_name.toLowerCase() })
+        if (this.bio.title_img !== '') {
+          if (!this.bio.text) { // 没有详情，取之
+            this.getDetail()
+          }
+        } else {
+          this.$store.dispatch('getRichList').then(function (data) {
+            self.getBio()
+          })
+        }
       }
     }
 

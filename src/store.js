@@ -49,7 +49,6 @@ export const mutations = {
     Vue.set(state.cat_my_gods, cat, gods)
   },
   SET_CAT_GODS (state, {cat, gods}) {
-    console.log(gods)
     Vue.set(state.cat_gods, cat, gods)
   },
   UNSHIFT_NOT_MY_GOD (state, cat, god) {
