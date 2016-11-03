@@ -184,7 +184,7 @@
         }
       },
       backToMain: function () {
-        this.$router.go({name: 'Main', replace: true})
+        this.$router.push({name: 'Main'})
         // $('html, body').animate(
           //   {
             //     scrollTop: '0'
