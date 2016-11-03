@@ -4,6 +4,7 @@ import p from '../../lib_bz/module'
 import 'whatwg-fetch'
 import _ from 'lodash'
 import $ from 'jquery'
+import toastr from 'toastr'
 function initGodMessage (state, god_name) {
   if (state.gods_messages[god_name] === undefined) {
     Vue.set(state.gods_messages, god_name, [])
@@ -307,6 +308,62 @@ export const actions = {
         }
         dispatch('getNew', {after: after, limit: 50})
       }
+    })
+  },
+  oldMessage ({ state, commit, dispatch }, {god_name, search_key, limit}) {
+    let messages = null
+    let before = null
+    if (god_name) {
+      messages = state.gods_messages[god_name]
+    } else if (search_key) {
+      messages = state.search_messages
+    } else {
+      messages = state.messages
+    }
+    if (messages.length > 0) {
+      before = messages[0].created_at
+    } else { // 第一次, 找当前以前的
+      before = new Date().getTime()
+    }
+    if (!limit) {
+      limit = 10
+    }
+    dispatch('getOld', {god_name: god_name, search_key: search_key, before: before, limit: limit})
+  },
+  getOld ({ state, commit, dispatch }, {god_name, search_key, before, limit}) {
+    commit('SET_OLD_LOADING', true)
+    var parm = {
+      god_name: god_name,
+      search_key: search_key,
+      limit: limit,
+      before: before
+    }
+    return dispatch('get', {url: '/api_old', body: parm, loading: false}).then(function (data) {
+      if (data.messages.length === 0) { // 没有取到数
+        if (god_name) {
+          toastr.info(god_name + '没有更多的历史消息可以看了')
+        } else if (search_key) {
+          toastr.info('没有更多的历史了')
+        } else {
+          if (state.messages.length === 0) { // 什么都没有，估计是第一次进来, 还没关注人
+            toastr.info('请先关注你感兴趣的人')
+            window.router.go({name: 'Recommand', params: {cat: 'recommand'}})
+          } else {
+            toastr.info('没有更多的历史了')
+          }
+        }
+      } else {
+        if (god_name) {
+          commit('SET_GODS_OLD_MESSAGES', god_name, data.messages)
+        } else if (search_key) { // search
+          commit('SET_OLD_SEARCH_MESSAGES', data.messages)
+          commit('HIGHT_LIGHT', search_key)
+        } else { // main
+          commit('SET_OLD_MESSAGES', data.messages)
+        }
+      }
+      commit('SET_OLD_LOADING', false)
+      commit('REFLASH_TIME_LEN')
     })
   }
 }

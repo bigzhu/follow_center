@@ -51,7 +51,7 @@
               if (d.video_info) {
                 // 找出类型是mp4,并且像素最好的
                 // videos = [d.video_info.variants[0]]
-                videos = _.where(d.video_info.variants, {content_type: 'video/mp4'})
+                videos = _.filter(d.video_info.variants, {content_type: 'video/mp4'})
                 if (videos.length > 1) {
                   let video = _.max(videos, function (v) { return v.bitrate })
                   videos = [video] // 还是封成 list ，为遵循多视频考虑

@@ -25,6 +25,7 @@
     }
   }
 </script>
+
 <style>
   .history-bz {
     width: 100%;
