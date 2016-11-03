@@ -1,67 +1,3 @@
-<style lang="less">
-  .ui.card.message-bz {
-    border-radius: 0.06em;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.13);
-    position: relative;
-  }
-  .like-bz {
-    padding: 0em 0.5em 0.2em 0em;
-  }
-  .like-bz a {
-    float: right;
-    cursor: pointer;
-    font-size: 1.1em;
-    color: rgba(0, 0, 0, 0.30);
-  }
-  .hidden-bz {
-    transition: color 0.3s ease;
-    transition: visibility 0s, opacity 0.3s linear;
-    opacity: 0;
-  }
-  .ui.card.message-bz:hover {
-    .hidden-bz {
-      visibility: visible;
-      opacity: 1;
-    }
-    box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-  }
-  .ui.card .meta.time-bz {
-    font-size: 12px;
-    padding-right: 4px;
-    padding-top: 1.2px;
-  }
-  .ui.card>.content.article-bz {
-    padding: 1em 1em 0em 1em;
-    font-size: 14px;
-  }
-  i.icon.icon-bz {
-    margin-right: 0;
-  }
-  .more-infor-bz:hover {
-    color: #54B98F;
-  }
-  .bookmark-bz:hover {
-    color: #FBBD08;
-  }
-  .bookmark.light-bz {
-    color: #FBBD08;
-  }
-  .content-bz {
-    margin-top: 0.5em;
-  }
-  @media (max-width : 767px) {
-    .hidden-bz {
-      visibility: visible;
-      opacity: 1;
-      position: static;
-    }
-    .message-bz {
-      box-shadow: rgba(0, 0, 0, 0.03) 0px 0px 0px 1px, rgba(0, 0, 0, 0.03) 0px 1px 3px 0px!important;
-    }
-
-  }
-</style>
-
 <template>
   <div :id="'id_'+ message.id" class="ui fluid card message-bz">
     <div class="content article-bz">
@@ -184,11 +120,13 @@
       },
       toggleCollect: function (message) {
         if (message.collect) {
-          // this.$store.dispatch('uncollect', message.id, this.uncollectDone(message))
-          this.$store.dispatch('uncollect', message.id)
+          this.$store.dispatch('uncollect', message.id).then(function (data) {
+            message.collect = null
+          })
         } else {
-          // this.$store.dispatch('collect', message.id, this.collectDone(message))
-          this.$store.dispatch('collect', message.id)
+          this.$store.dispatch('collect', message.id).then(function (data) {
+            message.collect = 1
+          })
         }
       },
       getGodInfo: function () {
@@ -203,3 +141,66 @@
     }
   }
 </script>
+<style>
+  .ui.card.message-bz {
+    border-radius: 0.06em;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.13);
+    position: relative;
+  }
+  .like-bz {
+    padding: 0em 0.5em 0.2em 0em;
+  }
+  .like-bz a {
+    float: right;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: rgba(0, 0, 0, 0.3);
+  }
+  .hidden-bz {
+    transition: color 0.3s ease;
+    transition: visibility 0s, opacity 0.3s linear;
+    opacity: 0;
+  }
+  .ui.card.message-bz:hover {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  }
+  .ui.card.message-bz:hover .hidden-bz {
+    visibility: visible;
+    opacity: 1;
+  }
+  .ui.card .meta.time-bz {
+    font-size: 12px;
+    padding-right: 4px;
+    padding-top: 1.2px;
+  }
+  .ui.card > .content.article-bz {
+    padding: 1em 1em 0em 1em;
+    font-size: 14px;
+  }
+  i.icon.icon-bz {
+    margin-right: 0;
+  }
+  .more-infor-bz:hover {
+    color: #54B98F;
+  }
+  .bookmark-bz:hover {
+    color: #FBBD08;
+  }
+  .bookmark.light-bz {
+    color: #FBBD08;
+  }
+  .content-bz {
+    margin-top: 0.5em;
+  }
+  @media (max-width: 767px) {
+    .hidden-bz {
+      visibility: visible;
+      opacity: 1;
+      position: static;
+    }
+    .message-bz {
+      box-shadow: rgba(0, 0, 0, 0.03) 0px 0px 0px 1px, rgba(0, 0, 0, 0.03) 0px 1px 3px 0px !important;
+    }
+  }
+</style>
+

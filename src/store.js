@@ -219,7 +219,8 @@ export const actions = {
       after: after,
       god_name: god_name,
       search_key: search_key,
-      explore: explore
+      explore: explore,
+      loading: false
     }
     return dispatch('get', {url: '/api_new', body: parm}).then(function (data) {
       if (data.messages.length === 0) { // 没有取到数
@@ -364,6 +365,21 @@ export const actions = {
       }
       commit('SET_OLD_LOADING', false)
       commit('REFLASH_TIME_LEN')
+    })
+  },
+  collect ({ state, commit, dispatch }, message_id) {
+    var parm = {
+      message_id: message_id
+    }
+    return dispatch('post', {url: '/api_collect', body: parm}).then(function (data) {
+      toastr.info('收藏成功')
+      return data
+    })
+  },
+  uncollect ({ state, commit, dispatch }, id) {
+    return dispatch('delete', '/api_collect/' + id).then(function (data) {
+      toastr.info('取消收藏')
+      return data
     })
   }
 }
