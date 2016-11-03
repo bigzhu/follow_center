@@ -8,7 +8,7 @@
     <!-- ================分割=================== -->
     <div class="card-bz-group">
       <div v-for="bio in new_two" class="card-bz">
-        <a :href="'/BioDetail/'+ bio.id">
+        <a :href="'/BioDetail/'+ bio.key">
           <div class="border-shadow">
             <div class="bio" :style="'background-image:url(' + bio.title_img + ');'">  
             </div>
@@ -28,7 +28,7 @@
       </div>
       <!-- ================分割=================== -->
       <div v-for="bio in others" class="card-bz">
-        <a :href="'/BioDetail/'+ bio.id">
+        <a :href="'/BioDetail/'+ bio.key">
           <div class="border-shadow">
             <div class="bio" :style="'background-image:url(' + bio.title_img + ');'">
             </div>
@@ -50,9 +50,6 @@
   export default {
     props: [],
     computed: {
-      bio_list: function () {
-        return this.$store.state.p.rich_list
-      },
       new_two: function () {
         return _.chunk(this.$store.state.p.rich_list, 2)[0]
       },
@@ -310,5 +307,4 @@
     }
   }
   /*=====================后面的card-bz完=======================*/
-
 </style>

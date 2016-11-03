@@ -20,9 +20,11 @@ import Recommand from './components/Recommand'
 import Collect from './components/Collect'
 import MyGods from './components/MyGods'
 import Bio from './components/Bio'
+import BioDetail from './components/BioDetail'
 
 const routes = [
   { path: '/', name: 'Main', component: Main },
+  { path: '/BioDetail/:god_name', name: 'BioDetail', component: BioDetail },
   { path: '/Bio', name: 'Bio', component: Bio },
   { path: '/MyGods/:cat', name: 'MyGods', component: MyGods },
   { path: '/Collect', name: 'Collect', component: Collect },

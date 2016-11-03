@@ -279,6 +279,17 @@ export const actions = {
     return dispatch('get', {url: '/api_my_gods', body: parm}).then(function (data) {
       commit('SET_CAT_MY_GODS', {cat: cat, gods: data.gods})
     })
+  },
+  getGod ({ state, commit, dispatch }, god_name) {
+    // 避免因为大小写找不到
+    god_name = god_name.toLowerCase()
+    if (state.god_infos[god_name]) {
+      return
+    }
+    var parm = {god_name: god_name}
+    return dispatch('get', {url: '/api_god', body: parm}).then(function (data) {
+      commit('SET_GOD_INFOS', data.god_info)
+    })
   }
 }
 
