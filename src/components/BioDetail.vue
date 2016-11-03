@@ -53,6 +53,7 @@
     computed: {
       bio: function () {
         let bio = this.getBio()
+        console.log(bio)
         if (bio) {
           if (!bio.text) {
             console.log('no text')
