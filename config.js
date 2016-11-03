@@ -1,3 +1,3 @@
 module.exports = {
-  filename: 'admin'
+  filename: 'index'
 }

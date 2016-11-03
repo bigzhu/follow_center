@@ -1,6 +1,3 @@
-<style lang="less">
-</style>
-
 <template>
   <div class="ui container">
     <router-link :to="{name:'BioEditorNew'}" class="ui button">New</router-link>
@@ -26,22 +23,13 @@
 </template>
 
 <script>
-  import store from '../store'
-  import {queryRichList} from '../../lib_bz/public_store'
   export default {
-    vuex: {
-      getters: {
-      },
-      actions: {
-        queryRichList
-      }
-    },
     props: [],
     components: {
     },
     computed: {
       rich_list: function () {
-        return store.state.rich_list
+        return this.$store.state.p.rich_list
       }
     },
     data: function () {
@@ -49,7 +37,7 @@
       }
     },
     mounted () {
-      this.queryRichList()
+      this.$store.dispatch('getRichList')
     },
     methods: {
       go: function (id) {
@@ -58,3 +46,5 @@
     }
   }
 </script>
+<style>
+</style>

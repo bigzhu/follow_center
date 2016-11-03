@@ -7,5 +7,9 @@ module.exports = {
     target: 'wss://follow.center',
     wss: true,
     changeOrigin: true
+  },
+  '/static/uploaded_files/': {
+    target: 'https://follow.center',
+    changeOrigin: true
   }
 }

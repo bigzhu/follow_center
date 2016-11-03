@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "autolinker": "^1.2.1",
-    "bz-bottom-loader": "^2.0.1",
+    "bz-bottom-loader": "^2.0.2",
     "bz-count-up": "^2.0.3",
     "bz-login": "^2.0.7",
     "bz-semantic-ui-card": "^2.0.1",

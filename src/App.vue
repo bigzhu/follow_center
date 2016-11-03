@@ -34,7 +34,7 @@
           <router-link :to="{'name': 'Recommand', params: {'cat': 'recommand'}}" :class="{'active': this.$route.name==='Recommand'}" class="item navi-bz move-left-bz">寻他</router-link>
           <router-link v-show="user_name!=''" :to="{ name:'MyGods', params: {'cat': 'all'}}" :class="{'active': this.$route.name==='MyGods'}" class="item navi-bz">已跟踪</router-link>
           <router-link v-show="user_name!=''" :to="{ name:'Collect'}" :class="{'active': this.$route.name==='Collect'}" class="item navi-bz">收藏</router-link>
-          <a :class="{'active': path_name==='biography'}" href="/biography" class="item navi-bz">传记</a>
+          <router-link :to="{ name:'Bio'}" :class="{'active': this.$route.name==='Bio'}" class="item navi-bz">传记</router-link>
         </div>
       </nav>
     </header>

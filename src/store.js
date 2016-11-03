@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import p from '../../lib_bz/module'
 import 'whatwg-fetch'
-import _ from 'underscore'
+import _ from 'lodash'
 import $ from 'jquery'
 function initGodMessage (state, god_name) {
   if (state.gods_messages[god_name] === undefined) {

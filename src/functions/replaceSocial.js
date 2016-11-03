@@ -1,4 +1,4 @@
-import _ from 'underscore'
+import _ from 'lodash'
 export default function (social_type, text) {
   let pattern = /\B@[a-z0-9_-]+/gi
   let list = text.match(pattern)

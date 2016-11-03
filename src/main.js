@@ -1,16 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// Vue.use(VueRouter)
-import VueI18n from 'vue-i18n'
-Vue.use(VueI18n)
+// import VueI18n from 'vue-i18n'
+// Vue.use(VueI18n)
 // set lang
-var lang = window.localStorage.getItem('lang') || 'th'
-Vue.config.lang = lang
-// set locales
-import locales from './locales'
-Object.keys(locales).forEach(function (lang) {
-  Vue.locale(lang, locales[lang])
-})
+// var lang = window.localStorage.getItem('lang') || 'th'
+// Vue.config.lang = lang
+// // set locales
+// import locales from './locales'
+// Object.keys(locales).forEach(function (lang) {
+//   Vue.locale(lang, locales[lang])
+// })
 
 import {checkLogin} from '../../lib_bz/functions/user'
 import fastclick from 'fastclick'
@@ -20,9 +19,11 @@ import UserNameLogin from './components/UserNameLogin'
 import Recommand from './components/Recommand'
 import Collect from './components/Collect'
 import MyGods from './components/MyGods'
+import Bio from './components/Bio'
 
 const routes = [
   { path: '/', name: 'Main', component: Main },
+  { path: '/Bio', name: 'Bio', component: Bio },
   { path: '/MyGods/:cat', name: 'MyGods', component: MyGods },
   { path: '/Collect', name: 'Collect', component: Collect },
   { path: '/Recommand/:cat', name: 'Recommand', component: Recommand },
