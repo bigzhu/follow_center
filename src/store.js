@@ -290,6 +290,24 @@ export const actions = {
     return dispatch('get', {url: '/api_god', body: parm}).then(function (data) {
       commit('SET_GOD_INFOS', data.god_info)
     })
+  },
+  recordLastMessage ({ state, commit, dispatch }, time) {
+    if (state.last_time > parseInt(time, 10)) {
+      return
+    }
+    var parm = { last_time: time }
+    return dispatch('put', {url: '/api_last', body: parm, loading: false}).then(function (data) {
+      commit('SET_LAST_TIME', parseInt(time, 10))
+      commit('REFRESH_UNREAD_MESSAGE_COUNT')
+      // 如果>5了，就预加载一些
+      if (state.unread_message_count <= 10) {
+        let after = null
+        if (state.messages.length > 0) {
+          after = state.messages[state.messages.length - 1].created_at
+        }
+        dispatch('getNew', {after: after, limit: 50})
+      }
+    })
   }
 }
 
