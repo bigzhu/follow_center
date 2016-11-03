@@ -51,10 +51,8 @@
       this.$store.dispatch('getCat', this.just_my)
     },
     methods: {
-      disableCatLoading: function () {
-      },
       selectCat: function () {
-        this.$router.go({name: this.route_name, params: {cat: this.$route.params.cat}})
+        this.$router.push({name: this.route_name, params: {cat: this.$route.params.cat}})
       }
     }
 

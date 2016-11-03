@@ -62,14 +62,6 @@
         } else {
           return []
         }
-      },
-      loading: {
-        get: function () {
-          return this.$store.state.loading
-        },
-        set: function (loading) {
-          this.$store.commit('SET_LOADING', loading)
-        }
       }
     },
     data: function () {
@@ -78,9 +70,6 @@
       }
     },
     mounted () {
-      if (this.my_gods.length === 0) {
-        this.loading = true
-      }
       this.$store.dispatch('getMyGods', this.$route.params.cat)
       $('body').visibility()
     },

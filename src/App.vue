@@ -87,7 +87,7 @@
         }
       },
       loading () {
-        return store.state.loading
+        return store.state.p.loading
       },
       unread_message_count () {
         return store.state.unread_message_count

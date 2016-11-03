@@ -121,14 +121,6 @@
       )
     },
     computed: {
-      loading: {
-        get: function () {
-          return this.$store.state.loading
-        },
-        set: function (loading) {
-          this.$store.commit('SET_LOADING', loading)
-        }
-      },
       not_my_gods () {
         if (this.$store.state.cat_gods[this.$route.params.cat]) {
           return this.$store.state.cat_gods[this.$route.params.cat]

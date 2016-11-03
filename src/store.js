@@ -258,6 +258,7 @@ export const actions = {
       } else {
         commit('SET_CATS', data.cats)
       }
+      return data
     })
   },
   getNotMyGods ({ state, commit, dispatch }, cat) {

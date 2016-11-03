@@ -64,13 +64,11 @@
     data: function () {
       return {
         current_cat: this.$route.params.cat,
-        loading: false
       }
     },
     watch: {
       '$route.params': {
         handler: function () {
-          this.loading = true
           this.queryGods(this.$route.params.cat, this.disableGodLoading)
         },
         deep: true
@@ -106,14 +104,6 @@
     computed: {
       cats: function () {
         return store.state.cats
-      },
-      loading: {
-        get: function () {
-          return store.state.loading
-        },
-        set: function (loading) {
-          store.dispatch('SET_LOADING', loading)
-        }
       },
       gods () {
         if (store.state.cat_gods[this.$route.params.cat]) {
@@ -163,7 +153,6 @@
         this.updateGod(new_god)
       },
       disableGodLoading: function () {
-        this.loading = false
       },
       getGodInfo: function () {
         this.queryGod(this.message.user_name)
