@@ -55,7 +55,7 @@
     computed: {
       god_info () {
         if (!this.god_name) return
-        let god_info = this.$store.state.god_infos[this.god_name.toLowerCase()]
+        let god_info = this.$store.state.god_infos[this.god_name]
         if (god_info) {
           return god_info
         }
@@ -65,7 +65,7 @@
         return this.$store.state.registered_count
       },
       god_name () {
-        return this.$route.params.god_name
+        if (this.$route.params.god_name) return this.$route.params.god_name.toLowerCase()
       }
     },
     mounted () {

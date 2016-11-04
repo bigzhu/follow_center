@@ -110,7 +110,7 @@ export const mutations = {
   FILTER_GOD_MESSAGES (state, god_name) { // 从主线messages中把god message 过滤出来，避免页面空白
     initGodMessage(state, god_name)
     if (state.messages.length !== 0 && state.gods_messages[god_name].length === 0) {
-      state.gods_messages[god_name] = _.filter(state.messages, (d) => { return d.name === god_name })
+      state.gods_messages[god_name] = _.filter(state.messages, (d) => { return d.user_name.toLowerCase() === god_name })
     }
   },
   FILTER_SEARCH_MESSAGES (state, search_key) { // 从主线messages中把查找的信息过滤出来，避免页面空白
@@ -146,13 +146,15 @@ export const mutations = {
       }
     )
   },
-  SET_GODS_NEW_MESSAGES (state, god_name, messages) {
+  SET_GODS_NEW_MESSAGES (state, {god_name, messages}) {
     initGodMessage(state, god_name)
-    state.gods_messages[god_name] = _.uniq(
-      state.gods_messages[god_name].concat(messages), false, function (item, key, a) {
-        return item.id
-      }
+    let merge_messages = state.gods_messages[god_name].concat(messages)
+    let uniq_messages = _.uniqBy(merge_messages, function (d) {
+      return d.id
+    }
     )
+    console.log(uniq_messages)
+    state.gods_messages[god_name] = uniq_messages
   },
   SET_GOD_INFO (state, god_info) {
     state.god_info = god_info
@@ -233,7 +235,7 @@ export const actions = {
         }
       } else {
         if (god_name) { // 查god的new
-          commit('SET_GODS_NEW_MESSAGES', god_name, data.messages)
+          commit('SET_GODS_NEW_MESSAGES', {god_name: god_name, messages: data.messages})
         } else if (explore) { // explore
           commit('SET_EXPLORE_NEW_MESSAGES', data.messages)
         } else if (search_key) { // search

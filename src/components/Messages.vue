@@ -27,6 +27,10 @@
       Message,
       BottomLoader
     },
+    watch: {
+      // call again the method if the route changes
+      '$route': 'fetchData'
+    },
     events: {
       'unfollow': function (god_id) { // 监听unfollow事件，移除已经unfollow的god的message
         this.$store.dispatch('removeFromMessages', god_id)
@@ -37,19 +41,36 @@
       }
     },
     computed: {
+      god_name () {
+        if (this.$route.params.god_name) return this.$route.params.god_name.toLowerCase()
+      },
       new_loading () {
         return store.state.new_loading
       },
       messages () {
-        return this.$store.state.messages
+        if (!this.god_name) return this.$store.state.messages
+        return this.$store.state.gods_messages[this.god_name]
       }
     },
     mounted () {
-      this.newMessage(5, true) // 让用户尽快看到东西
-      this.newMessage(get_count, true)
+      this.fetchData()
       this.bindScroll()
     },
     methods: {
+      fetchData: function () {
+        if (!this.god_name) {
+          if (this.messages.length === 0) {
+            this.newMessage(5)
+            this.newMessage(get_count)
+          }
+        } else {
+          this.$store.commit('FILTER_GOD_MESSAGES', this.god_name)
+          if (this.messages.length === 0) { // 现成没有，要自已取了
+            this.$store.dispatch('getNew', {god_name: this.god_name, limit: 5})
+            this.$store.dispatch('getNew', {god_name: this.god_name, limit: get_count})
+          }
+        }
+      },
       bindScroll: function () {
         var v = this
         var messages_element = $(v.$el)
@@ -84,10 +105,7 @@
         this.$store.dispatch('recordLastMessage', created_at)
         this.newMessage(get_count)
       },
-      newMessage: function (limit = null, is_init = false) {
-        if (this.messages.length > 0 && is_init) {
-          return
-        }
+      newMessage: function (limit = null) {
         let after = null
         if (this.messages.length > 0) {
           after = this.messages[this.messages.length - 1].created_at
