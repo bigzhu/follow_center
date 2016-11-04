@@ -24,6 +24,7 @@ import BioDetail from './components/BioDetail'
 
 const routes = [
   { path: '/', name: 'Main', component: Main },
+  { path: '/g/:god_name', name: 'g', component: Main },
   { path: '/BioDetail/:god_name', name: 'BioDetail', component: BioDetail },
   { path: '/Bio', name: 'Bio', component: Bio },
   { path: '/MyGods/:cat', name: 'MyGods', component: MyGods },

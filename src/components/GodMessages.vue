@@ -9,29 +9,18 @@
     <div class='ui center aligned basic segment history-bz'>
       <old :god_name="god_name"></old>
     </div>
-    <message v-for="message in messages" :message='message'>
-    </message>
-
+    <message v-for="message in messages" :message='message'></message>
     <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !new_loading}"></div>
     <bottom-loader :el="$el" element_class=".ui.fluid.card" :call_back="call_back"></bottom-loader>
   </div>
 </template>
 
 <script>
-  import store from '../store'
-
-  import {filterGodMessages, newMessage} from '../store/actions'
-  import Old from './Old.vue'
-  import Message from './Message.vue'
+  import Old from './Old'
+  import Message from './Message'
   import BottomLoader from 'bz-bottom-loader'
 
   module.exports = {
-    vuex: {
-      actions: {
-        filterGodMessages,
-        newMessage
-      }
-    },
     components: {
       Old,
       Message,
@@ -52,15 +41,16 @@
     },
     computed: {
       new_loading () {
-        return store.state.new_loading
+        return this.$store.state.new_loading
       },
       messages () {
-        return store.state.gods_messages[this.god_name]
+        return this.$store.state.gods_messages[this.god_name]
       }
     },
     mounted () {
-      this.filterGodMessages(this.god_name)
-      this.newMessage({god_name: this.god_name})
+      this.$store.commit('FILTER_GOD_MESSAGES', this.god_name)
+      // this.$store.dispatch('newMessage', {god_name: this.god_name})
+      this.$store.dispatch('getNew', {god_name: this.god_name})
     },
     methods: {
       call_back: function () {

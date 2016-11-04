@@ -5,7 +5,6 @@
     </div>
     <message v-for='message in messages' :message='message'>
     </message>
-
     <!--
     <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !new_loading}"></div>
     -->

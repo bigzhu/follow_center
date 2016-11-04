@@ -6,7 +6,7 @@
       </a>
       <time-len :the_time="message.created_at" class="right floated meta time-bz"></time-len>
       <img :src="avatar" class="ui avatar image show-god-info">
-      <router-link :to="{ name: 'God', params: { god_name: message.user_name }}" class="user-name-a">
+      <router-link :to="{ name: 'g', params: { god_name: message.user_name }}" class="user-name-a">
         {{message.name}}
       </router-link>
       <god-card :god="god_info" :god_id="god_info.god_id" :popup="true">

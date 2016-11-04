@@ -7,6 +7,7 @@
         </div>
         <div class="five wide column computer only ">
           <div class="blank-bz"></div>
+          <god-info v-show="god_name" :god_info="god_info"></god-info>
           <div class="ui card border-radius">
             <div class="content">
               <div class="description align-center">
@@ -36,26 +37,38 @@
 <script>
   import '../assets/mobile.css'
   import $ from 'jquery'
-  import store from '../store'
   import Messages from './Messages'
   import Top from './Top'
   import UnRead from './UnRead'
+  import GodInfo from './GodInfo'
   export default {
     components: {
       UnRead,
       Top,
-      Messages
+      Messages,
+      GodInfo
     },
     data () {
       return {
       }
     },
     computed: {
+      god_info () {
+        let god_info = this.$store.state.god_infos[this.$route.params.god_name.toLowerCase()]
+        if (god_info) {
+          return god_info
+        }
+        if (this.god_name) this.$store.dispatch('getGod', this.god_name)
+        return {id: 0}
+      },
       big_gods () {
-        return store.state.big_gods
+        return this.$store.state.big_gods
       },
       registered_count () {
-        return store.state.registered_count
+        return this.$store.state.registered_count
+      },
+      god_name () {
+        return this.$route.params.god_name
       }
     },
     mounted () {

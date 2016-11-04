@@ -31,7 +31,7 @@
     <form class="ui form">
       <div class="inline field">
         <label>
-          <a :class="{ disabled: !god_info.twitter }" href="https://twitter.com/{{god_info.twitter}}" target="_blank" class="ui circular twitter icon button" data-content="Twitter">
+          <a :class="{ disabled: !god_info.twitter }" :href="'https://twitter.com/' + god_info.twitter" target="_blank" class="ui circular twitter icon button" data-content="Twitter">
             <i class="twitter icon"></i>
           </a>
         </label>
@@ -40,7 +40,7 @@
 
       <div class="inline field">
         <label>
-          <a :class="{ disabled: !god_info.github }" href="https://github.com/{{god_info.github}}" target="_blank" class="ui circular github icon button" data-content="Github">
+          <a :class="{ disabled: !god_info.github }" :href="'https://github.com/' + god_info.github" target="_blank" class="ui circular github icon button" data-content="Github">
             <i class="github icon"></i>
           </a>
         </label>
@@ -49,7 +49,7 @@
 
       <div class="inline field">
         <label>
-          <a :class="{ disabled: !god_info.instagram }" href="https://instagram.com/{{god_info.instagram}}" target="_blank" class="ui circular instagram icon button" data-content="Instagram">
+          <a :class="{ disabled: !god_info.instagram }" :href="'https://instagram.com/'+god_info.instagram" target="_blank" class="ui circular instagram icon button" data-content="Instagram">
             <i class="instagram icon"></i>
           </a>
         </label>
@@ -58,7 +58,7 @@
 
       <div class="inline field">
         <label>
-          <a :class="{ disabled: !god_info.tumblr }" href="http://{{god_info.tumblr}}.tumblr.com" target="_blank" class="ui circular tumblr icon button" data-content="Tumblr">
+          <a :class="{ disabled: !god_info.tumblr }" :href="'http://'+god_info.tumblr+'.tumblr.com'" target="_blank" class="ui circular tumblr icon button" data-content="Tumblr">
             <i class="tumblr icon"></i>
           </a>
         </label>
@@ -67,7 +67,7 @@
 
       <div class="inline field">
         <label>
-          <a :class="{ disabled: !god_info.facebook }" href="https://facebook.com/{god_info.facebook}" target="_blank" class="ui circular facebook icon button" data-content="Facebook">
+          <a :class="{ disabled: !god_info.facebook }" :href="'https://facebook.com/'+god_info.facebook" target="_blank" class="ui circular facebook icon button" data-content="Facebook">
             <i class="facebook icon"></i>
           </a>
         </label>
@@ -93,15 +93,7 @@
   import GodRemark from './GodRemark'
   import $ from 'jquery'
   import Follow from './Follow'
-  import store from '../store'
-  import {updateGod} from '../store/actions'
   export default {
-    store,
-    vuex: {
-      actions: {
-        updateGod
-      }
-    },
     components: {
       GodRemark,
       Follow
@@ -205,7 +197,7 @@
             // bio: this.god_info.bio
             // avatar: this.god_info.avatar
           }
-          this.updateGod(user)
+          this.$store.dispatch('updateGod', user)
         }
       }
     }

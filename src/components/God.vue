@@ -1,11 +1,3 @@
-<style lang=less>
-  .ui.stackable.grid>.row>.wide.column.no-padding-bz{
-    padding: 0rem!important;
-  }
-  .godblank-bz {
-    margin-top: 47px;
-  }
-</style>
 <template>
   <div class="ui main container">
     <div class="ui stackable grid">
@@ -25,19 +17,10 @@
 
 <script>
   import $ from 'jquery'
-  import store from '../store'
-  import {queryGod} from '../store/actions'
   import GodInfo from './GodInfo'
   import Messages from './GodMessages.vue'
   import Top from './Top'
   export default {
-    vuex: {
-      getters: {
-      },
-      actions: {
-        queryGod
-      }
-    },
     components: {
       Top,
       Messages,
@@ -51,7 +34,7 @@
     },
     computed: {
       god_info () {
-        let god_info = store.state.god_infos[this.$route.params.god_name.toLowerCase()]
+        let god_info = this.$store.state.god_infos[this.$route.params.god_name.toLowerCase()]
         if (god_info) {
           return god_info
         }
@@ -59,7 +42,7 @@
       }
     },
     mounted () {
-      this.queryGod(this.$route.params.god_name)
+      this.$store.dispatch('getGod', this.$route.params.god_name)
       $('body').visibility()
     },
     methods: {
@@ -72,3 +55,12 @@
     }
   }
 </script>
+
+<style lang=less>
+  .ui.stackable.grid>.row>.wide.column.no-padding-bz{
+    padding: 0rem!important;
+  }
+  .godblank-bz {
+    margin-top: 47px;
+  }
+</style>
