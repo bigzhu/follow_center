@@ -103,7 +103,8 @@
         return this.god_info.admin_remark
       },
       avatar: function () {
-        if (!this.av) {
+        // if (!this.av) {
+        if (this.god_info.avatar === '') {
           return '/static/assets/avatar.svg'
         }
         return (window.bz_url || '') + '/api_sp/' + window.btoa(window.btoa(this.av))
@@ -148,6 +149,9 @@
             this.setGodInfo('instagram')
           } else if (this.god_info.facebook_user) {
             this.setGodInfo('facebook')
+          } else {
+            this.av = ''
+            this.desc = ''
           }
         }
       },
