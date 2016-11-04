@@ -132,7 +132,9 @@ export const mutations = {
   FILTER_GOD_MESSAGES (state, god_name) { // 从主线messages中把god message 过滤出来，避免页面空白
     initGodMessage(state, god_name)
     if (state.messages.length !== 0 && state.gods_messages[god_name].length === 0) {
-      state.gods_messages[god_name] = _.filter(state.messages, (d) => { return d.user_name.toLowerCase() === god_name })
+      let god_messages = _.filter(state.messages, (d) => { return d.user_name.toLowerCase() === god_name })
+      console.log(god_messages)
+      state.gods_messages[god_name] = god_messages
     }
   },
   FILTER_SEARCH_MESSAGES (state, search_key) { // 从主线messages中把查找的信息过滤出来，避免页面空白
@@ -175,6 +177,7 @@ export const mutations = {
       return d.id
     }
     )
+    console.log(uniq_messages)
     state.gods_messages[god_name] = uniq_messages
   },
   SET_GOD_INFO (state, god_info) {
@@ -218,11 +221,12 @@ export const mutations = {
     )
   },
   SET_NEW_MESSAGES (state, messages) {
-    state.messages = _.uniq(
-      state.messages.concat(messages), false, function (item, key, a) {
-        return item.id
-      }
+    let merge_messages = state.messages.concat(messages)
+    let uniq_messages = _.uniqBy(merge_messages, function (d) {
+      return d.id
+    }
     )
+    state.messages = uniq_messages
   },
   SET_USER_INFO (state, user_info) {
     state.user_info = user_info
