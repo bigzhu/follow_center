@@ -1,26 +1,3 @@
-<style lang='less'>
-  .ui.button.god-info-button-bz {
-    box-shadow: none!important;
-    border: 0.1em solid rgba(0,0,0,.15);
-    border-radius: 0.06em;
-    font-size: 0.9em;
-    margin-left: 0.5rem;
-  } 
-  .hide{
-    display: none
-  }
-  .god-description {
-    margin-top: 1em;
-  }
-  .ui.segment.info-card-bz {
-    border: none;
-    border-radius: 0.06em;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.13);
-  }
-  .ui.form .inline.field>input.input-bz {
-    border-radius: 0.06em;
-  }
-</style>
 <template>
   <div class="ui center aligned segment info-card-bz">
     <h4 class="ui header">{{god_info.name}}</h4>
@@ -105,8 +82,8 @@
         type: Object,
         default: function () {
           return {
-            id: null,
-            name: '',
+            id: 1,
+            name: 'loading',
             avatar: '',
             bio: '',
             github: '',
@@ -127,7 +104,7 @@
       },
       avatar: function () {
         if (!this.av) {
-          return ''
+          return '/static/assets/avatar.svg'
         }
         return (window.bz_url || '') + '/api_sp/' + window.btoa(window.btoa(this.av))
       }
@@ -203,3 +180,26 @@
     }
   }
 </script>
+<style lang='less'>
+  .ui.button.god-info-button-bz {
+    box-shadow: none!important;
+    border: 0.1em solid rgba(0,0,0,.15);
+    border-radius: 0.06em;
+    font-size: 0.9em;
+    margin-left: 0.5rem;
+  } 
+  .hide{
+    display: none
+  }
+  .god-description {
+    margin-top: 1em;
+  }
+  .ui.segment.info-card-bz {
+    border: none;
+    border-radius: 0.06em;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.13);
+  }
+  .ui.form .inline.field>input.input-bz {
+    border-radius: 0.06em;
+  }
+</style>

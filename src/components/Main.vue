@@ -54,15 +54,12 @@
     },
     computed: {
       god_info () {
-        let god_info = this.$store.state.god_infos[this.$route.params.god_name.toLowerCase()]
+        if (!this.god_name) return
+        let god_info = this.$store.state.god_infos[this.god_name.toLowerCase()]
         if (god_info) {
           return god_info
         }
-        if (this.god_name) this.$store.dispatch('getGod', this.god_name)
-        return {id: 0}
-      },
-      big_gods () {
-        return this.$store.state.big_gods
+        this.$store.dispatch('getGod', this.god_name)
       },
       registered_count () {
         return this.$store.state.registered_count
