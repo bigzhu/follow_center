@@ -59,7 +59,6 @@
         if (god_info) {
           return god_info
         }
-        this.$store.dispatch('getGod', this.god_name)
       },
       registered_count () {
         return this.$store.state.registered_count
@@ -70,9 +69,9 @@
     },
     mounted () {
       this.$store.dispatch('getRegisteredCount')
+      if (this.god_name) this.$store.dispatch('getGod', this.god_name)
       $('body').visibility()
     },
-
     methods: {
       top: function () {
         $('html, body').animate(
@@ -82,7 +81,6 @@
         )
       }
     },
-
     route: {
       deactivate: function (transition) { // 为了解除 scroll 的事件监听
         $(window).off('scroll')
