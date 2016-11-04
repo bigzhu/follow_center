@@ -12,6 +12,9 @@ function initGodMessage (state, god_name) {
 }
 // state
 export const state = {
+  last_scroll_top: 0, //
+  nav_bar_height: 0,
+  show_bar: true, // top bar是否显示
   registered_count: -1,
   cat_my_gods: {}, // 按 cat 分类的我关注的gods
   cat_gods: {}, // 按 cat 分类的gods
@@ -43,6 +46,25 @@ export const state = {
 }
 // mutations
 export const mutations = {
+  CHECK_BAR (state, show_bar) {
+    var st = $(window).scrollTop()
+    state.nav_bar_height = $('header').outerHeight()
+
+    if (Math.abs(state.last_scroll_top - st) <= 5) return
+
+    if (st > state.last_scroll_top && st > state.nav_bar_height) {
+      state.show_bar = false
+    } else {
+      if (st + $(window).height() < $(document).height()) {
+        state.show_bar = true
+      }
+    }
+
+    state.last_scroll_top = st
+  },
+  SET_SHOW_BAR (state, show_bar) {
+    state.show_bar = show_bar
+  },
   SET_REGISTERED_COUNT (state, registered_count) {
     state.registered_count = registered_count
   },
@@ -153,7 +175,6 @@ export const mutations = {
       return d.id
     }
     )
-    console.log(uniq_messages)
     state.gods_messages[god_name] = uniq_messages
   },
   SET_GOD_INFO (state, god_info) {

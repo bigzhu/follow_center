@@ -50,10 +50,6 @@
     data () {
       return {
         key: '',
-        is_scroll: false,
-        last_scroll_top: 0,
-        nav_bar_height: 0,
-        show_bar: true,
         scroll_wait: false // 不让checkBar因为触发太多次而影响效率
       }
     },
@@ -77,6 +73,9 @@
       }
     },
     computed: {
+      show_bar () {
+        return this.$store.state.show_bar
+      },
       path_name () {
         if (this.$route.name === undefined) {
           $('#biography_id').show()
@@ -101,69 +100,49 @@
     },
     mounted () {
       this.$store.dispatch('getUserInfo')
-      $('.fix-bz').visibility(
-        {
-          type: 'fixed'
-        }
-      )
-      $('.first-logo').visibility(
-        {
-          once: false,
-          onTopPassed: function () {
-            var y = $('.first-logo').offset().left
-            $('.first-logo').css('left:' + y)
-            $('.first-logo').addClass('fixed')
-            $('#header').addClass('padding-left-bz')
-            $('.move-left-bz').addClass('move-titile')
-          },
-          onTopPassedReverse: function () {
-            // this.checkBar()
-            // this.show_bar = true
-            $('.first-logo').removeClass('fixed')
-            $('#header').removeClass('padding-left-bz')
-            $('.move-left-bz').removeClass('move-titile')
+      this.$nextTick(function () {
+        $('.fix-bz').visibility(
+          {
+            type: 'fixed'
           }
-        }
-      )
-      this.$on('checkBar',
-        function () {
-          if (this.scroll_wait) return
-          else {
-            this.checkBar()
-            this.scroll_wait = true
-            let _this = this
-            window.setTimeout(
-              function () {
-                _this.scroll_wait = false
-              }
-            , 200)
+        )
+        $('.first-logo').visibility(
+          {
+            once: false,
+            onTopPassed: function () {
+              var y = $('.first-logo').offset().left
+              $('.first-logo').css('left:' + y)
+              $('.first-logo').addClass('fixed')
+              $('#header').addClass('padding-left-bz')
+              $('.move-left-bz').addClass('move-titile')
+            },
+            onTopPassedReverse: function () {
+              // this.checkBar()
+              // this.show_bar = true
+              $('.first-logo').removeClass('fixed')
+              $('#header').removeClass('padding-left-bz')
+              $('.move-left-bz').removeClass('move-titile')
+            }
           }
-        }
-      )
-      this.$on('showBar',
-        function () {
-          if (this.show_bar) return
-          this.show_bar = true
-        }
-      )
+        )
+        this.$on('checkBar',
+          function () {
+            if (this.scroll_wait) return
+            else {
+              this.checkBar()
+              this.scroll_wait = true
+              let _this = this
+              window.setTimeout(
+                function () {
+                  _this.scroll_wait = false
+                }
+              , 200)
+            }
+          }
+        )
+      })
     },
     methods: {
-      checkBar: function () {
-        var st = $(window).scrollTop()
-        this.nav_bar_height = $('header').outerHeight()
-
-        if (Math.abs(this.last_scroll_top - st) <= 5) return
-
-        if (st > this.last_scroll_top && st > this.nav_bar_height) {
-          this.show_bar = false
-        } else {
-          if (st + $(window).height() < $(document).height()) {
-            this.show_bar = true
-          }
-        }
-
-        this.last_scroll_top = st
-      },
       logout: function () {
         if (window.bz_url) {
           window.localStorage.removeItem('user_id')

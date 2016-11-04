@@ -81,48 +81,47 @@
         )
       }
     },
-    route: {
-      deactivate: function (transition) { // 为了解除 scroll 的事件监听
-        $(window).off('scroll')
-        this.$broadcast('unbind-scroll')
-        this.$dispatch('showBar') // 离开时，确保Bar显示出来
-        transition.next()
-      }
+    beforeRouteLeave (to, from, next) {
+      $(window).off('scroll')
+      $(window).unbind('scroll')
+      // this.$dispatch('showBar') // 离开时，确保Bar显示出来
+      this.$store.commit('SET_SHOW_BAR', true)
+      next()
     }
   }
 </script>
 
 <style>
   /* clipboard 长度 */
-  .ui.input input.clipboard-input-bz {
-    width: 103px;
+.ui.input input.clipboard-input-bz {
+  width: 103px;
+}
+.ui.stackable.grid>.row>.wide.column.no-padding-bz{
+  padding: 0rem!important;
+}
+.blank-bz {
+  padding-top: 35px;
+}
+.ui.card.border-radius {
+  border-radius: 0.06em;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.13);
+  border-top: none;
+  width: 100%;
+}
+.ui.card>.content {
+  border-top: none;
+}
+.align-center {
+  text-align: center;
+}
+.sign-imfor {
+  color: #9A9A9A;
+  font-size: 1em;
+}
+@media only screen and (max-width: 767px){
+  .ui.container {
+    margin-left: 0em!important;
+    margin-right: 0em!important;
   }
-  .ui.stackable.grid>.row>.wide.column.no-padding-bz{
-    padding: 0rem!important;
-  }
-  .blank-bz {
-    padding-top: 35px;
-  }
-  .ui.card.border-radius {
-    border-radius: 0.06em;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.13);
-    border-top: none;
-    width: 100%;
-  }
-  .ui.card>.content {
-    border-top: none;
-  }
-  .align-center {
-    text-align: center;
-  }
-  .sign-imfor {
-    color: #9A9A9A;
-    font-size: 1em;
-  }
-  @media only screen and (max-width: 767px){
-    .ui.container {
-      margin-left: 0em!important;
-      margin-right: 0em!important;
-    }
-  }
+}
 </style>

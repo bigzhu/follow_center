@@ -8,7 +8,7 @@
     <!--
     <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !new_loading}"></div>
     -->
-    <bottom-loader :el="$el" element_class=".ui.fluid.card" :call_back="call_back"></bottom-loader>
+    <bottom-loader :el="$el" element_class=".ui.fluid.card" v-on:bottom="call_back"></bottom-loader>
   </div>
 </template>
 
@@ -73,10 +73,12 @@
       },
       bindScroll: function () {
         var v = this
+        let self = this
         var messages_element = $(v.$el)
         $(window).scroll(
           _.throttle(
             function () {
+              self.$store.commit('CHECK_BAR')
               messages_element.children('div > .ui.fluid.card').each(
                 function () {
                   var message, message_position, scroll_bottom
