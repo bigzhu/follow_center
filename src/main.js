@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+// import VueRouter from 'vue-router'
 // import VueI18n from 'vue-i18n'
 // Vue.use(VueI18n)
 // set lang
@@ -10,35 +10,11 @@ import VueRouter from 'vue-router'
 // Object.keys(locales).forEach(function (lang) {
 //   Vue.locale(lang, locales[lang])
 // })
+import router from './router'
 
 import {checkLogin} from '../../lib_bz/functions/user'
 import fastclick from 'fastclick'
-import App from './App'
-import Main from './components/Main'
-import UserNameLogin from './components/UserNameLogin'
-import Recommand from './components/Recommand'
-import Collect from './components/Collect'
-import MyGods from './components/MyGods'
-import Bio from './components/Bio'
-import BioDetail from './components/BioDetail'
-
-const routes = [
-  { path: '/', name: 'Main', component: Main },
-  { path: '/g/:god_name', name: 'g', component: Main },
-  { path: '/BioDetail/:god_name', name: 'BioDetail', component: BioDetail },
-  { path: '/Bio', name: 'Bio', component: Bio },
-  { path: '/MyGods/:cat', name: 'MyGods', component: MyGods },
-  { path: '/Collect', name: 'Collect', component: Collect },
-  { path: '/Recommand/:cat', name: 'Recommand', component: Recommand },
-  { path: '/Login', name: 'UserNameLogin', component: UserNameLogin }
-]
-
-const router = new VueRouter(
-  {
-    mode: 'history',
-    routes: routes
-  }
-)
+import App from './App.vue'
 
 router.beforeEach((to, from, next) => {
   // check is login?

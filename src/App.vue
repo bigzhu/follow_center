@@ -1,5 +1,5 @@
 <template>
-  <div class="main container" >
+  <div id='app' class="main container" >
     <header class="main-header">
       <div class="ui borderless main menu bar-above">
         <div class="ui container">
@@ -44,7 +44,6 @@
 <script>
   import $ from 'jquery'
   import store from './store'
-  import CountUp from 'bz-count-up'
   export default {
     store,
     data () {
@@ -54,7 +53,6 @@
       }
     },
     components: {
-      CountUp
     },
     watch: {
       'unread_message_count': function (val, oldVal) {

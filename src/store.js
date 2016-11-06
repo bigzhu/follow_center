@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+// Vue.use(Vuex)
 import p from '../../lib_bz/module'
 import 'whatwg-fetch'
 import _ from 'lodash'
