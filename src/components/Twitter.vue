@@ -1,20 +1,3 @@
-<style lang="less">
-  .padding-top-bz {
-    padding-top: 1em
-  }
-  //现在基本没有小图，所以这个先注释，以后要是出现小图
-  //宽屏幕，加上padding-right，以便于图片上浮时不要紧贴在一起
-  // @media screen and (min-width : 992px){
-    //   .padding-top-bz {
-      //     padding-right:1em
-    //   }
-  // }
-  video {
-    max-width: 100%;
-    height: auto;
-  }
-</style>
-
 <template>
   <div>
     <div class="description" v-html="text">
@@ -29,7 +12,6 @@
     </div>
   </div>
 </template>
-
 <script>
   import _ from 'lodash'
   import Autolinker from 'autolinker'
@@ -94,3 +76,21 @@
     }
   }
 </script>
+<style >
+  .padding-top-bz {
+    padding-top: 1em
+  }
+  /*
+  //现在基本没有小图，所以这个先注释，以后要是出现小图
+  //宽屏幕，加上padding-right，以便于图片上浮时不要紧贴在一起
+  // @media screen and (min-width : 992px){
+    //   .padding-top-bz {
+      //     padding-right:1em
+    //   }
+  // }
+  */
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+</style>

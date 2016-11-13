@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-show="!new_loading" class='ui center aligned basic segment history-bz'>
+    <div class='ui center aligned basic segment history-bz'>
       <old></old>
     </div>
     <message v-for='message in messages' :message='message'>

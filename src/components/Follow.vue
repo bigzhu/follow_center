@@ -1,4 +1,4 @@
-<style lang=less>
+<style >
   .ui.button.follow-button {
     box-shadow: none!important;
     border: 0.1em solid rgba(0,0,0,.15);

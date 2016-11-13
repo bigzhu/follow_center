@@ -19,17 +19,21 @@ import App from './App.vue'
 router.beforeEach((to, from, next) => {
   // check is login?
   if (!checkLogin() && to.path !== '/Login') {
-    next('/Login')
+    window.location.href = '/login.html'
+    // next('/Login')
     return
   }
   next()
 })
 
 App.router = router
-new Vue(App).$mount('#app')
+let instance = new Vue(App).$mount('#app')
 
 fastclick.attach(document.body)
 
 import {initErrorHandle} from '../../lib_bz/functions/error'
 //  toastr show error
 initErrorHandle()
+export default {
+  instance
+}

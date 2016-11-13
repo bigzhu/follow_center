@@ -1,4 +1,4 @@
-<style lang='less'>
+<style >
   /*隐藏占位*/
 .invisible_bz {
   visibility:hidden;

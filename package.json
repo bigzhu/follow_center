@@ -5,6 +5,7 @@
   "author": "bigzhu <vermiliondun@gmail.com>",
   "private": true,
   "scripts": {
+    "start": "babel-node --presets es2015 server.js",
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
@@ -12,7 +13,6 @@
     "build:ssr": "npm run build:client && npm run build:server",
     "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.client.config.js --progress --hide-modules",
     "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.server.config.js --progress --hide-modules"
-
   },
   "dependencies": {
     "autolinker": "^1.2.1",
@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.5.1",
+    "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
     "babel-eslint": "^7.1.0",
     "babel-loader": "^6.2.7",

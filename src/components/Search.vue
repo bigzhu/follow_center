@@ -1,4 +1,4 @@
-<style lang=less>
+<style >
  /* 查找的高亮*/
   .highlight { background-color: #FDFD95 }
 </style>

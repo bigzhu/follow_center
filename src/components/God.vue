@@ -56,7 +56,7 @@
   }
 </script>
 
-<style lang=less>
+<style >
   .ui.stackable.grid>.row>.wide.column.no-padding-bz{
     padding: 0rem!important;
   }

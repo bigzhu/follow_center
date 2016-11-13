@@ -1,4 +1,4 @@
-<style lang="less">
+<style >
   .ui.segment.recommand-god-bz {
     padding: 0;
     border: none;

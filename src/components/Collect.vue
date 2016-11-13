@@ -1,4 +1,4 @@
-<style lang=less>
+<style >
 </style>
 <template>
   <div class="ui main container">
