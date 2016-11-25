@@ -13,7 +13,6 @@
 <script>
   import '../assets/public.css'
   import Autolinker from 'autolinker'
-  import replaceSocial from '../functions/replaceSocial.js'
 
   export default {
     props: ['message'],
@@ -33,8 +32,8 @@
       //   return real_height
       // },
       description: function () {
-        let text = Autolinker.link(this.message.text, {twitter: false})
-        text = replaceSocial('instagram', text)
+        let text = Autolinker.link(this.message.text, {mention: 'instagram'})
+        // text = replaceSocial('instagram', text)
         return text
       }
     },

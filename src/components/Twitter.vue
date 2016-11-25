@@ -62,7 +62,7 @@
         }
       },
       text: function () {
-        return Autolinker.link(this.message.text, {twitter: true})
+        return Autolinker.link(this.message.text, {mention: 'twitter'})
       }
     },
     methods: {
