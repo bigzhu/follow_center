@@ -42,7 +42,7 @@
         if (this.$route.name === 'TheMessage') { // 在 TheMessage 还点了图，就在新页中打开图
           window.open(img_url, '_blank')
         } else {
-          this.$router.go({name: 'TheMessage', params: {id: this.message.id}})
+          this.$router.push({name: 'TheMessage', params: {id: this.message.id}})
         }
       }
     }

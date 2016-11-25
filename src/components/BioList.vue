@@ -41,7 +41,7 @@
     },
     methods: {
       go: function (id) {
-        this.$router.go({name: 'BioEditor', params: {id: id}})
+        this.$router.push({name: 'BioEditor', params: {id: id}})
       }
     }
   }
