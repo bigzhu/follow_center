@@ -141,6 +141,7 @@
     }
   }
 </script>
+
 <style>
   .ui.card.message-bz {
     border-radius: 0.06em;

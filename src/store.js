@@ -235,6 +235,19 @@ export const mutations = {
 }
 // actions
 export const actions = {
+  getTheMessage ({ state, commit, dispatch }, id) {
+    commit('SET_NEW_LOADING', true)
+    let message = _.find(state.messages, function (d) { return d.id === parseInt(id, 10) })
+    if (message) {
+      commit('SET_THE_MESSAGE', message)
+      commit('SET_LOADING', false)
+      return
+    }
+    let parm = { id: id }
+    return dispatch('get', {url: '/api_message', body: parm}).then(function (data) {
+      commit('SET_THE_MESSAGE', data.message)
+    })
+  },
   getRegisteredCount ({ state, commit, dispatch }, status) {
     return dispatch('get', '/api_registered').then(function (data) {
       commit('SET_REGISTERED_COUNT', data.registered_count)
@@ -329,8 +342,8 @@ export const actions = {
     return dispatch('put', {url: '/api_last', body: parm, loading: false}).then(function (data) {
       commit('SET_LAST_TIME', parseInt(time, 10))
       commit('REFRESH_UNREAD_MESSAGE_COUNT')
-      // 如果>5了，就预加载一些
-      if (state.unread_message_count <= 10) {
+      // 如果<20了，就预加载一些
+      if (state.unread_message_count <= 20) {
         let after = null
         if (state.messages.length > 0) {
           after = state.messages[state.messages.length - 1].created_at
