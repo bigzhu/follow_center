@@ -233,6 +233,30 @@ export const mutations = {
 }
 // actions
 export const actions = {
+  newMessage ({ state, commit, dispatch }, {god_name, search_key, limit, explore}) {
+    let messages = null
+    let after = null
+    if (god_name) {
+      messages = state.gods_messages[god_name]
+    } else if (explore) {
+      messages = state.explore_messages
+    } else if (search_key) {
+      messages = state.search_messages
+    } else {
+      messages = state.messages
+    }
+    if (messages.length > 0) {
+      after = messages[messages.length - 1].created_at
+    } else { // 第一次, 找最近3天的
+      let dt = new Date()
+      dt.setDate(dt.getDate() - 2)
+      after = dt.getTime()
+    }
+    if (!limit) {
+      limit = 10
+    }
+    dispatch('getNew', {god_name: god_name, search_key: search_key, after: after, limit: limit, explore: explore})
+  },
   unfollow ({ state, commit, dispatch }, god_id) {
     return dispatch('delete', '/api_follow/' + god_id).then(function (data) {
       toastr.info('取消关注')

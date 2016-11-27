@@ -1,9 +1,3 @@
-<style >
-  /*隐藏占位*/
-.invisible_bz {
-  visibility:hidden;
-};
-</style>
 <template>
   <div>
     <div class='ui center aligned basic segment history-bz'>
@@ -11,7 +5,7 @@
     </div>
     <message v-for="message in messages" :message='message'></message>
     <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !new_loading}"></div>
-    <bottom-loader :el="$el" element_class=".ui.fluid.card" :call_back="call_back"></bottom-loader>
+    <bottom-loader :el="$el" element_class=".ui.fluid.card" v-on:bottom="call_back"></bottom-loader>
   </div>
 </template>
 
@@ -49,13 +43,18 @@
     },
     mounted () {
       this.$store.commit('FILTER_GOD_MESSAGES', this.god_name)
-      // this.$store.dispatch('newMessage', {god_name: this.god_name})
-      this.$store.dispatch('getNew', {god_name: this.god_name})
+      this.$store.dispatch('newMessage', {god_name: this.god_name})
     },
     methods: {
       call_back: function () {
-        this.newMessage({god_name: this.god_name})
+        this.$store.dispatch('newMessage', {god_name: this.god_name})
       }
     }
   }
 </script>
+
+<style >
+.invisible_bz {
+  visibility:hidden;
+};
+</style>
