@@ -155,7 +155,7 @@ export const mutations = {
       )
     }
   },
-  SET_GODS_OLD_MESSAGES (state, god_name, messages) {
+  SET_GODS_OLD_MESSAGES (state, {god_name, messages}) {
     initGodMessage(state, god_name)
     state.gods_messages[god_name] = _.uniq(
       messages.reverse().concat(state.gods_messages[god_name]), false, function (item, key, a) {
@@ -439,7 +439,7 @@ export const actions = {
         }
       } else {
         if (god_name) {
-          commit('SET_GODS_OLD_MESSAGES', god_name, data.messages)
+          commit('SET_GODS_OLD_MESSAGES', {god_name: god_name, messages: data.messages})
         } else if (search_key) { // search
           commit('SET_OLD_SEARCH_MESSAGES', data.messages)
           commit('HIGHT_LIGHT', search_key)
