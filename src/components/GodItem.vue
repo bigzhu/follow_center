@@ -36,7 +36,7 @@
               <i class="hide icon"></i>
             </a>
           </div>
-          <follow :followed="god.followed" :god_id="god.god_id" class="button-to-follow-bz"></follow>
+          <follow :god_info="god" :god_id="god.god_id" class="button-to-follow-bz"></follow>
         </div>
       </div>
     </div>

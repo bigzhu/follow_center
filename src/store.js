@@ -134,7 +134,6 @@ export const mutations = {
     initGodMessage(state, god_name)
     if (state.messages.length !== 0 && state.gods_messages[god_name].length === 0) {
       let god_messages = _.filter(state.messages, (d) => { return d.user_name.toLowerCase() === god_name })
-      console.log(god_messages)
       state.gods_messages[god_name] = god_messages
     }
   },
@@ -178,7 +177,6 @@ export const mutations = {
       return d.id
     }
     )
-    console.log(uniq_messages)
     state.gods_messages[god_name] = uniq_messages
   },
   SET_GOD_INFO (state, god_info) {
@@ -235,6 +233,19 @@ export const mutations = {
 }
 // actions
 export const actions = {
+  unfollow ({ state, commit, dispatch }, god_id) {
+    return dispatch('delete', '/api_follow/' + god_id).then(function (data) {
+      toastr.info('取消关注')
+      return data
+    })
+  },
+  follow ({ state, commit, dispatch }, god_id) {
+    let parm = {god_id: god_id}
+    return dispatch('post', {url: '/api_follow', body: parm, loading: false}).then(function (data) {
+      toastr.info('关注成功')
+      return data
+    })
+  },
   getTheMessage ({ state, commit, dispatch }, id) {
     commit('SET_NEW_LOADING', true)
     let message = _.find(state.messages, function (d) { return d.id === parseInt(id, 10) })
@@ -328,7 +339,7 @@ export const actions = {
     let loading = true
     let parm = {}
     if (typeof val === 'string') {
-      god_name = god_name.toLowerCase()
+      god_name = val.toLowerCase()
       parm = {god_name: god_name}
     } else {
       god_name = val.god_name.toLowerCase()

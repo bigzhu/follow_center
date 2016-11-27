@@ -1,3 +1,131 @@
+<template>
+  <div class="ui segment recommand-god-bz">
+    <div class="ui stackable grid">
+      <div :class="{'four wide column':is_my, 'six wide column':!is_my}" >
+        <div :class="{'my-god-avatar-bz':is_my, 'god-avatar-bz':!is_my}">
+          <a href="/g/{{god.name}}" class="header god-name-bz user-name-a">
+            <img :src="avatar" class="avatar-img-bz">
+          </a>
+        </div>
+      </div>
+      <div :class="{'twelve wide column':is_my, 'ten wide column':!is_my}">
+        <div class="god-detail-bz">
+          <div class="god-icon-bz">
+            <social-badge v-show="god.twitter_user" :call_back="setGodInfo" :info="god.twitter_user"></social-badge>
+            <social-badge v-show="god.github_user" :call_back="setGodInfo" :info="god.github_user"></social-badge>
+            <social-badge v-show="god.tumblr_user" :call_back="setGodInfo" :info="god.tumblr_user"></social-badge>
+            <social-badge v-show="god.instagram_user" :call_back="setGodInfo" :info="god.instagram_user" ></social-badge>
+            <social-badge v-show="god.facebook_user" :call_back="setGodInfo" :info="god.facebook_user"></social-badge>
+          </div>
+          <a href="/g/{{god.name}}" class="header god-name-bz user-name-a">
+            <h3>{{god.name}}</h3>
+          </a>
+          <a class="followers-number-bz">
+            {{god.followed_count}} 人关注
+          </a>
+          <div class="god-discription-bz" v-html="description"  ></div>
+
+          <god-remark :remark.sync="remark" :god_id="god.id"></god-remark>
+          <a v-show="false" class="hide-god-bz">
+            <i class="hide icon"></i>
+          </a>
+          <div>
+            <a href="javascript:void(0)" class="hide-god-bz">
+              <i class="hide icon"></i>
+            </a>
+          </div>
+          <follow :god_info="god" :god_id="god.god_id" class="button-to-follow-bz"></follow>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  import {addRemark} from '../store/actions'
+  import Follow from './Follow'
+  import GodRemark from './GodRemark'
+  import SocialBadge from './SocialBadge'
+  import '../style/mobile.less'
+  // import store from '../store'
+  export default {
+    vuex: {
+      actions: {
+        addRemark
+      }
+    },
+    props: {
+      god: {
+      },
+      is_my: {
+      }
+    },
+    watch: {
+      'god': function () {
+        this.setGodInfo()
+      }
+    },
+    mounted () {
+      console.log('setGodInfo')
+      this.setGodInfo()
+    },
+    directives: {
+    },
+    data: function () {
+      return {
+        av: '',
+        desc: ''
+      }
+    },
+    computed: {
+      god_id: function () {
+        return this.god.god_id
+      },
+      remark: function () {
+        if (this.god.remark) {
+          return this.god.remark
+        }
+        return this.god.admin_remark
+      },
+      description: function () {
+        let description = this.desc
+        return description
+      },
+      avatar: function () {
+        if (!this.av) {
+          return ''
+        }
+        return (window.bz_url || '') + '/api_sp/' + window.btoa(window.btoa(this.av))
+      }
+    },
+    components: {
+      SocialBadge,
+      Follow,
+      GodRemark
+    },
+    methods: {
+      setGodInfo: function (type) {
+        console.log('setGodInfo' + type)
+        if (type) {
+          this.av = this.god[type + '_user'].avatar
+          this.desc = this.god[type + '_user'].description
+        } else {
+          if (this.god.twitter_user) {
+            this.setGodInfo('twitter')
+          } else if (this.god.github_user) {
+            this.setGodInfo('github')
+          } else if (this.god.tumblr_user) {
+            this.setGodInfo('tumblr')
+          } else if (this.god.instagram_user) {
+            this.setGodInfo('instagram')
+          } else if (this.god.facebook_user) {
+            this.setGodInfo('facebook')
+          }
+        }
+      }
+    }
+  }
+</script>
 <style >
   .ui.segment.recommand-god-bz {
     padding: 0;
@@ -134,132 +262,3 @@
     }
   }
 </style>
-
-<template>
-  <div class="ui segment recommand-god-bz">
-    <div class="ui stackable grid">
-      <div :class="{'four wide column':is_my, 'six wide column':!is_my}" >
-        <div :class="{'my-god-avatar-bz':is_my, 'god-avatar-bz':!is_my}">
-          <a href="/g/{{god.name}}" class="header god-name-bz user-name-a">
-            <img :src="avatar" class="avatar-img-bz">
-          </a>
-        </div>
-      </div>
-      <div :class="{'twelve wide column':is_my, 'ten wide column':!is_my}">
-        <div class="god-detail-bz">
-          <div class="god-icon-bz">
-            <social-badge v-show="god.twitter_user" :call_back="setGodInfo" :info="god.twitter_user"></social-badge>
-            <social-badge v-show="god.github_user" :call_back="setGodInfo" :info="god.github_user"></social-badge>
-            <social-badge v-show="god.tumblr_user" :call_back="setGodInfo" :info="god.tumblr_user"></social-badge>
-            <social-badge v-show="god.instagram_user" :call_back="setGodInfo" :info="god.instagram_user" ></social-badge>
-            <social-badge v-show="god.facebook_user" :call_back="setGodInfo" :info="god.facebook_user"></social-badge>
-          </div>
-          <a href="/g/{{god.name}}" class="header god-name-bz user-name-a">
-            <h3>{{god.name}}</h3>
-          </a>
-          <a class="followers-number-bz">
-            {{god.followed_count}} 人关注
-          </a>
-          <div class="god-discription-bz" v-html="description"  ></div>
-
-          <god-remark :remark.sync="remark" :god_id="god.id"></god-remark>
-          <a v-show="false" class="hide-god-bz">
-            <i class="hide icon"></i>
-          </a>
-          <div>
-            <a href="javascript:void(0)" class="hide-god-bz">
-              <i class="hide icon"></i>
-            </a>
-          </div>
-          <follow :followed="god.followed" :god_id="god.god_id" class="button-to-follow-bz"></follow>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
-<script>
-  import {addRemark} from '../store/actions'
-  import Follow from './Follow'
-  import GodRemark from './GodRemark'
-  import SocialBadge from './SocialBadge'
-  import '../style/mobile.less'
-  // import store from '../store'
-  export default {
-    vuex: {
-      actions: {
-        addRemark
-      }
-    },
-    props: {
-      god: {
-      },
-      is_my: {
-      }
-    },
-    watch: {
-      'god': function () {
-        this.setGodInfo()
-      }
-    },
-    mounted () {
-      console.log('setGodInfo')
-      this.setGodInfo()
-    },
-    directives: {
-    },
-    data: function () {
-      return {
-        av: '',
-        desc: ''
-      }
-    },
-    computed: {
-      god_id: function () {
-        return this.god.god_id
-      },
-      remark: function () {
-        if (this.god.remark) {
-          return this.god.remark
-        }
-        return this.god.admin_remark
-      },
-      description: function () {
-        let description = this.desc
-        return description
-      },
-      avatar: function () {
-        if (!this.av) {
-          return ''
-        }
-        return (window.bz_url || '') + '/api_sp/' + window.btoa(window.btoa(this.av))
-      }
-    },
-    components: {
-      SocialBadge,
-      Follow,
-      GodRemark
-    },
-    methods: {
-      setGodInfo: function (type) {
-        console.log('setGodInfo' + type)
-        if (type) {
-          this.av = this.god[type + '_user'].avatar
-          this.desc = this.god[type + '_user'].description
-        } else {
-          if (this.god.twitter_user) {
-            this.setGodInfo('twitter')
-          } else if (this.god.github_user) {
-            this.setGodInfo('github')
-          } else if (this.god.tumblr_user) {
-            this.setGodInfo('tumblr')
-          } else if (this.god.instagram_user) {
-            this.setGodInfo('instagram')
-          } else if (this.god.facebook_user) {
-            this.setGodInfo('facebook')
-          }
-        }
-      }
-    }
-  }
-</script>
