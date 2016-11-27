@@ -18,7 +18,7 @@
             <div v-show="user_name" class="ui simple dropdown item user-imfor-bz">
               <img :src="avatar" class="ui avatar image">
               <div class="menu login-menu-bz">
-                <router-link :to="{ name:'God', params:{god_name: user_name}}" class="item">我发布的</router-link>
+                <a @click="$router.push({ name: 'God', params: { god_name: user_name }})" class="item">我发布的</a>
                 <a @click="logout" class="item">退出登录</a>
               </div>
             </div>

@@ -3,7 +3,7 @@
     <div class="ui stackable grid">
       <div class="row">
         <div class="eleven wide column no-padding-bz">
-          <messages :god_name="$route.params.god_name"></messages>
+          <messages :god_name="god_name"></messages>
         </div>
         <div class="five wide column computer only">
           <div class="godblank-bz"></div>
@@ -34,16 +34,20 @@
     },
     computed: {
       god_info () {
-        let god_info = this.$store.state.god_infos[this.$route.params.god_name.toLowerCase()]
+        let god_info = this.$store.state.god_infos[this.god_name]
         if (god_info) {
           return god_info
         }
-        return {id: 0}
+      },
+      god_name () {
+        return this.$route.params.god_name.toLowerCase()
       }
     },
     mounted () {
-      this.$store.dispatch('getGod', this.$route.params.god_name)
-      $('body').visibility()
+      this.$store.dispatch('getGod', this.god_name)
+      this.$nextTick(function () {
+        $('body').visibility()
+      })
     },
     methods: {
     },

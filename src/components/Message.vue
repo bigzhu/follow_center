@@ -6,9 +6,9 @@
       </a>
       <time-len :the_time="message.created_at" class="right floated meta time-bz"></time-len>
       <img :src="avatar" class="ui avatar image show-god-info">
-      <router-link :to="{ name: 'g', params: { god_name: message.user_name }}" class="user-name-a">
+      <a @click="$router.push({ name: 'God', params: { god_name: message.user_name }})" class="user-name-a">
         {{message.name}}
-      </router-link>
+      </a>
       <god-card :god="god_info" :god_id="god_info.god_id" :popup="true">
       </god-card>
       <component class="content-bz" :is="message.m_type" :message="message"></component>
@@ -60,30 +60,24 @@
       }
     },
     mounted () {
-      // this.visibility()
-    },
-    attached: function () {
-      var tool_tips_target = $(this.$el).find('.show-god-info')
-      var popup_content = $(this.$el).find('.ui.card')
-      $(tool_tips_target).popup(
-        {
-          popup: $(popup_content),
-          lastResort: true,
-          position: 'bottom left',
-          hoverable: true,
-          delay: {
-            show: 100,
-            hide: 500
-          },
-          onShow: (
-            function (_this) {
-              return function () {
-                _this.getGodInfo()
-              }
-            }
-          )(this)
-        }
-      )
+      this.$nextTick(function () {
+        var tool_tips_target = $(this.$el).find('.show-god-info')
+        var popup_content = $(this.$el).find('.ui.card')
+        let self = this
+        $(tool_tips_target).popup(
+          {
+            popup: $(popup_content),
+            lastResort: true,
+            position: 'bottom left',
+            hoverable: true,
+            delay: {
+              show: 100,
+              hide: 500
+            },
+            onShow: self.getGodInfo
+          }
+        )
+      })
     },
     computed: {
       href: function () {
@@ -130,7 +124,7 @@
         }
       },
       getGodInfo: function () {
-        this.$store.dispatch('queryGod', this.message.user_name)
+        this.$store.dispatch('getGod', this.message.user_name)
       },
       collectDone: function (message) {
         message.collect = 1

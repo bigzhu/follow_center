@@ -1,6 +1,3 @@
-<style >
-</style>
-
 <template>
   <table class="ui celled padded table">
     <thead>
@@ -13,9 +10,9 @@
     <tbody>
       <tr v-for="apply_del in apply_dels">
         <td>
-          <router-link :to="{ name: 'God', params: { god_name: apply_del.god_name }}">
+          <a @click="$router.push({ name: 'God', params: { god_name: apply_del.god_name }})">
             {{apply_del.god_name}}
-          </router-link>
+          </a>
         </td>
         <td>
           <button class="ui {{apply_del.type}} button">

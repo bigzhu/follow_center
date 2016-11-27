@@ -3,9 +3,9 @@
     <div class="ui stackable grid">
       <div :class="{'four wide column':is_my, 'six wide column':!is_my}" >
         <div :class="{'my-god-avatar-bz':is_my, 'god-avatar-bz':!is_my}">
-          <router-link :to="{ name: 'God', params: { god_name: god.name }}" class="header god-name-bz user-name-a">
+          <a @click="$router.push({ name: 'God', params: { god_name: god.name }})" class="header god-name-bz user-name-a">
             <img :src="avatar" class="avatar-img-bz">
-          </router-link>
+          </a>
         </div>
       </div>
       <div :class="{'twelve wide column':is_my, 'ten wide column':!is_my}">
@@ -19,9 +19,9 @@
             <social-badge v-show="god.instagram_user" :call_back="setGodInfo" :info="god.instagram_user" ></social-badge>
             <social-badge v-show="god.facebook_user" :call_back="setGodInfo" :info="god.facebook_user"></social-badge>
           </div>
-          <router-link :to="{ name: 'God', params: { god_name: god.name }}" class="header god-name-bz user-name-a">
+          <a @click="$router.push({ name: 'God', params: { god_name: god.name }})" class="header god-name-bz user-name-a">
             <h3>{{god.name}}</h3>
-          </router-link>
+          </a>
           <a class="followers-number-bz">
             {{god.followed_count}} 人关注
           </a>

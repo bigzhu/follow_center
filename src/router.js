@@ -11,11 +11,12 @@ import MyGods from './components/MyGods.vue'
 import Bio from './components/Bio.vue'
 import BioDetail from './components/BioDetail.vue'
 import TheMessage from './components/TheMessage'
+import God from './components/God'
 
 const routes = [
   { path: '/', name: 'Main', component: Main },
+  { path: '/God/:god_name', name: 'God', component: God },
   { path: '/TheMessage/:id', name: 'TheMessage', component: TheMessage },
-//   { path: '/g/:god_name', name: 'g', component: Main },
   { path: '/BioDetail/:god_name', name: 'BioDetail', component: BioDetail },
   { path: '/Bio', name: 'Bio', component: Bio },
   { path: '/MyGods/:cat', name: 'MyGods', component: MyGods },

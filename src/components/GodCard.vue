@@ -7,13 +7,13 @@
       <div class="ui text loader">Loading</div>
     </div>
 
-    <router-link :to="{ name: 'God', params: { god_name: god.name }}" :class="{'ui': popup, 'small': popup, 'centered': popup}" class="image">
+    <a @click="go(god.name)" :class="{'ui': popup, 'small': popup, 'centered': popup}" class="image">
       <img :src="avatar" class="ui centered image avatar-bz">
-    </router-link>
+    </a>
     <div class="content delete-border">
-      <router-link :to="{ name: 'God', params: { god_name: god.name }}" class="user-name-a">
+      <a @click="go(god.name)" class="user-name-a">
         <h3>{{god.name}}</h3>
-      </router-link>
+      </a>
       <div class="description" v-html="desc"></div>
     </div>
     <div class="extra content god-icon-bz delete-border">
@@ -78,6 +78,9 @@
             this.setGodInfo('facebook')
           }
         }
+      },
+      go: function (god_name) {
+        this.$router.push({name: 'God', params: {god_name: god_name}})
       }
     }
   }

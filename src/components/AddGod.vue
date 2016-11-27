@@ -6,9 +6,9 @@
     <div class="ui stackable grid">
       <div class="six wide column">
         <div class="god-avatar-bz">
-          <router-link :to="{ name: 'God', params: { god_name: god_name }}" class="header god-name-bz user-name-a">
+          <a @click="$router.push({ name: 'God', params: { god_name: god_name }})" class="header god-name-bz user-name-a">
             <img :src="avatar" class="avatar-img-bz">
-          </router-link>
+          </a>
         </div>
       </div>
       <div class="ten wide column">
@@ -20,9 +20,9 @@
             <social-badge :loading="tumblr_loading" :info="tumblr_info"></social-badge>
             <social-badge :loading="facebook_loading" :info="facebook_info"></social-badge>
           </div>
-          <router-link :to="{ name: 'God', params: { god_name: god_name }}" class="header newgod-name user-name-a">
+          <a @click="$router.push({ name: 'God', params: { god_name: god_name }})" class="header newgod-name user-name-a">
             <h3>{{god_name}}</h3>
-          </router-link>
+          </a>
           <a class="followers-number-bz">
             ? 人关注
           </a>
