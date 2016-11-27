@@ -323,14 +323,22 @@ export const actions = {
       commit('SET_CAT_MY_GODS', {cat: cat, gods: data.gods})
     })
   },
-  getGod ({ state, commit, dispatch }, god_name) {
-    // 避免因为大小写找不到
-    god_name = god_name.toLowerCase()
+  getGod ({ state, commit, dispatch }, val) {
+    let god_name
+    let loading = true
+    let parm = {}
+    if (typeof val === 'string') {
+      god_name = god_name.toLowerCase()
+      parm = {god_name: god_name}
+    } else {
+      god_name = val.god_name.toLowerCase()
+      loading = val.loading
+    }
     if (state.god_infos[god_name]) {
       return
     }
-    var parm = {god_name: god_name}
-    return dispatch('get', {url: '/api_god', body: parm}).then(function (data) {
+    parm = {god_name: god_name}
+    return dispatch('get', {url: '/api_god', body: parm, loading: loading}).then(function (data) {
       commit('SET_GOD_INFOS', data.god_info)
     })
   },

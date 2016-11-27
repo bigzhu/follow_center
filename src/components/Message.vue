@@ -124,7 +124,7 @@
         }
       },
       getGodInfo: function () {
-        this.$store.dispatch('getGod', this.message.user_name)
+        this.$store.dispatch('getGod', {god_name: this.message.user_name, loading: false})
       },
       collectDone: function (message) {
         message.collect = 1

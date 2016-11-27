@@ -22,7 +22,6 @@
                 <a @click="logout" class="item">退出登录</a>
               </div>
             </div>
-
             <a v-show="user_name===''" href="/login.html" class="item">
               登录
             </a>
