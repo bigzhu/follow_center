@@ -172,7 +172,7 @@
 </script>
 <style>
   body {
-    font-family: "Lato", arial, sans-serif;
+    font-family: "Lato", "arial","Microsoft YaHei","sans-serif";
     line-height: 1.5;
     font-weight: normal;
     background-color: #fafafa;
