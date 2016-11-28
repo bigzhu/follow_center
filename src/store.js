@@ -298,7 +298,7 @@ export const actions = {
       explore: explore,
       loading: false
     }
-    return dispatch('get', {url: '/api_new', body: parm, loading: false}).then(function (data) {
+    return dispatch('get', {url: '/api_new', body: parm, loading: true}).then(function (data) {
       if (data.messages.length === 0) { // 没有取到数
         if (search_key && state.search_messages.length === 0) {
           // oldMessage({ dispatch, state }, {search_key: search_key})
