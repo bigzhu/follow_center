@@ -47,6 +47,11 @@ export const state = {
 }
 // mutations
 export const mutations = {
+  REMOVE_THIS_GOD_MESSAGE (state, god_id) {
+    state.messages = _.filter(state.messages, function (d) {
+      return d.god_id !== god_id
+    })
+  },
   CHECK_BAR (state, show_bar) {
     var st = $(window).scrollTop()
     state.nav_bar_height = $('header').outerHeight()
@@ -260,6 +265,7 @@ export const actions = {
   unfollow ({ state, commit, dispatch }, god_id) {
     return dispatch('delete', '/api_follow/' + god_id).then(function (data) {
       toastr.info('取消关注')
+      commit('REMOVE_THIS_GOD_MESSAGE', god_id)
       return data
     })
   },
