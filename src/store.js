@@ -29,7 +29,7 @@ export const state = {
     id: 0
   }, // 显示某个message
   big_gods: [],
-  my_gods: [],
+  // my_gods: [],
   unread_message_count: 0,
   gods_messages: {},
   last_time: 0,
@@ -47,6 +47,14 @@ export const state = {
 }
 // mutations
 export const mutations = {
+  REMOVE_THIS_GOD_CAT_MY_GODS (state, god_id) {
+    for (var property in state.cat_my_gods) {
+      if (state.cat_my_gods.hasOwnProperty(property)) {
+        let index = _.findIndex(state.cat_my_gods[property], function (d) { return d.god_id === god_id })
+        state.cat_my_gods[property].splice(index, 1)
+      }
+    }
+  },
   REMOVE_THIS_GOD_MESSAGE (state, god_id) {
     state.messages = _.filter(state.messages, function (d) {
       return d.god_id !== god_id
@@ -238,6 +246,13 @@ export const mutations = {
 }
 // actions
 export const actions = {
+  postBlock ({ state, commit, dispatch }, god_id) {
+    let parm = {god_id: god_id}
+    return dispatch('post', {url: '/api_block', body: parm, loading: false}).then(function (data) {
+      toastr.info('已屏蔽此人')
+      return data
+    })
+  },
   newMessage ({ state, commit, dispatch }, {god_name, search_key, limit, explore}) {
     let messages = null
     let after = null

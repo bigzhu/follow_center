@@ -32,8 +32,9 @@
             <i class="hide icon"></i>
           </a>
           <div>
-            <a href="javascript:void(0)" data-tooltip="屏蔽这人!" class="hide-god-bz">
-              <i class="hide icon"></i>
+            <a @click="block(god.god_id)" href="javascript:void(0)" data-tooltip="屏蔽这人!" class="hide-god-bz">
+              <i v-show="!loading" class="hide icon"></i>
+              <i v-show="loading"class="spinner loading icon"></i>
             </a>
           </div>
           <follow :god_info="god" :god_id="god.god_id" class="button-to-follow-bz"></follow>
@@ -48,7 +49,6 @@
   import GodRemark from './GodRemark'
   import SocialBadge from './SocialBadge'
   import '../assets/mobile.css'
-  // import store from '../store'
   export default {
     props: {
       god: {
@@ -65,8 +65,7 @@
     },
     data: function () {
       return {
-        av: '',
-        desc: ''
+        loading: false
       }
     },
     computed: {
@@ -80,14 +79,17 @@
         return this.god.admin_remark
       },
       description: function () {
-        let description = this.desc
-        return description
+        if (!this.god_info || !this.god_info.description) { return '' }
+        return this.god_info.description
       },
       avatar: function () {
-        if (!this.av) {
+        if (!this.god_info || !this.god_info.avatar) {
           return ''
         }
-        return (window.bz_url || '') + '/api_sp/' + window.btoa(window.btoa(this.av))
+        return (window.bz_url || '') + '/api_sp/' + window.btoa(window.btoa(this.god_info.avatar))
+      },
+      god_info: function () {
+        return this.getGodInfo()
       }
     },
     components: {
@@ -96,6 +98,32 @@
       GodRemark
     },
     methods: {
+      block: function (god_id) {
+        this.loading = true
+        let self = this
+        this.$store.dispatch('postBlock', god_id).then(function (data) {
+          self.$store.commit('REMOVE_THIS_GOD_CAT_MY_GODS', god_id)
+          self.loading = false
+        })
+      },
+      getGodInfo: function (type) {
+        if (type) {
+          let god_info = {avatar: this.god[type + '_user'].avatar, description: this.god[type + '_user'].description}
+          return god_info
+        } else {
+          if (this.god.twitter_user) {
+            return this.getGodInfo('twitter')
+          } else if (this.god.github_user) {
+            return this.getGodInfo('github')
+          } else if (this.god.tumblr_user) {
+            return this.getGodInfo('tumblr')
+          } else if (this.god.instagram_user) {
+            return this.getGodInfo('instagram')
+          } else if (this.god.facebook_user) {
+            return this.getGodInfo('facebook')
+          }
+        }
+      },
       setGodInfo: function (type) {
         if (type) {
           this.av = this.god[type + '_user'].avatar
