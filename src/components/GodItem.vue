@@ -32,7 +32,7 @@
             <i class="hide icon"></i>
           </a>
           <div>
-            <a href="javascript:void(0)" class="hide-god-bz">
+            <a href="javascript:void(0)" data-tooltip="屏蔽这人!" class="hide-god-bz">
               <i class="hide icon"></i>
             </a>
           </div>
