@@ -32,7 +32,7 @@
             <i class="hide icon"></i>
           </a>
           <div>
-            <a @click="block(god.god_id)" href="javascript:void(0)" data-tooltip="屏蔽这人!" class="hide-god-bz">
+            <a @click="block(god)" href="javascript:void(0)" data-tooltip="屏蔽这人!" class="hide-god-bz">
               <i v-show="!loading" class="hide icon"></i>
               <i v-show="loading"class="spinner loading icon"></i>
             </a>
@@ -98,14 +98,14 @@
       GodRemark
     },
     methods: {
-      block: function (god_id) {
+      block: function (god) {
         this.loading = true
         let self = this
-        this.$store.dispatch('postBlock', god_id).then(function (data) {
-          self.$store.commit('REMOVE_THIS_GOD_CAT_MY_GODS', god_id)
-          self.$store.dispatch('unfollow', god_id)
+        this.$store.dispatch('postBlock', god.god_id).then(function (data) {
+          self.$store.commit('REMOVE_THIS_GOD_CAT_MY_GODS', god.god_id)
           self.loading = false
         })
+        if (god.followed === 1) { self.$store.dispatch('unfollow', god.god_id) }
       },
       getGodInfo: function (type) {
         if (type) {
