@@ -54,6 +54,13 @@ export const mutations = {
         state.cat_my_gods[property].splice(index, 1)
       }
     }
+
+    for (property in state.cat_gods) {
+      if (state.cat_gods.hasOwnProperty(property)) {
+        let index = _.findIndex(state.cat_gods[property], function (d) { return d.god_id === god_id })
+        state.cat_gods[property].splice(index, 1)
+      }
+    }
   },
   REMOVE_THIS_GOD_MESSAGE (state, god_id) {
     state.messages = _.filter(state.messages, function (d) {
