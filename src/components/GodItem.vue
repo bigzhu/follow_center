@@ -103,6 +103,7 @@
         let self = this
         this.$store.dispatch('postBlock', god_id).then(function (data) {
           self.$store.commit('REMOVE_THIS_GOD_CAT_MY_GODS', god_id)
+          self.$store.dispatch('unfollow', god_id)
           self.loading = false
         })
       },
