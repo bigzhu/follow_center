@@ -228,7 +228,7 @@
       },
       setInfo: function (info) {
         if (info.avatar) {
-          this.avatar = (window.bz_url || '') + '/api_sp/' + window.btoa(window.btoa(info.avatar))
+          this.avatar = '/api_sp/' + window.btoa(window.btoa(info.avatar))
         }
         if (info.description) {
           this.description = info.description

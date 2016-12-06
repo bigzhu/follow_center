@@ -74,15 +74,6 @@
       show_bar () {
         return this.$store.state.show_bar
       },
-      path_name () {
-        if (this.$route.name === undefined) {
-          $('#biography_id').show()
-          return window.location.pathname.split('/')[1]
-        } else {
-          $('#biography_id').hide()
-          return ''
-        }
-      },
       loading () {
         return store.state.p.loading
       },
