@@ -43,6 +43,7 @@
 <script>
   import $ from 'jquery'
   import store from './store'
+  import NProgress from 'nprogress'
   export default {
     store,
     data () {
@@ -63,9 +64,9 @@
       },
       'loading': function (val, oldVal) {
         if (val) {
-          window.NProgress.start()
+          NProgress.start()
         } else {
-          window.NProgress.done()
+          NProgress.done()
         }
       }
     },
