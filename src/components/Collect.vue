@@ -1,5 +1,3 @@
-<style >
-</style>
 <template>
   <div class="ui main container">
     <img v-show="show_how_to_use" class="ui fluid image" src="../../static/assets/how_to_use_collection.jpg">

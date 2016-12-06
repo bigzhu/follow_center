@@ -29,7 +29,7 @@ export const state = {
     id: 0
   }, // 显示某个message
   big_gods: [],
-  my_gods: [],
+  // my_gods: [],
   unread_message_count: 0,
   gods_messages: {},
   last_time: 0,
@@ -47,6 +47,26 @@ export const state = {
 }
 // mutations
 export const mutations = {
+  REMOVE_THIS_GOD_CAT_MY_GODS (state, god_id) {
+    for (var property in state.cat_my_gods) {
+      if (state.cat_my_gods.hasOwnProperty(property)) {
+        let index = _.findIndex(state.cat_my_gods[property], function (d) { return d.god_id === god_id })
+        state.cat_my_gods[property].splice(index, 1)
+      }
+    }
+
+    for (property in state.cat_gods) {
+      if (state.cat_gods.hasOwnProperty(property)) {
+        let index = _.findIndex(state.cat_gods[property], function (d) { return d.god_id === god_id })
+        state.cat_gods[property].splice(index, 1)
+      }
+    }
+  },
+  REMOVE_THIS_GOD_MESSAGE (state, god_id) {
+    state.messages = _.filter(state.messages, function (d) {
+      return d.god_id !== god_id
+    })
+  },
   CHECK_BAR (state, show_bar) {
     var st = $(window).scrollTop()
     state.nav_bar_height = $('header').outerHeight()
@@ -233,6 +253,13 @@ export const mutations = {
 }
 // actions
 export const actions = {
+  postBlock ({ state, commit, dispatch }, god_id) {
+    let parm = {god_id: god_id}
+    return dispatch('post', {url: '/api_block', body: parm, loading: false}).then(function (data) {
+      toastr.info('已屏蔽此人')
+      return data
+    })
+  },
   newMessage ({ state, commit, dispatch }, {god_name, search_key, limit, explore}) {
     let messages = null
     let after = null
@@ -260,6 +287,7 @@ export const actions = {
   unfollow ({ state, commit, dispatch }, god_id) {
     return dispatch('delete', '/api_follow/' + god_id).then(function (data) {
       toastr.info('取消关注')
+      commit('REMOVE_THIS_GOD_MESSAGE', god_id)
       return data
     })
   },
@@ -298,7 +326,7 @@ export const actions = {
       explore: explore,
       loading: false
     }
-    return dispatch('get', {url: '/api_new', body: parm, loading: false}).then(function (data) {
+    return dispatch('get', {url: '/api_new', body: parm, loading: true}).then(function (data) {
       if (data.messages.length === 0) { // 没有取到数
         if (search_key && state.search_messages.length === 0) {
           // oldMessage({ dispatch, state }, {search_key: search_key})
