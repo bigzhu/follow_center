@@ -292,9 +292,6 @@
     border: none;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.13);
   }
-  .ui.container {
-    display: flex;
-  }
   @media (max-width : 767px) {
     .ui.menu .item.user-imfor-bz {
       padding: 1rem 2rem;
