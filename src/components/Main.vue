@@ -24,7 +24,15 @@
             </div>
           </div>
           <div v-show="registered_count !== -1"class="description sign-imfor align-center">
-            <i class="user icon"></i>注册人数：{{registered_count}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/about">关于Follow Center</a>
+          </div>
+          <div class="footer-content">
+            <a href="/about">关于</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/about">博客</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            注册人数：{{registered_count}}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </br>© 2016 Follow Center
           </div>
         </div>
       </div>
@@ -124,14 +132,23 @@
     color: #9A9A9A;
     font-size: 1em;
   }
-  .sign-imfor a {
+  .footer-content a {
     color: #9A9A9A;
     font-size: 1em;
   }
-  .sign-imfor a:hover {
+  .footer-content a:hover {
     color: #515151;
     transition: color 0.3s ease;
     transition: visibility 0s, opacity 0.3s linear;
+  }
+  .footer-content {
+    color: #9A9A9A;
+    margin-top: 30px;
+    padding: 15px 15px;
+    width: auto;
+    font-size: 1rem;
+    border-top: 1px solid #eee;
+    line-height: 2rem;
   }
   @media only screen and (max-width: 767px){
     .ui.container {
