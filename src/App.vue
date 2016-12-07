@@ -34,6 +34,7 @@
           <router-link v-show="user_name!=''" :to="{ name:'MyGods', params: {'cat': 'all'}}" :class="{'active': this.$route.name==='MyGods'}" class="item navi-bz">已跟踪</router-link>
           <router-link v-show="user_name!=''" :to="{ name:'Collect'}" :class="{'active': this.$route.name==='Collect'}" class="item navi-bz">收藏</router-link>
           <router-link :to="{ name:'Bio'}" :class="{'active': this.$route.name==='Bio'}" class="item navi-bz">传记</router-link>
+          <router-link :to="{ name:'Bio'}" :class="{'active': this.$route.name==='Bio'}" class="item navi-bz">博客</router-link>
         </div>
       </nav>
     </header>
@@ -290,6 +291,9 @@
     border-radius: 0.06em;
     border: none;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.13);
+  }
+  .ui.container {
+    display: flex;
   }
   @media (max-width : 767px) {
     .ui.menu .item.user-imfor-bz {
