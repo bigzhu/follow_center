@@ -24,7 +24,7 @@
             </div>
           </div>
           <div v-show="registered_count !== -1"class="description sign-imfor align-center">
-            <i class="user icon"></i>注册人数：{{registered_count}}
+            <i class="user icon"></i>注册人数：{{registered_count}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/about">关于Follow Center</a>
           </div>
         </div>
       </div>
@@ -123,6 +123,15 @@
   .sign-imfor {
     color: #9A9A9A;
     font-size: 1em;
+  }
+  .sign-imfor a {
+    color: #9A9A9A;
+    font-size: 1em;
+  }
+  .sign-imfor a:hover {
+    color: #515151;
+    transition: color 0.3s ease;
+    transition: visibility 0s, opacity 0.3s linear;
   }
   @media only screen and (max-width: 767px){
     .ui.container {
