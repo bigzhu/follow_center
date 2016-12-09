@@ -153,7 +153,6 @@
     padding: 15px 15px;
     width: auto;
     font-size: 1rem;
-    border-top: 1px solid #eee;
     line-height: 2rem;
     text-align: center;
   }
