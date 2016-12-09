@@ -25,6 +25,7 @@
           <a class="followers-number-bz">
             {{god.followed_count}} 人关注
           </a>
+          <span class="public-personal">私人</span>
           <div class="god-discription-bz" v-html="description"  ></div>
 
           <god-remark :remark.sync="remark" :god_id="god.id"></god-remark>
@@ -250,6 +251,13 @@
   }
   .hide-god-bz:hover {
     color: #168454;
+  }
+  .god-detail-bz span.public-personal{
+    border: 0.3px solid #A3A3A3;
+    color: #A3A3A3;
+    padding: .2px 5px;
+    margin-left: 1rem;
+    font-size: 0.9rem;
   }
   @media (max-width: 767px) {
     .god-detail-bz {

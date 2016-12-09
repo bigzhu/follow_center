@@ -4,6 +4,13 @@
       <div class="row">
         <div class="eleven wide column no-padding-bz">
           <messages></messages>
+          <div class="no-message">
+            <img src="../../static/assets/no-message.svg">
+            <p>您还没有关注任何人，从寻它里面寻找您喜欢的大神吧？
+            <router-link :to="{'name': 'Recommand', params: {'cat': 'recommand'}}" :class="{'active': this.$route.name==='Recommand'}">寻他&gt;</router-link></p>
+            <p>好厉害，你已经把所有消息看完啦。再关注点人吧？
+            <router-link :to="{'name': 'Recommand', params: {'cat': 'recommand'}}" :class="{'active': this.$route.name==='Recommand'}">寻他&gt;</router-link></p> 
+          </div>
         </div>
         <div class="five wide column computer only ">
           <div class="blank-bz"></div>
@@ -149,6 +156,19 @@
     font-size: 1rem;
     border-top: 1px solid #eee;
     line-height: 2rem;
+  }
+  .no-message {
+    color: #9A9A9A;
+    margin-top: 30px;
+    padding: 15px 15px;
+    width: auto;
+    font-size: 1rem;
+    border-top: 1px solid #eee;
+    line-height: 2rem;
+    text-align: center;
+  }
+  .no-message p {
+    margin-top: 1rem;
   }
   @media only screen and (max-width: 767px){
     .ui.container {
