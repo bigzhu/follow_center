@@ -12,7 +12,7 @@
               <i class="add icon"></i>添加要跟踪的新目标
             </a>
             <div v-show="stat==='input'" class="ui action input">
-              <input @keyup.enter="add" v-model="input_name" id="id_add_god" type="text" placeholder="帐号名，比如 bigzhu">
+              <input @keyup.13="add" v-model="input_name" id="id_add_god" type="text" placeholder="帐号名，比如 bigzhu">
               <div @click="add" class="ui button">添加</div>
             </div>
           </div>
