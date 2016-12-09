@@ -19,7 +19,7 @@
             <social-badge v-show="god.instagram_user" :call_back="setGodInfo" :info="god.instagram_user" ></social-badge>
             <social-badge v-show="god.facebook_user" :call_back="setGodInfo" :info="god.facebook_user"></social-badge>
           </div>
-          <a @click="$router.push({ name: 'God', params: { god_name: god.name }})" class="header god-name-bz user-name-a">
+          <a @click="$router.push({ name: 'God', params: { god_name: god.name }})" href="javascript:void(0)" class="header god-name-bz user-name-a">
             <h3>{{god.name}}</h3>
           </a>
           <a class="followers-number-bz">
