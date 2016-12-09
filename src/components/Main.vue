@@ -5,8 +5,9 @@
         <div class="eleven wide column no-padding-bz">
           <messages></messages>
           <div class="no-message">
-            <!-- <img src="../../static/assets/no-message.svg"> -->
-            <p>您还没有关注任何人，从寻它里面寻找您喜欢的大神吧？</p> 
+            <img src="../../static/assets/no-message.svg">
+            <p>您还没有关注任何人，从寻它里面寻找您喜欢的大神吧？<a href="">寻他&gt;</a></p>
+            <p>好厉害，你已经把所有消息看完啦。再关注点人吧？<a href="">寻他&gt;</a></p> 
           </div>
         </div>
         <div class="five wide column computer only ">
