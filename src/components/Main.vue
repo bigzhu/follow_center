@@ -23,9 +23,7 @@
               </div>
             </div>
           </div>
-          <div v-show="registered_count !== -1"class="description sign-imfor align-center">
-          </div>
-          <div class="footer-content">
+          <div v-show="registered_count !== -1" class="footer-content">
             <a href="/about">关于</a>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="/about">博客</a>
@@ -62,6 +60,9 @@
       }
     },
     computed: {
+      registered_count () {
+        return this.$store.state.registered_count
+      },
       god_info () {
         if (!this.god_name) return
         let god_info = this.$store.state.god_infos[this.god_name]
