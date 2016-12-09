@@ -1,10 +1,21 @@
 <template>
   <div>
-    <div class='ui center aligned basic segment history-bz'>
+    <div v-show="followed_god_count!==0" class='ui center aligned basic segment history-bz'>
       <old></old>
     </div>
     <message v-for='message in messages' :message='message'>
     </message>
+    <div class="no-message">
+      <div v-show="followed_god_count===0">
+        <img src="../../static/assets/no-message.svg">
+        <p>您还没有关注任何人，从寻它里面寻找您喜欢的大神吧？
+          <router-link :to="{'name': 'Recommand', params: {'cat': 'recommand'}}" :class="{'active': this.$route.name==='Recommand'}">寻他&gt;</router-link></p>
+      </div>
+      <div v-show="followed_god_count>0">
+        <p>好厉害，你已经把所有消息看完啦。再关注点人吧？
+          <router-link :to="{'name': 'Recommand', params: {'cat': 'recommand'}}" :class="{'active': this.$route.name==='Recommand'}">寻他&gt;</router-link></p> 
+      </div>
+    </div>
     <!--
     <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !new_loading}"></div>
     -->
@@ -41,6 +52,9 @@
       }
     },
     computed: {
+      followed_god_count () {
+        return this.$store.state.followed_god_count
+      },
       god_name () {
         if (this.$route.params.god_name) return this.$route.params.god_name.toLowerCase()
       },

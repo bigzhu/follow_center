@@ -13,6 +13,7 @@ function initGodMessage (state, god_name) {
 }
 // state
 export const state = {
+  followed_god_count: -1, // 关注的god数
   last_scroll_top: 0, //
   nav_bar_height: 0,
   show_bar: true, // top bar是否显示
@@ -328,6 +329,7 @@ export const actions = {
     }
     return dispatch('get', {url: '/api_new', body: parm, loading: true}).then(function (data) {
       if (data.messages.length === 0) { // 没有取到数
+        state.followed_god_count = data.followed_god_count
         if (search_key && state.search_messages.length === 0) {
           // oldMessage({ dispatch, state }, {search_key: search_key})
         } else if (god_name && state.gods_messages[god_name].length === 0) { // 没数就查出old
@@ -336,6 +338,7 @@ export const actions = {
           // oldMessage({ dispatch, state }, {limit: 2})
         }
       } else {
+        state.followed_god_count = -1
         if (god_name) { // 查god的new
           commit('SET_GODS_NEW_MESSAGES', {god_name: god_name, messages: data.messages})
         } else if (explore) { // explore
@@ -348,7 +351,6 @@ export const actions = {
           commit('REFRESH_UNREAD_MESSAGE_COUNT')
         }
       }
-
       commit('SET_NEW_LOADING', false)
       commit('REFLASH_TIME_LEN')
     })
