@@ -6,8 +6,10 @@
           <messages></messages>
           <div class="no-message">
             <img src="../../static/assets/no-message.svg">
-            <p>您还没有关注任何人，从寻它里面寻找您喜欢的大神吧？<a href="">寻他&gt;</a></p>
-            <p>好厉害，你已经把所有消息看完啦。再关注点人吧？<a href="">寻他&gt;</a></p> 
+            <p>您还没有关注任何人，从寻它里面寻找您喜欢的大神吧？
+            <router-link :to="{'name': 'Recommand', params: {'cat': 'recommand'}}" :class="{'active': this.$route.name==='Recommand'}">寻他&gt;</router-link></p>
+            <p>好厉害，你已经把所有消息看完啦。再关注点人吧？
+            <router-link :to="{'name': 'Recommand', params: {'cat': 'recommand'}}" :class="{'active': this.$route.name==='Recommand'}">寻他&gt;</router-link></p> 
           </div>
         </div>
         <div class="five wide column computer only ">
