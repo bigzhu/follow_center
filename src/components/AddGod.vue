@@ -130,18 +130,21 @@
         this.facebook_loading = false
       },
       add: function () {
+        let self = this
         this.adding = true
         // this.addGod(this.god_name, this.$route.params.cat, this.startCheck)
-        this.$store.dispatch('addGod', {god_name: this.god_name, cat: this.$route.params.cat, startCheck: this.startCheck})
+        this.$store.dispatch('postGod', {name: this.god_name, cat: this.$route.params.cat}).then(function (data) {
+          self.startCheck(data.god_info)
+        })
       },
       startCheck: function (god_info) {
         this.setGodInfo(god_info)
 
         this.adding = false
         this.twitter_loading = true
-        let _this = this
-        this.$store.dispatch('checkSocial', { god_name: this.god_name, type: 'twitter' }).then(function (data) {
-          _this.twitterDone()
+        let self = this
+        this.$store.dispatch('checkSocial', { name: this.god_name, type: 'twitter' }).then(function (data) {
+          self.twitterDone(data.info)
         })
       },
       twitterDone: function (info) {
@@ -150,9 +153,9 @@
           this.twitter_info = info
           this.setInfo(info)
         }
-        let _this = this
-        this.$store.dispatch('checkSocial', { god_name: this.god_name, type: 'github' }).then(function (data) {
-          _this.githubDone()
+        let self = this
+        this.$store.dispatch('checkSocial', { name: this.god_name, type: 'github' }).then(function (data) {
+          self.githubDone(data.info)
         })
         this.github_loading = true
       },
@@ -162,9 +165,9 @@
           this.github_info = info
           this.setInfo(info)
         }
-        let _this = this
-        this.$store.dispatch('checkSocial', { god_name: this.god_name, type: 'instagram' }).then(function (data) {
-          _this.instagramDone()
+        let self = this
+        this.$store.dispatch('checkSocial', { name: this.god_name, type: 'instagram' }).then(function (data) {
+          self.instagramDone(data.info)
         })
         this.instagram_loading = true
       },
@@ -174,9 +177,9 @@
           this.instagram_info = info
           this.setInfo(info)
         }
-        let _this = this
-        this.$store.dispatch('checkSocial', { god_name: this.god_name, type: 'tumblr' }).then(function (data) {
-          _this.tumblrDone()
+        let self = this
+        this.$store.dispatch('checkSocial', { name: this.god_name, type: 'tumblr' }).then(function (data) {
+          self.tumblrDone(data.info)
         })
         this.tumblr_loading = true
       },
@@ -186,9 +189,9 @@
           this.tumblr_info = info
           this.setInfo(info)
         }
-        let _this = this
-        this.$store.dispatch('checkSocial', { god_name: this.god_name, type: 'facebook' }).then(function (data) {
-          _this.facebookDone()
+        let self = this
+        this.$store.dispatch('checkSocial', { name: this.god_name, type: 'facebook' }).then(function (data) {
+          self.facebookDone(data.info)
         })
         this.facebook_loading = true
       },

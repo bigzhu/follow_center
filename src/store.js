@@ -254,6 +254,20 @@ export const mutations = {
 }
 // actions
 export const actions = {
+  checkSocial ({ state, commit, dispatch }, {name, type}) {
+    var parm = {
+      name: name,
+      type: type
+    }
+    return dispatch('get', {url: '/api_social', body: parm, loading: false})
+  },
+  postGod ({ state, commit, dispatch }, {name, cat}) {
+    var parm = {
+      name: name,
+      cat: cat
+    }
+    return dispatch('post', {url: '/api_god', body: parm, loading: false})
+  },
   postBlock ({ state, commit, dispatch }, god_id) {
     let parm = {god_id: god_id}
     return dispatch('post', {url: '/api_block', body: parm, loading: false}).then(function (data) {
