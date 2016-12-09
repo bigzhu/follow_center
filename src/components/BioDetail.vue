@@ -13,32 +13,7 @@
         </div>
       </div>
       <div class="four wide column">
-        <div class="ui segement bio-background">
-          <div class="ui card border-radius">
-            <div class="content">
-              <div class="description align-center">
-                ￥10微信扫一扫<i class="coffee icon"></i>买杯咖啡赞助我
-              </div>
-            </div>
-            <div class="ui small centered image">
-              <img src="/static/img/by_me.b628d93.jpg">
-            </div>
-            <div class="content">
-              <div class="description align-center">
-                <i class="qq icon"></i>答疑QQ群:&nbsp;&nbsp;484391016
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="footer-content">
-            <a href="/about">关于</a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="/about">博客</a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            注册人数：{{registered_count}}
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </br>© 2016 Follow Center
-          </div>
+          <right-info></right-info>
       </div>
     </div>
   </div>
@@ -46,9 +21,11 @@
 <script>
   import GodItem from './GodItem'
   import _ from 'lodash'
+  import RightInfo from './RightInfo'
   export default {
     components: {
-      GodItem
+      GodItem,
+      RightInfo
     },
     data () {
       return {

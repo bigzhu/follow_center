@@ -8,30 +8,7 @@
         <div class="five wide column computer only ">
           <div class="blank-bz"></div>
           <god-info v-show="god_name" :god_info="god_info"></god-info>
-          <div class="ui card border-radius">
-            <div class="content">
-              <div class="description align-center">
-                ￥10 微信扫一扫，<i class="coffee icon"></i>买杯咖啡赞助我
-              </div>
-            </div>
-            <div class="ui small centered image">
-              <img src="../../static/assets/by_me.jpg">
-            </div>
-            <div class="content">
-              <div class="description align-center">
-                <i class="qq icon"></i>答疑QQ群:&nbsp&nbsp484391016
-              </div>
-            </div>
-          </div>
-          <div v-show="registered_count !== -1" class="footer-content">
-            <a href="/about">关于</a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="/about">博客</a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            注册人数：{{registered_count}}
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </br>© 2016 Follow Center
-          </div>
+          <right-info></right-info>
         </div>
       </div>
     </div>
@@ -48,21 +25,20 @@
   import Top from './Top'
   import UnRead from './UnRead'
   import GodInfo from './GodInfo'
+  import RightInfo from './RightInfo'
   export default {
     components: {
       UnRead,
       Top,
       Messages,
-      GodInfo
+      GodInfo,
+      RightInfo
     },
     data () {
       return {
       }
     },
     computed: {
-      registered_count () {
-        return this.$store.state.registered_count
-      },
       god_info () {
         if (!this.god_name) return
         let god_info = this.$store.state.god_infos[this.god_name]
@@ -75,7 +51,6 @@
       }
     },
     mounted () {
-      this.$store.dispatch('getRegisteredCount')
       if (this.god_name) { this.$store.dispatch('getGod', this.god_name) }
       $('body').visibility()
     },
@@ -112,7 +87,7 @@
     padding: 0rem!important;
   }
   .blank-bz {
-    padding-top: 35px;
+    padding-top: 49px;
   }
   .ui.card.border-radius {
     border-radius: 0.06em;

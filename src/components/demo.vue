@@ -6,6 +6,8 @@
     props: [],
     components: {
     },
+    computed: {
+    },
     data: function () {
       return {
       }
