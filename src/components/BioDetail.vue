@@ -29,6 +29,15 @@
             </div>
           </div>
         </div>
+        <div class="footer-content">
+            <a href="/about">关于</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/about">博客</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            注册人数：{{registered_count}}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </br>© 2016 Follow Center
+          </div>
       </div>
     </div>
   </div>
