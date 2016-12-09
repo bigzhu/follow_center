@@ -219,6 +219,9 @@
   .facebook.light-bz {
     color: #3B5998;
   }
+  .tumblr.light-bz {
+    color: #36465D;
+  }
   i.icon.github.god-icon-bz:hover {
     color: rgba(0,0,0,0.7);
   }
