@@ -65,6 +65,6 @@
     padding: 0rem!important;
   }
   .godblank-bz {
-    margin-top: 47px;
+    margin-top: 49px;
   }
 </style>
