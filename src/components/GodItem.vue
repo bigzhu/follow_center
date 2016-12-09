@@ -3,7 +3,7 @@
     <div class="ui stackable grid">
       <div :class="{'four wide column':is_my, 'six wide column':!is_my}" >
         <div :class="{'my-god-avatar-bz':is_my, 'god-avatar-bz':!is_my}">
-          <a @click="$router.push({ name: 'God', params: { god_name: god.name }})" class="header god-name-bz user-name-a">
+          <a @click="$router.push({ name: 'God', params: { god_name: god.name }})" href="javascript:void(0)" class="header god-name-bz user-name-a">
             <img :src="avatar" class="avatar-img-bz">
           </a>
         </div>
