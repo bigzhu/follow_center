@@ -18,7 +18,8 @@ import App from './App.vue'
 
 router.beforeEach((to, from, next) => {
   // check is login?
-  if (!checkLogin() && to.path !== '/Login') {
+  console.log(to)
+  if (!checkLogin() && to.path !== '/Login' && to.name !== 'TheMessage') {
     window.location.href = '/login.html'
     // next('/Login')
     return
