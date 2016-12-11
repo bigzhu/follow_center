@@ -11,6 +11,11 @@ function initGodMessage (state, god_name) {
     Vue.set(state.gods_messages, god_name, [])
   }
 }
+function initCatGod (state, cat) {
+  if (state.cat_gods[cat] === undefined) {
+    Vue.set(state.cat_gods, cat, [])
+  }
+}
 // state
 export const state = {
   followed_god_count: -1, // 关注的god数
@@ -94,7 +99,13 @@ export const mutations = {
     Vue.set(state.cat_my_gods, cat, gods)
   },
   SET_CAT_GODS (state, {cat, gods}) {
-    Vue.set(state.cat_gods, cat, gods)
+    initCatGod(state, cat)
+    let merge_gods = state.cat_gods[cat].concat(gods)
+    let uniq_gods = _.uniqBy(merge_gods, function (d) {
+      return d.id
+    }
+    )
+    state.cat_gods[cat] = uniq_gods
   },
   UNSHIFT_NOT_MY_GOD (state, cat, god) {
     state.cat_gods[cat].unshift(god)
@@ -382,11 +393,16 @@ export const actions = {
       return data
     })
   },
-  getNotMyGods ({ state, commit, dispatch }, cat) {
+  getPublicGods ({ state, commit, dispatch }, cat) {
     let parm = {
-      cat: cat
+      cat: cat,
+      limit: 10
     }
-    return dispatch('get', {url: '/api_not_my_gods', body: parm}).then(function (data) {
+    let gods = state.cat_gods[cat]
+    if (gods) {
+      parm.before = gods[gods.length - 1].created_date
+    }
+    return dispatch('get', {url: '/api_public_gods', body: parm}).then(function (data) {
       commit('SET_CAT_GODS', {cat: cat, gods: data.gods})
     })
   },

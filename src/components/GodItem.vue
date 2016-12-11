@@ -25,7 +25,8 @@
           <a class="followers-number-bz">
             {{god.followed_count}} 人关注
           </a>
-          <span class="public-personal">私人</span>
+          <span v-show="god.is_public===1" class="public-personal">公开</span>
+          <span v-show="god.is_public===0" class="public-personal">私人</span>
           <div class="god-discription-bz" v-html="description"  ></div>
 
           <god-remark :remark.sync="remark" :god_id="god.id"></god-remark>

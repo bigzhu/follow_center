@@ -30,7 +30,7 @@
       </div>
       <nav v-show="show_bar" class="ui borderless main menu fix-bz bar-blow">
         <div class="ui container bar-selection">
-          <router-link :to="{'name': 'Recommand', params: {'cat': 'recommand'}}" :class="{'active': this.$route.name==='Recommand'}" class="item navi-bz move-left-bz">寻他</router-link>
+          <router-link :to="{'name': 'Recommand'}" :class="{'active': this.$route.name==='Recommand'}" class="item navi-bz move-left-bz">寻他</router-link>
           <router-link v-show="user_name!=''" :to="{ name:'MyGods', params: {'cat': 'all'}}" :class="{'active': this.$route.name==='MyGods'}" class="item navi-bz">已跟踪</router-link>
           <router-link v-show="user_name!=''" :to="{ name:'Collect'}" :class="{'active': this.$route.name==='Collect'}" class="item navi-bz">收藏</router-link>
           <router-link :to="{ name:'Bio'}" :class="{'active': this.$route.name==='Bio'}" class="item navi-bz">传记</router-link>

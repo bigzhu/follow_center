@@ -21,7 +21,7 @@ const routes = [
   { path: '/Bio', name: 'Bio', component: Bio },
   { path: '/MyGods/:cat', name: 'MyGods', component: MyGods },
   { path: '/Collect', name: 'Collect', component: Collect },
-  { path: '/Recommand/:cat', name: 'Recommand', component: Recommand },
+  { path: '/Recommand/:cat*', name: 'Recommand', component: Recommand },
   { path: '/Login', name: 'UserNameLogin', component: UserNameLogin }
 ]
 export default new Router({
