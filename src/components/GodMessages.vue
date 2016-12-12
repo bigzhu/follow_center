@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-show="show_old" class='ui center aligned basic segment history-bz'>
+    <div v-bind:class="{ 'invisible_bz': !show_old}" class='ui center aligned basic segment history-bz'>
       <old :god_name="god_name"></old>
     </div>
     <message v-for="message in messages" :message='message'></message>
