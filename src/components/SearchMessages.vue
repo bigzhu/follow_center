@@ -4,7 +4,7 @@
   visibility:hidden;
 };
 mark{
-  background: orange;
+  background: #FDFD95;
   color: black;
 }
 </style>
@@ -66,18 +66,21 @@ mark{
         this.$store.commit('FILTER_SEARCH_MESSAGES', this.search_key)
         if (this.messages.length !== 0) {
           this.show_old = true
-          // 高亮查找的key
-          this.$nextTick(function () {
-            var instance = new Mark(this.$el)
-            instance.mark(this.search_key)
-          })
+          this.mark()
           return
         }
-        this.$store.dispatch('newMessage', {god_name: this.god_name}).then(function (data) {
+        this.$store.dispatch('newMessage', {search_key: this.search_key}).then(function (data) {
           self.show_old = true
           if (self.messages.length === 0) {
             self.$store.dispatch('oldMessage', {god_name: self.god_name, limit: 10})
           }
+        })
+      },
+      mark: function () {
+        // 高亮查找的key
+        this.$nextTick(function () {
+          var instance = new Mark(this.$el)
+          instance.mark(this.search_key)
         })
       }
     }
