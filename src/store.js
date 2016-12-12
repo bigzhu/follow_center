@@ -305,7 +305,7 @@ export const actions = {
     if (!limit) {
       limit = 10
     }
-    dispatch('getNew', {god_name: god_name, search_key: search_key, after: after, limit: limit, explore: explore})
+    return dispatch('getNew', {god_name: god_name, search_key: search_key, after: after, limit: limit, explore: explore})
   },
   unfollow ({ state, commit, dispatch }, god_id) {
     return dispatch('delete', '/api_follow/' + god_id).then(function (data) {
