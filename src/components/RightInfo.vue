@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="ui small centered image">
-        <img src="../../static/assets/by_me.jpg">
+        <img src="../../static/assets/by_me.png">
       </div>
       <div class="content">
         <div class="description align-center">
