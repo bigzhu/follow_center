@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class='ui center aligned basic segment history-bz'>
+    <div v-show="show_old" class='ui center aligned basic segment history-bz'>
       <old :god_name="god_name"></old>
     </div>
     <message v-for="message in messages" :message='message'></message>
@@ -30,9 +30,7 @@
     },
     data: function () {
       return {
-        filter_pic: false,
-        error_info: '',
-        last_message: null
+        show_old: false
       }
     },
     computed: {
@@ -50,6 +48,7 @@
         if (self.messages.length === 0) {
           self.$store.dispatch('oldMessage', {god_name: self.god_name, limit: 10})
         }
+        self.show_old = true
       })
     },
     methods: {
