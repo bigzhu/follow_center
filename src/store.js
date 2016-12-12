@@ -258,9 +258,6 @@ export const mutations = {
     }
     )
     state.messages = uniq_messages
-  },
-  SET_USER_INFO (state, user_info) {
-    state.user_info = user_info
   }
 }
 // actions
