@@ -9,7 +9,7 @@
             <div v-html="bio.text">
             </div>
           </div>
-          <god-item :god='god_info'></god-item>
+          <god-item :god='god_info' is_my="true"></god-item>
         </div>
       </div>
       <div class="four wide column">
