@@ -3,18 +3,26 @@
     <div v-show="followed_god_count!==0" class='ui center aligned basic segment history-bz'>
       <old></old>
     </div>
-    <message v-for='message in messages' :message='message'>
-    </message>
     <div class="no-message">
       <div v-show="followed_god_count===0">
         <img src="../../static/assets/no-message.svg">
-        <p>您还没有关注任何人，从<router-link :to="{'name': 'Recommand'}">寻他</router-link>里面寻找您感兴趣的人吧!
+        <p>您还没有关注任何人，从<router-link :to="{'name': 'Recommand'}">寻他</router-link>里面寻找您感兴趣的人吧!</p>
+      </div>
+      <div v-show="!is_login">
+        <img src="../../static/assets/no-message.svg">
+        <p>
+          <a href="/login.html">登录</a>以后才能看到更广阔的世界哟!
+        </p>
       </div>
       <div v-show="followed_god_count>0">
         <p>好厉害，你已经把所有消息看完啦。再关注点人吧？
-          <router-link :to="{'name': 'Recommand', params: {'cat': 'recommand'}}" :class="{'active': this.$route.name==='Recommand'}">寻他&gt;</router-link></p> 
+          <router-link :to="{'name': 'Recommand', params: {'cat': 'recommand'}}" :class="{'active': this.$route.name==='Recommand'}">寻他&gt;</router-link>
+        </p> 
       </div>
     </div>
+    <message v-for='message in messages' :message='message'>
+    </message>
+
     <!--
     <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !new_loading}"></div>
     -->
@@ -23,8 +31,8 @@
 </template>
 
 <script>
+  import {checkLogin} from '../../../lib_bz/functions/user'
   var get_count = 50
-  import store from '../store'
   import $ from 'jquery'
   import _ from 'lodash'
   import Old from './Old.vue'
@@ -38,7 +46,6 @@
       BottomLoader
     },
     watch: {
-      // call again the method if the route changes
       '$route': 'fetchData'
     },
     events: {
@@ -51,6 +58,9 @@
       }
     },
     computed: {
+      is_login () {
+        return checkLogin()
+      },
       followed_god_count () {
         return this.$store.state.followed_god_count
       },
@@ -58,7 +68,7 @@
         if (this.$route.params.god_name) return this.$route.params.god_name.toLowerCase()
       },
       new_loading () {
-        return store.state.new_loading
+        return this.$store.state.new_loading
       },
       messages () {
         if (!this.god_name) return this.$store.state.messages
