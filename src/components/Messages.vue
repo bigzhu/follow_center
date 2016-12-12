@@ -8,8 +8,7 @@
     <div class="no-message">
       <div v-show="followed_god_count===0">
         <img src="../../static/assets/no-message.svg">
-        <p>您还没有关注任何人，从寻它里面寻找您喜欢的大神吧？
-          <router-link :to="{'name': 'Recommand', params: {'cat': 'recommand'}}" :class="{'active': this.$route.name==='Recommand'}">寻他&gt;</router-link></p>
+        <p>您还没有关注任何人，从<router-link :to="{'name': 'Recommand'}">寻他</router-link>里面寻找您感兴趣的人吧!
       </div>
       <div v-show="followed_god_count>0">
         <p>好厉害，你已经把所有消息看完啦。再关注点人吧？
