@@ -116,11 +116,6 @@ export const mutations = {
   SET_CATS (state, cats) {
     state.cats = cats
   },
-  HIGHT_LIGHT (state, text) { // 高亮
-    Vue.nextTick(function () {
-      $('body').highlight(text)
-    })
-  },
   REFLASH_TIME_LEN (state) { // 更新时间隔
     if (state.last_reflash_oper) {
       _.map(state.messages,
@@ -244,11 +239,12 @@ export const mutations = {
     state.collect_messages = messages
   },
   SET_NEW_SEARCH_MESSAGES (state, messages) {
-    state.search_messages = _.uniq(
-      state.search_messages.concat(messages), false, function (item, key, a) {
-        return item.id
-      }
+    let merge_messages = state.search_messages.concat(messages)
+    let uniq_messages = _.uniqBy(merge_messages, function (d) {
+      return d.id
+    }
     )
+    state.search_messages = uniq_messages
   },
   SET_NEW_MESSAGES (state, messages) {
     let merge_messages = state.messages.concat(messages)
@@ -370,7 +366,6 @@ export const actions = {
           commit('SET_EXPLORE_NEW_MESSAGES', data.messages)
         } else if (search_key) { // search
           commit('SET_NEW_SEARCH_MESSAGES', data.messages)
-          commit('HIGHT_LIGHT', search_key)
         } else { // main
           commit('SET_NEW_MESSAGES', data.messages)
           commit('REFRESH_UNREAD_MESSAGE_COUNT')
@@ -473,7 +468,7 @@ export const actions = {
     if (!limit) {
       limit = 10
     }
-    dispatch('getOld', {god_name: god_name, search_key: search_key, before: before, limit: limit})
+    return dispatch('getOld', {god_name: god_name, search_key: search_key, before: before, limit: limit})
   },
   getOld ({ state, commit, dispatch }, {god_name, search_key, before, limit}) {
     commit('SET_OLD_LOADING', true)
@@ -502,7 +497,6 @@ export const actions = {
           commit('SET_GODS_OLD_MESSAGES', {god_name: god_name, messages: data.messages})
         } else if (search_key) { // search
           commit('SET_OLD_SEARCH_MESSAGES', data.messages)
-          commit('HIGHT_LIGHT', search_key)
         } else { // main
           commit('SET_OLD_MESSAGES', data.messages)
         }

@@ -17,7 +17,7 @@ mark{
     </message>
 
     <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !new_loading}"></div>
-    <bottom-loader :el="$el" element_class=".ui.fluid.card" :call_back="call_back"></bottom-loader>
+    <bottom-loader :el="$el" element_class=".ui.fluid.card" @bottom="call_back"></bottom-loader>
   </div>
 </template>
 
@@ -59,7 +59,7 @@ mark{
     },
     methods: {
       call_back: function () {
-        this.newMessage({search_key: this.search_key})
+        this.searchNew()
       },
       search: function () {
         let self = this
@@ -67,16 +67,29 @@ mark{
         if (this.messages.length !== 0) {
           this.show_old = true
           this.mark()
-          return
         }
-        this.$store.dispatch('newMessage', {search_key: this.search_key}).then(function (data) {
-          self.show_old = true
+        this.searchNew().then(function (data) {
           if (self.messages.length === 0) {
-            self.$store.dispatch('oldMessage', {god_name: self.god_name, limit: 10})
+            self.searcOld()
+          }
+        })
+      },
+      searcOld: function () {
+        let self = this
+        this.$store.dispatch('oldMessage', {search_key: self.search_key, limit: 10}).then(function (data) {
+          self.mark()
+        })
+      },
+      searchNew: function () {
+        let self = this
+        return this.$store.dispatch('newMessage', {search_key: this.search_key}).then(function (data) {
+          if (self.messages.length !== 0) {
+            self.mark()
           }
         })
       },
       mark: function () {
+        this.show_old = true
         // 高亮查找的key
         this.$nextTick(function () {
           var instance = new Mark(this.$el)

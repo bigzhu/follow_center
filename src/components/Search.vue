@@ -33,7 +33,9 @@
     computed: {
     },
     mounted () {
-      $('body').visibility()
+      this.$nextTick(function () {
+        $('body').visibility()
+      })
     },
     methods: {
     },
