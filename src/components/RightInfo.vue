@@ -3,7 +3,7 @@
     <div class="ui card border-radius">
       <div class="content">
         <div class="description align-center">
-          ￥10 微信扫一扫，<i class="coffee icon"></i>买杯咖啡赞助我
+          <i class="wechat icon"></i>官方微信群
         </div>
       </div>
       <div class="ui small centered image">
