@@ -4,7 +4,9 @@
       <old :god_name="god_name"></old>
     </div>
     <message v-for="message in messages" :message='message'></message>
+    <!--
     <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !new_loading}"></div>
+    -->
     <bottom-loader :el="$el" element_class=".ui.fluid.card" v-on:bottom="call_back"></bottom-loader>
   </div>
 </template>
