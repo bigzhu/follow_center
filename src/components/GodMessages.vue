@@ -45,10 +45,10 @@
       this.$store.commit('FILTER_GOD_MESSAGES', this.god_name)
       let self = this
       this.$store.dispatch('newMessage', {god_name: this.god_name}).then(function (data) {
+        self.show_old = true
         if (self.messages.length === 0) {
           self.$store.dispatch('oldMessage', {god_name: self.god_name, limit: 10})
         }
-        self.show_old = true
       })
     },
     methods: {

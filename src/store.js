@@ -322,11 +322,15 @@ export const actions = {
     })
   },
   getTheMessage ({ state, commit, dispatch }, id) {
-    commit('SET_NEW_LOADING', true)
     let message = _.find(state.messages, function (d) { return d.id === parseInt(id, 10) })
+    // 在god message里再找找
+    if (!message) {
+      for (var god_name in state.gods_messages) {
+        message = _.find(state.gods_messages[god_name], function (d) { return d.id === parseInt(id, 10) })
+      }
+    }
     if (message) {
       commit('SET_THE_MESSAGE', message)
-      commit('SET_LOADING', false)
       return
     }
     let parm = { id: id }
