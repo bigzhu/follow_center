@@ -42,8 +42,12 @@
       }
     },
     mounted () {
-      this.$store.commit('FILTER_GOD_MESSAGES', this.god_name)
       let self = this
+      this.$store.commit('FILTER_GOD_MESSAGES', this.god_name)
+      if (this.messages.length !== 0) {
+        this.show_old = true
+        return
+      }
       this.$store.dispatch('newMessage', {god_name: this.god_name}).then(function (data) {
         self.show_old = true
         if (self.messages.length === 0) {
