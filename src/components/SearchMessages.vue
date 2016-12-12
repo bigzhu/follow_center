@@ -18,20 +18,12 @@
 </template>
 
 <script>
-  import store from '../store'
-
-  import {filterSearchMessages, newMessage} from '../store/actions'
+  // import {filterSearchMessages, newMessage} from '../store/actions'
   import Old from './Old.vue'
   import Message from './Message.vue'
   import BottomLoader from 'bz-bottom-loader'
 
   module.exports = {
-    vuex: {
-      actions: {
-        filterSearchMessages,
-        newMessage
-      }
-    },
     components: {
       Old,
       Message,
@@ -54,20 +46,30 @@
       }
     },
     computed: {
-      new_loading () {
-        return store.state.new_loading
-      },
       messages () {
-        return store.state.search_messages
+        return this.$store.state.search_messages
       }
     },
     mounted () {
-      this.filterSearchMessages(this.search_key)
-      this.newMessage({search_key: this.search_key})
+      this.search()
     },
     methods: {
       call_back: function () {
         this.newMessage({search_key: this.search_key})
+      },
+      search: function () {
+        let self = this
+        this.$store.commit('FILTER_SEARCH_MESSAGES', this.search_key)
+        if (this.messages.length !== 0) {
+          this.show_old = true
+          return
+        }
+        this.$store.dispatch('newMessage', {god_name: this.god_name}).then(function (data) {
+          self.show_old = true
+          if (self.messages.length === 0) {
+            self.$store.dispatch('oldMessage', {god_name: self.god_name, limit: 10})
+          }
+        })
       }
     }
   }

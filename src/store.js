@@ -171,20 +171,18 @@ export const mutations = {
   },
   FILTER_SEARCH_MESSAGES (state, search_key) { // 从主线messages中把查找的信息过滤出来，避免页面空白
     if (state.messages.length !== 0) {
-      state.search_messages = _.filter(state.messages,
-        (d) => {
-          if (d.text && d.content) {
-            return (d.text.indexOf(search_key) !== -1 || String(d.content).indexOf(search_key) !== -1)
-          }
-          if (d.text) {
-            return d.text.indexOf(search_key) !== -1
-          }
-          if (d.content) {
-            return String(d.content).indexOf(search_key) !== -1
-          }
-          return false
+      state.search_messages = state.messages.filter(function (d) {
+        if (d.text && d.content) {
+          return (d.text.indexOf(search_key) !== -1 || String(d.content).indexOf(search_key) !== -1)
         }
-      )
+        if (d.text) {
+          return d.text.indexOf(search_key) !== -1
+        }
+        if (d.content) {
+          return String(d.content).indexOf(search_key) !== -1
+        }
+        return false
+      })
     }
   },
   SET_GODS_OLD_MESSAGES (state, {god_name, messages}) {

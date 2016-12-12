@@ -22,10 +22,6 @@
   import Messages from './SearchMessages'
   import Top from './Top'
   export default {
-    vuex: {
-      actions: {
-      }
-    },
     components: {
       Top,
       Messages
