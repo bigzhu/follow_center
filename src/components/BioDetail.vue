@@ -9,7 +9,7 @@
             <div v-html="bio.text">
             </div>
           </div>
-          <god-item :god='god_info' is_my="true"></god-item>
+          <god-item :god='god_info' is_my="true" class="bio-god-card"></god-item>
         </div>
       </div>
       <div class="four wide column">
@@ -86,5 +86,10 @@
   }
   .bio-article {
     padding: 1.5rem;
+  }
+  .bio-god-card.ui.segment.recommand-god-bz {
+    box-shadow: none;
+    border-top: 1px solid #E6E6E6;
+    padding-top: 1rem;
   }
 </style>
