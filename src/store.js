@@ -172,6 +172,7 @@ export const mutations = {
   FILTER_SEARCH_MESSAGES (state, search_key) { // 从主线messages中把查找的信息过滤出来，避免页面空白
     if (state.messages.length !== 0) {
       state.search_messages = state.messages.filter(function (d) {
+        console.log(d)
         if (d.text && d.content) {
           return (d.text.indexOf(search_key) !== -1 || String(d.content).indexOf(search_key) !== -1)
         }

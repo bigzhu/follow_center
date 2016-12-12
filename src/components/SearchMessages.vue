@@ -3,6 +3,10 @@
 .invisible_bz {
   visibility:hidden;
 };
+mark{
+  background: orange;
+  color: black;
+}
 </style>
 <template>
   <div>
@@ -22,6 +26,7 @@
   import Old from './Old.vue'
   import Message from './Message.vue'
   import BottomLoader from 'bz-bottom-loader'
+  import Mark from 'mark.js'
 
   module.exports = {
     components: {
@@ -31,8 +36,7 @@
     },
     watch: {
       'search_key': function (val, oldVal) {
-        this.filterSearchMessages(this.search_key)
-        this.newMessage({search_key: this.search_key})
+        this.search()
       }
     },
     props: {
@@ -62,6 +66,11 @@
         this.$store.commit('FILTER_SEARCH_MESSAGES', this.search_key)
         if (this.messages.length !== 0) {
           this.show_old = true
+          // 高亮查找的key
+          this.$nextTick(function () {
+            var instance = new Mark(this.$el)
+            instance.mark(this.search_key)
+          })
           return
         }
         this.$store.dispatch('newMessage', {god_name: this.god_name}).then(function (data) {

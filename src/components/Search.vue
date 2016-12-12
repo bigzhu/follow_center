@@ -32,7 +32,6 @@
     },
     computed: {
     },
-
     mounted () {
       $('body').visibility()
     },
