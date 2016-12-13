@@ -89,6 +89,8 @@
       }
     },
     mounted () {
+      console.log('checkLogin')
+      console.log(checkLogin())
       if (checkLogin()) this.$store.dispatch('getUserInfo')
       this.$nextTick(function () {
         $('.fix-bz').visibility(

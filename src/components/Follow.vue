@@ -9,7 +9,7 @@
     props: {
       value: {
         type: Number,
-        default: ''
+        default: 0
       },
       god_id: {
         required: true,

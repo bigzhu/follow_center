@@ -23,7 +23,7 @@
       <social-badge v-show="god.instagram_user" :call_back="setGodInfo" :info="god.instagram_user" ></social-badge>
       <social-badge v-show="god.facebook_user" :call_back="setGodInfo" :info="god.facebook_user"></social-badge>
     </div>
-    <follow class="attached" :god_info="god" :god_id="god.god_id"></follow>
+    <follow class="attached" v-model="god.followed" :god_id="god.god_id"></follow>
   </div>
 </template>
 
