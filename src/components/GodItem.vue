@@ -25,7 +25,8 @@
           <a class="followers-number-bz">
             {{god.followed_count}} 人关注
           </a>
-          <span v-show="god.is_public===1" class="public-personal">公开</span>
+          <a href=""><span v-show="god.is_public===1" class="ui basic label public-personal">公开</span></a>
+          <a href=""><span v-show="god.is_public===1" class="ui keppel label public-personal">传记</span></a>
           <span v-show="god.is_public===0" class="public-personal">私人</span>
           <div class="god-discription-bz" v-html="description"  ></div>
 
@@ -254,11 +255,18 @@
     color: #168454;
   }
   .god-detail-bz span.public-personal{
-    border: 0.3px solid #A3A3A3;
     color: #A3A3A3;
-    padding: .2px 5px;
-    margin-left: 1rem;
-    font-size: 0.9rem;
+    padding: 4px 14px;
+    margin-left: 1.5rem!important;
+    border-radius: 0.06rem;
+  }
+  .ui.basic.label.public-personal {
+    color: #A3A3A3;
+  }
+  .ui.keppel.label.public-personal {
+    background-color: #58B890!important;
+    border-color: #58B890!important;
+    color: #FFF!important;
   }
   @media (max-width: 767px) {
     .god-detail-bz {
