@@ -50,7 +50,7 @@
   import Follow from './Follow'
   import GodRemark from './GodRemark'
   import SocialBadge from './SocialBadge'
-  import '../assets/mobile.css'
+  import btoa from '../functions/encode_url'
   export default {
     props: {
       god: {
@@ -88,7 +88,7 @@
         if (!this.god_info || !this.god_info.avatar) {
           return ''
         }
-        return (window.bz_url || '') + '/api_sp/' + window.btoa(window.btoa(this.god_info.avatar))
+        return '/api_sp/' + btoa(this.god_info.avatar)
       },
       god_info: function () {
         return this.getGodInfo()
