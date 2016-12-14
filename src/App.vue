@@ -237,6 +237,9 @@
   i.icon.facebook.god-icon-bz:hover {
     color: #3B5998;
   }
+  .god-icon-bz a:hover {
+    color: #888888;
+  }
   /* 设置导航-------------------------------- */
   .ui.menu.bar-above {
     margin-bottom: 0;
