@@ -3,6 +3,10 @@
 .invisible_bz {
   visibility:hidden;
 };
+mark{
+  background: #FDFD95;
+  color: black;
+}
 </style>
 <template>
   <div>
@@ -13,25 +17,18 @@
     </message>
 
     <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !new_loading}"></div>
-    <bottom-loader :el="$el" element_class=".ui.fluid.card" :call_back="call_back"></bottom-loader>
+    <bottom-loader :el="$el" element_class=".ui.fluid.card" @bottom="call_back"></bottom-loader>
   </div>
 </template>
 
 <script>
-  import store from '../store'
-
-  import {filterSearchMessages, newMessage} from '../store/actions'
+  // import {filterSearchMessages, newMessage} from '../store/actions'
   import Old from './Old.vue'
   import Message from './Message.vue'
   import BottomLoader from 'bz-bottom-loader'
+  import Mark from 'mark.js'
 
   module.exports = {
-    vuex: {
-      actions: {
-        filterSearchMessages,
-        newMessage
-      }
-    },
     components: {
       Old,
       Message,
@@ -39,8 +36,7 @@
     },
     watch: {
       'search_key': function (val, oldVal) {
-        this.filterSearchMessages(this.search_key)
-        this.newMessage({search_key: this.search_key})
+        this.search()
       }
     },
     props: {
@@ -54,20 +50,51 @@
       }
     },
     computed: {
-      new_loading () {
-        return store.state.new_loading
-      },
       messages () {
-        return store.state.search_messages
+        return this.$store.state.search_messages
       }
     },
     mounted () {
-      this.filterSearchMessages(this.search_key)
-      this.newMessage({search_key: this.search_key})
+      this.search()
     },
     methods: {
       call_back: function () {
-        this.newMessage({search_key: this.search_key})
+        this.searchNew()
+      },
+      search: function () {
+        let self = this
+        this.$store.commit('FILTER_SEARCH_MESSAGES', this.search_key)
+        if (this.messages.length !== 0) {
+          this.show_old = true
+          this.mark()
+        }
+        this.searchNew().then(function (data) {
+          if (self.messages.length === 0) {
+            self.searcOld()
+          }
+        })
+      },
+      searcOld: function () {
+        let self = this
+        this.$store.dispatch('oldMessage', {search_key: self.search_key, limit: 10}).then(function (data) {
+          self.mark()
+        })
+      },
+      searchNew: function () {
+        let self = this
+        return this.$store.dispatch('newMessage', {search_key: this.search_key}).then(function (data) {
+          if (self.messages.length !== 0) {
+            self.mark()
+          }
+        })
+      },
+      mark: function () {
+        this.show_old = true
+        // 高亮查找的key
+        this.$nextTick(function () {
+          var instance = new Mark(this.$el)
+          instance.mark(this.search_key)
+        })
       }
     }
   }

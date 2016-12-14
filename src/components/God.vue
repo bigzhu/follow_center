@@ -7,7 +7,7 @@
         </div>
         <div class="five wide column computer only">
           <div class="godblank-bz"></div>
-          <god-info :god_info="god_info"></god-info>
+          <god-info v-show="god_info" :god_info="god_info"></god-info>
         </div>
       </div>
     </div>

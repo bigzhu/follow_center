@@ -116,11 +116,6 @@ export const mutations = {
   SET_CATS (state, cats) {
     state.cats = cats
   },
-  HIGHT_LIGHT (state, text) { // 高亮
-    Vue.nextTick(function () {
-      $('body').highlight(text)
-    })
-  },
   REFLASH_TIME_LEN (state) { // 更新时间隔
     if (state.last_reflash_oper) {
       _.map(state.messages,
@@ -171,20 +166,19 @@ export const mutations = {
   },
   FILTER_SEARCH_MESSAGES (state, search_key) { // 从主线messages中把查找的信息过滤出来，避免页面空白
     if (state.messages.length !== 0) {
-      state.search_messages = _.filter(state.messages,
-        (d) => {
-          if (d.text && d.content) {
-            return (d.text.indexOf(search_key) !== -1 || String(d.content).indexOf(search_key) !== -1)
-          }
-          if (d.text) {
-            return d.text.indexOf(search_key) !== -1
-          }
-          if (d.content) {
-            return String(d.content).indexOf(search_key) !== -1
-          }
-          return false
+      state.search_messages = state.messages.filter(function (d) {
+        console.log(d)
+        if (d.text && d.content) {
+          return (d.text.indexOf(search_key) !== -1 || String(d.content).indexOf(search_key) !== -1)
         }
-      )
+        if (d.text) {
+          return d.text.indexOf(search_key) !== -1
+        }
+        if (d.content) {
+          return String(d.content).indexOf(search_key) !== -1
+        }
+        return false
+      })
     }
   },
   SET_GODS_OLD_MESSAGES (state, {god_name, messages}) {
@@ -245,11 +239,12 @@ export const mutations = {
     state.collect_messages = messages
   },
   SET_NEW_SEARCH_MESSAGES (state, messages) {
-    state.search_messages = _.uniq(
-      state.search_messages.concat(messages), false, function (item, key, a) {
-        return item.id
-      }
+    let merge_messages = state.search_messages.concat(messages)
+    let uniq_messages = _.uniqBy(merge_messages, function (d) {
+      return d.id
+    }
     )
+    state.search_messages = uniq_messages
   },
   SET_NEW_MESSAGES (state, messages) {
     let merge_messages = state.messages.concat(messages)
@@ -258,9 +253,6 @@ export const mutations = {
     }
     )
     state.messages = uniq_messages
-  },
-  SET_USER_INFO (state, user_info) {
-    state.user_info = user_info
   }
 }
 // actions
@@ -308,7 +300,7 @@ export const actions = {
     if (!limit) {
       limit = 10
     }
-    dispatch('getNew', {god_name: god_name, search_key: search_key, after: after, limit: limit, explore: explore})
+    return dispatch('getNew', {god_name: god_name, search_key: search_key, after: after, limit: limit, explore: explore})
   },
   unfollow ({ state, commit, dispatch }, god_id) {
     return dispatch('delete', '/api_follow/' + god_id).then(function (data) {
@@ -325,11 +317,15 @@ export const actions = {
     })
   },
   getTheMessage ({ state, commit, dispatch }, id) {
-    commit('SET_NEW_LOADING', true)
     let message = _.find(state.messages, function (d) { return d.id === parseInt(id, 10) })
+    // 在god message里再找找
+    if (!message) {
+      for (var god_name in state.gods_messages) {
+        message = _.find(state.gods_messages[god_name], function (d) { return d.id === parseInt(id, 10) })
+      }
+    }
     if (message) {
       commit('SET_THE_MESSAGE', message)
-      commit('SET_LOADING', false)
       return
     }
     let parm = { id: id }
@@ -370,7 +366,6 @@ export const actions = {
           commit('SET_EXPLORE_NEW_MESSAGES', data.messages)
         } else if (search_key) { // search
           commit('SET_NEW_SEARCH_MESSAGES', data.messages)
-          commit('HIGHT_LIGHT', search_key)
         } else { // main
           commit('SET_NEW_MESSAGES', data.messages)
           commit('REFRESH_UNREAD_MESSAGE_COUNT')
@@ -473,7 +468,7 @@ export const actions = {
     if (!limit) {
       limit = 10
     }
-    dispatch('getOld', {god_name: god_name, search_key: search_key, before: before, limit: limit})
+    return dispatch('getOld', {god_name: god_name, search_key: search_key, before: before, limit: limit})
   },
   getOld ({ state, commit, dispatch }, {god_name, search_key, before, limit}) {
     commit('SET_OLD_LOADING', true)
@@ -502,7 +497,6 @@ export const actions = {
           commit('SET_GODS_OLD_MESSAGES', {god_name: god_name, messages: data.messages})
         } else if (search_key) { // search
           commit('SET_OLD_SEARCH_MESSAGES', data.messages)
-          commit('HIGHT_LIGHT', search_key)
         } else { // main
           commit('SET_OLD_MESSAGES', data.messages)
         }

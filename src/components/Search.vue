@@ -22,10 +22,6 @@
   import Messages from './SearchMessages'
   import Top from './Top'
   export default {
-    vuex: {
-      actions: {
-      }
-    },
     components: {
       Top,
       Messages
@@ -36,9 +32,10 @@
     },
     computed: {
     },
-
     mounted () {
-      $('body').visibility()
+      this.$nextTick(function () {
+        $('body').visibility()
+      })
     },
     methods: {
     },

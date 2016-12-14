@@ -1,15 +1,15 @@
 <template>
-  <button v-on:click="toggleFollow"  :class="{'basic': !followed, 'keppel': followed, 'loading': loading}" class="ui bottom button follow-button">
-    <i v-show="followed==0" class="add icon"></i>{{desc}}
+  <button v-on:click="toggleFollow"  :class="{'basic': !value, 'keppel': value, 'loading': loading}" class="ui bottom button follow-button">
+    <i v-show="value==0" class="add icon"></i>{{desc}}
   </button>
 </template>
 
 <script>
   export default {
     props: {
-      god_info: {
-        required: true,
-        type: Object
+      value: {
+        type: Number,
+        default: 0
       },
       god_id: {
         required: true,
@@ -17,14 +17,6 @@
       }
     },
     computed: {
-      followed: {
-        get () {
-          return this.god_info.followed
-        },
-        set (v) {
-          this.god_info.followed = v
-        }
-      }
     },
     data: function () {
       return {
@@ -33,7 +25,7 @@
       }
     },
     watch: {
-      'followed': function () {
+      'value': function () {
         this.checkStatus()
       }
     },
@@ -44,26 +36,26 @@
     },
     methods: {
       checkStatus: function () {
-        if (this.followed === 0 || this.followed === null) {
+        if (this.value === 0 || this.value === null) {
           this.showUnfollow()
         } else {
           this.showFollow()
         }
       },
       showFollow: function () {
-        this.followed = 1
+        this.$emit('input', 1)
         this.loading = false
         this.desc = '关注中'
       },
       showUnfollow: function () {
-        this.followed = 0
+        this.$emit('input', 0)
         this.loading = false
         this.desc = '关注'
       },
       toggleFollow: function () {
         let self = this
         this.loading = true
-        if (this.followed === 1) {
+        if (this.value === 1) {
           this.$store.dispatch('unfollow', this.god_id).then(function (data) {
             self.showUnfollow()
           })

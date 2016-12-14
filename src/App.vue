@@ -9,7 +9,7 @@
           </a>
           <div class="right menu ">
             <div class="item large monitor only">
-              <form @keyup.enter="search" @submit.prevent="search" class="ui  transparent icon input">
+              <form @keyup.13="search" v-on:submit.prevent class="ui  transparent icon input">
                 <input v-model="key" type="text" placeholder="搜索资讯">
                 <i @click="search" class="search link icon"></i>
               </form>
@@ -41,6 +41,7 @@
   </div>
 </template>
 <script>
+  import {checkLogin} from '../../lib_bz/functions/user'
   import $ from 'jquery'
   import store from './store'
   import NProgress from 'nprogress'
@@ -88,7 +89,9 @@
       }
     },
     mounted () {
-      this.$store.dispatch('getUserInfo')
+      console.log('checkLogin')
+      console.log(checkLogin())
+      if (checkLogin()) this.$store.dispatch('getUserInfo')
       this.$nextTick(function () {
         $('.fix-bz').visibility(
           {
@@ -146,9 +149,9 @@
       search: function () {
         if (this.key) {
           store.state.search_messages = [] // 清空上次的查找
-          this.$router.go({name: 'Search', params: {key: this.key}})
+          this.$router.push({name: 'Search', params: {key: this.key}})
         } else {
-          this.$router.go({name: 'Main'})
+          this.$router.push({name: 'Main'})
         }
       },
       backToMain: function () {

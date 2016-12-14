@@ -18,7 +18,6 @@
 </template>
 
 <script>
-  import store from '../store'
   import '../assets/mobile.css'
   import $ from 'jquery'
   import Messages from './Messages'
@@ -73,7 +72,7 @@
     beforeRouteLeave (to, from, next) {
       $(window).off('scroll')
       $(window).unbind('scroll')
-      store.commit('SET_SHOW_BAR', true) // 离开时，确保Bar显示出来
+      this.$store.commit('SET_SHOW_BAR', true) // 离开时，确保Bar显示出来
       next()
     }
   }
