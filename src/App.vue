@@ -150,6 +150,7 @@
         if (this.key) {
           store.state.search_messages = [] // 清空上次的查找
           this.$router.push({name: 'Search', params: {key: this.key}})
+          console.log('fucnk')
         } else {
           this.$router.push({name: 'Main'})
         }

@@ -12,10 +12,10 @@ import Bio from './components/Bio.vue'
 import BioDetail from './components/BioDetail.vue'
 import TheMessage from './components/TheMessage'
 import God from './components/God'
-// import Search from './components/Search'
+import Search from './components/Search'
 
 const routes = [
-  // { path: '/Search/:key', name: 'Search', component: Search },
+  { path: '/Search/:key', name: 'Search', component: Search },
   { path: '/', name: 'Main', component: Main },
   { path: '/God/:god_name', name: 'God', component: God },
   { path: '/TheMessage/:id', name: 'TheMessage', component: TheMessage },
