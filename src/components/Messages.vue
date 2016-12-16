@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-show="followed_god_count!==0" class='ui center aligned basic segment history-bz'>
+    <div :class="{ 'invisible_bz': followed_god_count===0 || new_loading}" class='ui center aligned basic segment history-bz'>
       <old></old>
     </div>
     <div v-show="followed_god_count===0" class="no-message">
@@ -19,12 +19,19 @@
 
     <message v-for='message in messages' :message='message'>
     </message>
-    <div v-show="followed_god_count>0" class="no-message">
+    <div v-show="followed_god_count>0 && !new_loading" class="no-message">
       <p>好厉害，你已经把所有消息看完啦。再关注点人吧？
         <router-link :to="{'name': 'Recommand', params: {'cat': 'recommand'}}" :class="{'active': this.$route.name==='Recommand'}">寻他&gt;</router-link>
       </p> 
     </div>
-    <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !new_loading}"></div>
+
+    <div v-show="followed_god_count!==0" class='ui center aligned basic segment history-bz'>
+      <div v-show="new_loading" class="ui active tiny inline loader"></div>
+      <a :class="{ 'invisible_bz': !new_loading}" href='javascript:void(0)' class='history-search-bz loading'>
+        <i v-show="!new_loading" class='icon new'></i>
+        新的消息
+      </a>
+    </div>
     <bottom-loader :el="$el" element_class=".ui.fluid.card" v-on:bottom="call_back"></bottom-loader>
   </div>
 </template>
