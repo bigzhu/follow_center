@@ -355,6 +355,7 @@ export const actions = {
     return dispatch('get', {url: '/api_new', body: parm, loading: true}).then(function (data) {
       state.unread_message_count = data.unread_message_count
       if (data.messages.length === 0) { // 没有取到数
+        console.log('get new get none')
         state.followed_god_count = data.followed_god_count
         if (search_key && state.search_messages.length === 0) {
           // oldMessage({ dispatch, state }, {search_key: search_key})

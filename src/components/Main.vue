@@ -124,7 +124,9 @@
   }
   .no-message {
     color: #9A9A9A;
+    /*
     margin-top: 30px;
+    */
     padding: 15px 15px;
     width: auto;
     font-size: 1rem;
