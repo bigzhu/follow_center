@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-if (!global.window) Vue.use(Vuex)
+if (!global.window) { Vue.use(Vuex) }
 import p from '../../lib_bz/module'
 import 'whatwg-fetch'
 import _ from 'lodash'
@@ -258,6 +258,9 @@ export const mutations = {
 }
 // actions
 export const actions = {
+  addRemark ({ dispatch, state }, parm) {
+    return dispatch('post', {url: '/api_remark', body: parm, loading: false})
+  },
   checkSocial ({ state, commit, dispatch }, {name, type}) {
     var parm = {
       name: name,

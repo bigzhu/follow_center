@@ -29,7 +29,7 @@
           <a @click="$router.push({ name: 'BioDetail', params: { god_name: god.name }})" href="javascript:void(0)"><span v-show="god.is_public===2" class="ui keppel label public-personal">传记</span></a>
           <div class="god-discription-bz" v-html="description"  ></div>
 
-          <god-remark :remark.sync="remark" :god_id="god.id"></god-remark>
+          <god-remark v-model="remark" :god_id="god.id"></god-remark>
           <a v-show="false" class="hide-god-bz">
             <i class="hide icon"></i>
           </a>

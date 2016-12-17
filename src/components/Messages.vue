@@ -12,7 +12,7 @@
       <div v-show="!is_login && show_no_login" class="no-message">
         <img src="../../static/assets/no-message.svg">
         <p>
-          <a href="/login.html">登录</a>以后才能看到更广阔的世界哟!
+          <a href="/login.html">登录</a>后能看到更广阔的世界哟!
         </p>
       </div>
     </transition>
