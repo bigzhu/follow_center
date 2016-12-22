@@ -445,6 +445,8 @@ export const actions = {
     var parm = { last_time: time }
     return dispatch('put', {url: '/api_last', body: parm, loading: false}).then(function (data) {
       state.unread_message_count = data.unread_message_count
+      console.log(data)
+      console.log(state.unread_message_count)
       commit('SET_LAST_TIME', parseInt(time, 10))
       commit('REFRESH_LOCAL_UNREAD_MESSAGE_COUNT')
       // 如果<20了，就预加载一些
