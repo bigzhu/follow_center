@@ -15,7 +15,7 @@
   export default {
     props: {
       value: {
-        required: true
+        // required: true
       },
       god_id: {
         required: true,
