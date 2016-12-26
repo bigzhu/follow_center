@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 if (!global.window) { Vue.use(Vuex) }
-import p from '../../lib_bz/module'
+import p from 'bz-lib/module'
 import 'whatwg-fetch'
 import _ from 'lodash'
 import $ from 'jquery'

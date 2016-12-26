@@ -36,7 +36,7 @@
 </template>
 
 <script>
-  import {checkLogin} from '../../../lib_bz/functions/user'
+  import {checkLogin} from 'bz-lib/functions/user'
   var get_count = 50
   import $ from 'jquery'
   import _ from 'lodash'

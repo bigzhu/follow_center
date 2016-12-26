@@ -12,7 +12,7 @@ import Vue from 'vue'
 // })
 import router from './router'
 
-import {checkLogin} from '../../lib_bz/functions/user'
+import {checkLogin} from 'bz-lib/functions/user'
 import fastclick from 'fastclick'
 import App from './App.vue'
 
@@ -31,7 +31,7 @@ let instance = new Vue(App).$mount('#app')
 
 fastclick.attach(document.body)
 
-import {initErrorHandle} from '../../lib_bz/functions/error'
+import {initErrorHandle} from 'bz-lib/functions/error'
 //  toastr show error
 initErrorHandle()
 export default {

@@ -41,7 +41,7 @@
   </div>
 </template>
 <script>
-  import {checkLogin} from '../../lib_bz/functions/user'
+  import {checkLogin} from 'bz-lib/functions/user'
   import $ from 'jquery'
   import store from './store'
   import NProgress from 'nprogress'
