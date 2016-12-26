@@ -21,7 +21,7 @@
     </message>
     <div v-show="followed_god_count>0 && unread_message_count===0" class="no-message">
       <p>好厉害，你已经把所有消息看完啦。再关注点人吧？
-        <router-link :to="{'name': 'Recommand', params: {'cat': 'recommand'}}" :class="{'active': this.$route.name==='Recommand'}">寻他&gt;</router-link>
+        <router-link :to="{'name': 'Recommand'}">寻他&gt;</router-link>
       </p> 
     </div>
     <div v-show="followed_god_count!==0" class='ui center aligned basic segment history-bz'>
