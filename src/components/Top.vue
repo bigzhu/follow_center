@@ -53,5 +53,10 @@
     border: 1px solid #DADADA;
     bottom: 1.5em;    
   }
+  @media (min-width: 1100px) and (max-width: 1300px) {
+    .fixed.button.top-bz {
+      right: .1em;
+    }
+  } 
 </style>
 
