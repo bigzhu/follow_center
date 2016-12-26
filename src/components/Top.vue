@@ -55,7 +55,7 @@
   }
   @media (min-width: 1100px) and (max-width: 1300px) {
     .fixed.button.top-bz {
-      right: .1em;
+      right: .05em;
     }
   } 
 </style>
