@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// Vue.use(Vuex)
-import p from '../../lib_bz/module'
+if (!global.window) { Vue.use(Vuex) }
+import p from 'bz-lib/module'
 import 'whatwg-fetch'
 import _ from 'lodash'
 import $ from 'jquery'
@@ -18,6 +18,7 @@ function initCatGod (state, cat) {
 }
 // state
 export const state = {
+  local_unread_message_count: 0, // 取过来还未读的信息
   followed_god_count: -1, // 关注的god数
   last_scroll_top: 0, //
   nav_bar_height: 0,
@@ -153,9 +154,9 @@ export const mutations = {
   SET_BIG_GODS (state, gods) {
     state.big_gods = gods
   },
-  REFRESH_UNREAD_MESSAGE_COUNT (state) {
+  REFRESH_LOCAL_UNREAD_MESSAGE_COUNT (state) {
     let unread_messages = _.partition(state.messages, (d) => { return d.created_at > state.last_time })[0]
-    state.unread_message_count = unread_messages.length
+    state.local_unread_message_count = unread_messages.length
   },
   FILTER_GOD_MESSAGES (state, god_name) { // 从主线messages中把god message 过滤出来，避免页面空白
     initGodMessage(state, god_name)
@@ -257,6 +258,9 @@ export const mutations = {
 }
 // actions
 export const actions = {
+  addRemark ({ dispatch, state }, parm) {
+    return dispatch('post', {url: '/api_remark', body: parm, loading: false})
+  },
   checkSocial ({ state, commit, dispatch }, {name, type}) {
     var parm = {
       name: name,
@@ -349,7 +353,9 @@ export const actions = {
       loading: false
     }
     return dispatch('get', {url: '/api_new', body: parm, loading: true}).then(function (data) {
+      state.unread_message_count = data.unread_message_count
       if (data.messages.length === 0) { // 没有取到数
+        console.log('get new get none')
         state.followed_god_count = data.followed_god_count
         if (search_key && state.search_messages.length === 0) {
           // oldMessage({ dispatch, state }, {search_key: search_key})
@@ -368,7 +374,7 @@ export const actions = {
           commit('SET_NEW_SEARCH_MESSAGES', data.messages)
         } else { // main
           commit('SET_NEW_MESSAGES', data.messages)
-          commit('REFRESH_UNREAD_MESSAGE_COUNT')
+          // commit('REFRESH_UNREAD_MESSAGE_COUNT')
         }
       }
       commit('SET_NEW_LOADING', false)
@@ -438,10 +444,13 @@ export const actions = {
     }
     var parm = { last_time: time }
     return dispatch('put', {url: '/api_last', body: parm, loading: false}).then(function (data) {
+      state.unread_message_count = data.unread_message_count
+      console.log(data)
+      console.log(state.unread_message_count)
       commit('SET_LAST_TIME', parseInt(time, 10))
-      commit('REFRESH_UNREAD_MESSAGE_COUNT')
+      commit('REFRESH_LOCAL_UNREAD_MESSAGE_COUNT')
       // 如果<20了，就预加载一些
-      if (state.unread_message_count <= 20) {
+      if (state.local_unread_message_count <= 20) {
         let after = null
         if (state.messages.length > 0) {
           after = state.messages[state.messages.length - 1].created_at

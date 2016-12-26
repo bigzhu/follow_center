@@ -41,7 +41,7 @@
   </div>
 </template>
 <script>
-  import {checkLogin} from '../../lib_bz/functions/user'
+  import {checkLogin} from 'bz-lib/functions/user'
   import $ from 'jquery'
   import store from './store'
   import NProgress from 'nprogress'
@@ -150,6 +150,7 @@
         if (this.key) {
           store.state.search_messages = [] // 清空上次的查找
           this.$router.push({name: 'Search', params: {key: this.key}})
+          console.log('fucnk')
         } else {
           this.$router.push({name: 'Main'})
         }

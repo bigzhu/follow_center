@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-show="followed_god_count!==0" class='ui center aligned basic segment history-bz'>
+    <div :class="{ 'invisible_bz': followed_god_count===0 || new_loading}" class='ui center aligned basic segment history-bz'>
       <old></old>
     </div>
     <div v-show="followed_god_count===0" class="no-message">
@@ -12,27 +12,31 @@
       <div v-show="!is_login && show_no_login" class="no-message">
         <img src="../../static/assets/no-message.svg">
         <p>
-          <a href="/login.html">登录</a>以后才能看到更广阔的世界哟!
+          <a href="/login.html">登录</a>后能看到更广阔的世界哟!
         </p>
       </div>
     </transition>
 
     <message v-for='message in messages' :message='message'>
     </message>
-    <div v-show="followed_god_count>0" class="no-message">
+    <div v-show="followed_god_count>0 && unread_message_count===0" class="no-message">
       <p>好厉害，你已经把所有消息看完啦。再关注点人吧？
         <router-link :to="{'name': 'Recommand', params: {'cat': 'recommand'}}" :class="{'active': this.$route.name==='Recommand'}">寻他&gt;</router-link>
       </p> 
     </div>
-    <!--
-    <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !new_loading}"></div>
-    -->
+    <div v-show="followed_god_count!==0" class='ui center aligned basic segment history-bz'>
+      <div v-show="new_loading" class="ui active tiny inline loader"></div>
+      <a :class="{ 'invisible_bz': !new_loading}" href='javascript:void(0)' class='history-search-bz loading'>
+        <i v-show="!new_loading" class='icon new'></i>
+        新的消息
+      </a>
+    </div>
     <bottom-loader :el="$el" element_class=".ui.fluid.card" v-on:bottom="call_back"></bottom-loader>
   </div>
 </template>
 
 <script>
-  import {checkLogin} from '../../../lib_bz/functions/user'
+  import {checkLogin} from 'bz-lib/functions/user'
   var get_count = 50
   import $ from 'jquery'
   import _ from 'lodash'
@@ -60,6 +64,9 @@
       }
     },
     computed: {
+      unread_message_count () {
+        return this.$store.state.unread_message_count
+      },
       is_login () {
         return checkLogin()
       },
@@ -89,7 +96,7 @@
       fetchData: function () {
         if (!this.god_name) {
           if (this.messages.length === 0) {
-            this.newMessage(5)
+            // this.newMessage(5)
             this.newMessage(get_count)
           }
         } else {
@@ -134,7 +141,9 @@
         // 解救强迫症，记录最后一条的time
         let created_at = this.messages[this.messages.length - 1].created_at
         this.$store.dispatch('recordLastMessage', created_at)
-        this.newMessage(get_count)
+        if (!this.new_loading) {
+          this.newMessage(get_count)
+        }
       },
       newMessage: function (limit = null) {
         let after = null
@@ -148,26 +157,24 @@
 </script>
 
 <style>
-  /* 可以设置不同的进入和离开动画 */
-/* 设置持续时间和动画函数 */
-.slide-fade-enter-active {
-  transition: all .3s ease;
-}
-.slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter, .slide-fade-leave-active {
-  padding-left: 10px;
-  opacity: 0;
-}
+  .slide-fade-enter-active {
+    transition: all .3s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .slide-fade-enter, .slide-fade-leave-active {
+    padding-left: 10px;
+    opacity: 0;
+  }
 
-.invisible_bz {/*隐藏占位*/
-  visibility:hidden;
-};
-.ui.segment.history-bz {
-  padding: 0;
-}
-.ui.segment.history-bz:first-child {
-  margin-top: 1em;
-}
+  .invisible_bz {/*隐藏占位*/
+    visibility:hidden;
+  };
+  .ui.segment.history-bz {
+    padding: 0;
+  }
+  .ui.segment.history-bz:first-child {
+    margin-top: 1em;
+  }
 </style>

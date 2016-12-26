@@ -16,9 +16,9 @@
       </div>
     </div>
     <div v-show="registered_count !== -1" class="footer-content">
-      <a href="/about">关于</a>
+      <a href="/about.html">关于</a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="/about">博客</a>
+      <a href="http://bigzhu.lorstone.com">博客</a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       注册人数：{{registered_count}}
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

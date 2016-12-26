@@ -31,6 +31,8 @@
           <add-god :god_name="god_name" :call_back="addDone" v-show="stat==='adding'"></add-god>
           <god-item v-for="god in not_my_gods" :god="god" class="god-item">
           </god-item>
+
+          <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !loading}"></div>
           <bottom-loader :el="$el" element_class=".god-item" v-on:bottom="bottomCall"></bottom-loader>
         </div>
       </div>
@@ -71,16 +73,12 @@
         no_more: false,
         god_name: '',
         input_name: '',
-        stat: 'button',
-        loading: false
+        stat: 'button'
       }
     },
     watch: {
       '$route.params': {
         handler: function () {
-          if (this.not_my_gods.length === 0) {
-            this.loading = true
-          }
           let _this = this
           this.$store.dispatch('getPublicGods', this.$route.params.cat).then(function (data) {
             _this.disableGodLoading()
@@ -91,12 +89,9 @@
       }
     },
     mounted () {
-      if (this.not_my_gods.length === 0) {
-        this.loading = true
-      }
-      let _this = this
+      let self = this
       this.$store.dispatch('getPublicGods', this.$route.params.cat).then(function (data) {
-        _this.disableGodLoading()
+        self.disableGodLoading()
       })
       $('body').visibility()
     },
@@ -124,6 +119,9 @@
       )
     },
     computed: {
+      loading () {
+        return this.$store.state.p.loading
+      },
       not_my_gods () {
         if (this.$store.state.cat_gods[this.$route.params.cat]) {
           return this.$store.state.cat_gods[this.$route.params.cat]

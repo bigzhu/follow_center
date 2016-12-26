@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-html="remark" v-show="!is_edit && remark" class="remark-bz"></div>
-    <p v-show="is_edit" v-html="remark" @blur="save" contenteditable="true" class="remark-edit-content"></p>
+    <div v-html="value" v-show="!is_edit && value" class="remark-bz"></div>
+    <p v-show="is_edit" v-html="value" @blur="save" contenteditable="true" class="remark-edit-content"></p>
     <button v-show="is_edit" @click="save" class="ui mini basic button save-remark-bz">保存</button>
     <a v-show="!is_edit" @click="edit" href="javascript:void(0)" class="remark-edit-bz">
       <i class="edit icon"></i>
@@ -14,9 +14,8 @@
   import Vue from 'vue'
   export default {
     props: {
-      remark: {
-        required: true,
-        twoWay: true
+      value: {
+        // required: true
       },
       god_id: {
         required: true,
@@ -43,8 +42,9 @@
         )
       },
       save: function () {
-        this.remark = $(this.$el).find('.remark-edit-content').html()
-        this.$store.dispatch('addRemark', {god_id: this.god_id, remark: this.remark})
+        this.value = $(this.$el).find('.remark-edit-content').html()
+        this.$emit('input', this.value)
+        this.$store.dispatch('addRemark', {god_id: this.god_id, remark: this.value})
         this.is_edit = false
       }
     }
@@ -60,11 +60,9 @@
     transition: visibility 0s, opacity 0.3s linear;
     opacity: 0;
   }
-  .ui.segment:hover {
-    .remark-edit-bz {
-      visibility: visible;
-      opacity: 1;
-    }
+  .ui.segment:hover .remark-edit-bz {
+    visibility: visible;
+    opacity: 1;
   }
   .ui.button.save-remark-bz {
     border-radius: 0.06em;

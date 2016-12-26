@@ -49,6 +49,10 @@
   import _ from 'lodash'
   export default {
     props: [],
+    preFetch: function (store) {
+      store.commit('SET_SITE', 'https://follow.center')
+      return store.dispatch('getRichList')
+    },
     computed: {
       new_two: function () {
         return _.chunk(this.$store.state.p.rich_list, 2)[0]
