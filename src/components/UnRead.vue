@@ -1,5 +1,5 @@
 <template>
-  <button class="ui circular icon fixed button large monitor only un-read-bz" data-content="未读消息数">
+  <button class="ui circular icon basic button large monitor only un-read-bz" data-content="未读消息数">
     <div data-content="Add users to your feed">
       {{unread_message_count}}
     </div>
@@ -30,21 +30,15 @@
   }
 </script>
 <style>
-  .fix-circle-bz {
+  .un-read-bz {
     position: fixed;
     right: 1.5em;
-    background: none;
-    border: 1px solid #DADADA;
-  }
-  .fix-circle-bz:hover {
-    border: 1px solid #515151;
-    background: #dedede;
-  }
-  .fixed.button.un-read-bz {
-    position: fixed;
-    right: 1.5em;
-    background: none;
     border: 1px solid #DADADA;
     bottom: 5em;
+  }
+  @media (min-width: 1100px) and (max-width: 1300px) {
+    .un-read-bz {
+      right: .5em;
+    }
   }
 </style>
