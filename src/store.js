@@ -381,12 +381,13 @@ export const actions = {
       commit('REFLASH_TIME_LEN')
     })
   },
-  getCat ({ state, commit, dispatch }, just_my = null) {
+  getCat ({ state, commit, dispatch }, is_my = null) {
     let parm = {
-      just_my: just_my
+      is_my: is_my,
+      is_public: 1
     }
     return dispatch('get', {url: '/api_cat', body: parm}).then(function (data) {
-      if (just_my) {
+      if (is_my) {
         commit('SET_MY_CATS', data.cats)
       } else {
         commit('SET_CATS', data.cats)
