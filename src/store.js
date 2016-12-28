@@ -258,6 +258,12 @@ export const mutations = {
 }
 // actions
 export const actions = {
+  putGod ({ dispatch, state, actions }, god) {
+    var parm = god
+    return dispatch('put', {url: '/api_god', body: parm, loading: false}).then(function (data) {
+      toastr.info('成功')
+    })
+  },
   addRemark ({ dispatch, state }, parm) {
     return dispatch('post', {url: '/api_remark', body: parm, loading: false})
   },

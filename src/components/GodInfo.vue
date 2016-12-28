@@ -168,7 +168,7 @@
           this.disable_edit = false
         } else {
           this.disable_edit = true
-          var user = {
+          var god = {
             name: this.god_info.name,
             twitter: this.god_info.twitter,
             github: this.god_info.github,
@@ -178,7 +178,7 @@
             // bio: this.god_info.bio
             // avatar: this.god_info.avatar
           }
-          this.$store.dispatch('updateGod', user)
+          this.$store.dispatch('putGod', god)
         }
       }
     }
