@@ -18,11 +18,10 @@
     props: ['message'],
     computed: {
       img_url: function () {
-        var img_url = this.message.extended_entities.url
-        img_url = img_url.replace('s640x640', 's1080x1080')
-        img_url = img_url.replace('s750x750', 's1080x1080')
+        let img_url = this.message.extended_entities.url
+        img_url = img_url.replace('s640x640', 's1080x1080').replace('s750x750', 's1080x1080')
         img_url = window.btoa(window.btoa(img_url))
-        return (window.bz_url || '') + '/api_sp/' + img_url
+        return '/api_sp/' + img_url
       },
       // height: function () {
       //   var img_height, img_width, real_height
