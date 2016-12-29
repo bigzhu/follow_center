@@ -18,6 +18,7 @@ function initCatGod (state, cat) {
 }
 // state
 export const state = {
+  show_how_to_use_collect: false, // 是否显示收藏引导
   local_unread_message_count: 0, // 取过来还未读的信息
   followed_god_count: -1, // 关注的god数
   last_scroll_top: 0, //
@@ -236,9 +237,6 @@ export const mutations = {
     state.info.header = header
     state.info.info = info
   },
-  SET_COLLECT_MESSAGES (state, messages) {
-    state.collect_messages = messages
-  },
   SET_NEW_SEARCH_MESSAGES (state, messages) {
     let merge_messages = state.search_messages.concat(messages)
     let uniq_messages = _.uniqBy(merge_messages, function (d) {
@@ -416,7 +414,12 @@ export const actions = {
   },
   getCollect ({ state, commit, dispatch }) {
     return dispatch('get', '/api_collect').then(function (data) {
-      commit('SET_COLLECT_MESSAGES', data.messages)
+      state.collect_messages = data.messages
+      if (state.collect_messages.length === 0) {
+        state.show_how_to_use_collect = true
+      } else {
+        state.show_how_to_use_collect = false
+      }
       return data
     })
   },

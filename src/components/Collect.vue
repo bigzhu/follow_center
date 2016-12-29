@@ -1,10 +1,10 @@
 <template>
   <div class="ui main container">
-    <img v-show="show_how_to_use" class="ui fluid image" src="../../static/assets/how_to_use_collection.jpg">
+    <img v-show="show_how_to_use_collect" class="ui fluid image" src="../../static/assets/how_to_use_collection.jpg">
     <div class="ui stackable grid">
       <div class="row">
         <div class="eleven wide column no-padding-bz">
-          <messages @on:get_done="show"></messages>
+          <messages></messages>
         </div>
         <div class="five wide column computer only ">
         </div>
@@ -23,22 +23,17 @@
     },
     data () {
       return {
-        show_how_to_use: false
       }
     },
     computed: {
+      show_how_to_use_collect () {
+        return this.$store.state.show_how_to_use_collect
+      }
     },
     mounted () {
       $('body').visibility()
     },
     methods: {
-      show: function (messages) {
-        if (messages.length === 0) {
-          this.show_how_to_use = true
-        } else {
-          this.show_how_to_use = false
-        }
-      }
     },
     route: {
       deactivate: function (transition) { // 为了解除 scroll 的事件监听
