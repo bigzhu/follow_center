@@ -7,6 +7,7 @@
           </cat>
         </div>
         <div class="twelve wide column no-padding-bz">
+          <!--
           <div class="ui center aligned basic segment add-newgod-bz"> 
             <a v-show="stat==='button'||stat==='adding'" @click="showAddGodInput" href="javascript:void(0)" class="ui add-newgod-style">
               <i class="add icon"></i>添加要跟踪的新目标
@@ -16,6 +17,7 @@
               <div @click="add" class="ui button">添加</div>
             </div>
           </div>
+          -->
           <div v-show="not_my_gods.length === 0 && no_more && !loading && stat!=='adding'" class="ui icon message">
             <i class="notched circle loading icon"></i>
             <div class="content">
