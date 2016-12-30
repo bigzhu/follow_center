@@ -95,9 +95,6 @@
         }
         return '/api_sp/' + btoa(this.god_info.avatar)
       }
-      // god_info: function () {
-      //   return this.getGodInfo()
-      // }
     },
     components: {
       SocialBadge,
@@ -113,24 +110,6 @@
           self.loading = false
         })
         if (god.followed === 1) { self.$store.dispatch('unfollow', god.god_id) }
-      },
-      getGodInfo: function (type) {
-        if (type) {
-          let god_info = {avatar: this.god[type + '_user'].avatar, description: this.god[type + '_user'].description}
-          return god_info
-        } else {
-          if (this.god.twitter_user) {
-            return this.getGodInfo('twitter')
-          } else if (this.god.github_user) {
-            return this.getGodInfo('github')
-          } else if (this.god.tumblr_user) {
-            return this.getGodInfo('tumblr')
-          } else if (this.god.instagram_user) {
-            return this.getGodInfo('instagram')
-          } else if (this.god.facebook_user) {
-            return this.getGodInfo('facebook')
-          }
-        }
       },
       setGodInfo: function (type) {
         if (type) {
