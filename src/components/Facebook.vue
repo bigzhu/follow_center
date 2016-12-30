@@ -25,10 +25,17 @@
         }
       },
       description: function () {
-        return myautolinker(this.message.content.description, 'facebook')
+        if (this.message.content.description) {
+          return myautolinker(this.message.content.description, 'facebook')
+        } else {
+          return ''
+        }
       },
       the_text: function () {
-        return myautolinker(this.text, 'facebook')
+        if (this.text) {
+          return myautolinker(this.text, 'facebook')
+        }
+        return ''
       }
     },
     methods: {
