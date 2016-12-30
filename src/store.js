@@ -115,9 +115,6 @@ export const mutations = {
   SET_MY_CATS (state, cats) {
     state.my_cats = cats
   },
-  SET_CATS (state, cats) {
-    state.cats = cats
-  },
   REFLASH_TIME_LEN (state) { // 更新时间隔
     if (state.last_reflash_oper) {
       _.map(state.messages,
@@ -392,9 +389,10 @@ export const actions = {
     }
     return dispatch('get', {url: '/api_cat', body: parm}).then(function (data) {
       if (is_my) {
-        commit('SET_MY_CATS', data.cats)
+        state.my_cats = data.cats
       } else {
-        commit('SET_CATS', data.cats)
+        console.log(data.cats)
+        state.cats = data.cats
       }
       return data
     })

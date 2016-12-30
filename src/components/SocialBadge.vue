@@ -20,8 +20,6 @@
       loading: {
         type: Boolean,
         default: false
-      },
-      call_back: {
       }
     },
     components: {
@@ -66,12 +64,11 @@
     },
     methods: {
       click: function () {
-        if (this.call_back) {
-          this.call_back(this.type)
-        }
+        this.$emit('show_this', this.type)
       }
     }
   }
 </script>
+
 <style>
 </style>

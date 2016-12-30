@@ -13,11 +13,11 @@
           <slot>
           </slot>
           <div class="god-icon-bz">
-            <social-badge v-show="god.twitter_user" :call_back="setGodInfo" :info="god.twitter_user"></social-badge>
-            <social-badge v-show="god.github_user" :call_back="setGodInfo" :info="god.github_user"></social-badge>
-            <social-badge v-show="god.tumblr_user" :call_back="setGodInfo" :info="god.tumblr_user"></social-badge>
-            <social-badge v-show="god.instagram_user" :call_back="setGodInfo" :info="god.instagram_user" ></social-badge>
-            <social-badge v-show="god.facebook_user" :call_back="setGodInfo" :info="god.facebook_user"></social-badge>
+            <social-badge v-show="god.twitter_user" @show_this="setGodInfo" :info="god.twitter_user"></social-badge>
+            <social-badge v-show="god.github_user" @show_this="setGodInfo" :info="god.github_user"></social-badge>
+            <social-badge v-show="god.tumblr_user" @show_this="setGodInfo" :info="god.tumblr_user"></social-badge>
+            <social-badge v-show="god.instagram_user" @show_this="setGodInfo" :info="god.instagram_user" ></social-badge>
+            <social-badge v-show="god.facebook_user" @show_this="setGodInfo" :info="god.facebook_user"></social-badge>
           </div>
           <a @click="$router.push({ name: 'God', params: { god_name: god.name }})" href="javascript:void(0)" class="header god-name-bz user-name-a">
             <h3>{{god.name}}</h3>
@@ -67,7 +67,11 @@
     },
     data: function () {
       return {
-        loading: false
+        loading: false,
+        god_info: {
+          avatar: '',
+          description: ''
+        }
       }
     },
     computed: {
@@ -89,10 +93,10 @@
           return ''
         }
         return '/api_sp/' + btoa(this.god_info.avatar)
-      },
-      god_info: function () {
-        return this.getGodInfo()
       }
+      // god_info: function () {
+      //   return this.getGodInfo()
+      // }
     },
     components: {
       SocialBadge,
@@ -129,8 +133,8 @@
       },
       setGodInfo: function (type) {
         if (type) {
-          this.av = this.god[type + '_user'].avatar
-          this.desc = this.god[type + '_user'].description
+          this.god_info.avatar = this.god[type + '_user'].avatar
+          this.god_info.description = this.god[type + '_user'].description
         } else {
           if (this.god.twitter_user) {
             this.setGodInfo('twitter')
