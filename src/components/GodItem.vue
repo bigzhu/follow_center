@@ -27,7 +27,7 @@
           </a>
           <a href="javascript:void(0)"><span v-show="god.is_public===1" class="ui basic label public-personal">公开</span></a>
           <a @click="$router.push({ name: 'BioDetail', params: { god_name: god.name }})" href="javascript:void(0)"><span v-show="god.is_public===2" class="ui keppel label public-personal">传记</span></a>
-          <div class="god-discription-bz" v-html="description"  ></div>
+          <div class="god-discription-bz" v-html="description"></div>
 
           <god-remark v-model="remark" :god_id="god.id"></god-remark>
           <a v-show="false" class="hide-god-bz">
@@ -51,6 +51,7 @@
   import GodRemark from './GodRemark'
   import SocialBadge from './SocialBadge'
   import btoa from '../functions/encode_url'
+  import myautolinker from '../functions/myautolinker'
   export default {
     props: {
       god: {
@@ -134,7 +135,8 @@
       setGodInfo: function (type) {
         if (type) {
           this.god_info.avatar = this.god[type + '_user'].avatar
-          this.god_info.description = this.god[type + '_user'].description
+          this.god_info.description = myautolinker(this.god[type + '_user'].description, type)
+          console.log(this.god_info.description)
         } else {
           if (this.god.twitter_user) {
             this.setGodInfo('twitter')
