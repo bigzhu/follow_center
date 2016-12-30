@@ -14,7 +14,7 @@
 </template>
 <script>
   import _ from 'lodash'
-  import Autolinker from 'autolinker'
+  import myautolinker from '../functions/myautolinker'
   export default {
     props: ['message'],
     data: function () {
@@ -62,7 +62,7 @@
         }
       },
       text: function () {
-        return Autolinker.link(this.message.text, {mention: 'twitter'})
+        return myautolinker(this.message.text, 'twitter')
       }
     },
     methods: {

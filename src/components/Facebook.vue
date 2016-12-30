@@ -10,8 +10,7 @@
 
 <script>
   import '../assets/public.css'
-  import Autolinker from 'autolinker'
-  import replaceSocial from '../functions/replaceSocial.js'
+  import myautolinker from '../functions/myautolinker'
 
   export default {
     props: ['message'],
@@ -26,12 +25,10 @@
         }
       },
       description: function () {
-        let text = Autolinker.link(this.message.content.description, {twitter: false})
-        text = replaceSocial('facebook', text)
-        return text
+        return myautolinker(this.message.content.description, 'facebook')
       },
       the_text: function () {
-        return Autolinker.link(this.text)
+        return myautolinker(this.text, 'facebook')
       }
     },
     methods: {

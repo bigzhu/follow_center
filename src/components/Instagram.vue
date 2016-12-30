@@ -12,7 +12,7 @@
 
 <script>
   import '../assets/public.css'
-  import Autolinker from 'autolinker'
+  import myautolinker from '../functions/myautolinker'
 
   export default {
     props: ['message'],
@@ -31,9 +31,7 @@
       //   return real_height
       // },
       description: function () {
-        let text = Autolinker.link(this.message.text, {mention: 'instagram'})
-        // text = replaceSocial('instagram', text)
-        return text
+        return myautolinker(this.message.text, 'instagram')
       }
     },
     methods: {

@@ -19,8 +19,7 @@
 
 <script>
   import _ from 'lodash'
-  import Autolinker from 'autolinker'
-  import replaceSocial from '../functions/replaceSocial.js'
+  import myautolinker from '../functions/myautolinker'
 
   export default {
     props: ['message'],
@@ -47,9 +46,7 @@
       },
       text: function () {
         if (this.message.text !== null) {
-          let text = Autolinker.link(this.message.text, {twitter: false})
-          text = replaceSocial('tumblr', text)
-          return text
+          return myautolinker(this.message.text, 'tumblr')
         }
       }
     },
