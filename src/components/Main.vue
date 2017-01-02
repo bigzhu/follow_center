@@ -70,8 +70,6 @@
       }
     },
     beforeRouteLeave (to, from, next) {
-      $(window).off('scroll')
-      $(window).unbind('scroll')
       this.$store.commit('SET_SHOW_BAR', true) // 离开时，确保Bar显示出来
       next()
     }

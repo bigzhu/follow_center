@@ -38,8 +38,6 @@
 <script>
   import {checkLogin} from 'bz-lib/functions/user'
   var get_count = 50
-  import $ from 'jquery'
-  import _ from 'lodash'
   import Old from './Old.vue'
   import BottomLoader from 'bz-bottom-loader'
   import Message from './Message.vue'
@@ -90,7 +88,6 @@
         setTimeout(function () { self.show_no_login = false }, 6000)
       }
       this.fetchData()
-      this.bindScroll()
     },
     methods: {
       fetchData: function () {
@@ -106,36 +103,6 @@
             this.$store.dispatch('getNew', {god_name: this.god_name, limit: get_count})
           }
         }
-      },
-      bindScroll: function () {
-        var v = this
-        let self = this
-        var messages_element = $(v.$el)
-        $(window).scroll(
-          _.throttle(
-            function () {
-              self.$store.commit('CHECK_BAR')
-              messages_element.children('div > .ui.fluid.card').each(
-                function () {
-                  var message, message_position, scroll_bottom
-                  message_position = $(this).offset().top
-                  scroll_bottom = $(window).scrollTop() + $(window).height()
-                  message_position = parseInt(message_position / 50, 10)
-                  scroll_bottom = parseInt(scroll_bottom / 50, 10)
-                  if (message_position === scroll_bottom) {
-                    message = $(this)[0].__vue__.message
-                    v.$store.dispatch('recordLastMessage', message.created_at)
-                    // let color = random.color()
-                    // $('#id_' + message.id).addClass(color)
-                  }
-                }
-              )
-              if ($(this).scrollTop() === 0) {
-                null
-              }
-            }, 100
-          )
-        )
       },
       call_back: function () {
         // 解救强迫症，记录最后一条的time

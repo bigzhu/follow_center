@@ -38,13 +38,6 @@
       $('body').visibility()
     },
     methods: {
-    },
-    route: {
-      deactivate: function (transition) { // 为了解除 scroll 的事件监听
-        $(window).off('scroll')
-        this.$broadcast('unbind-scroll')
-        transition.next()
-      }
     }
   }
 </script>

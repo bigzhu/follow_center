@@ -18,6 +18,7 @@ function initCatGod (state, cat) {
 }
 // state
 export const state = {
+  io: null, // IntersectionObserver
   show_how_to_use_collect: false, // 是否显示收藏引导
   local_unread_message_count: 0, // 取过来还未读的信息
   followed_god_count: -1, // 关注的god数
@@ -253,6 +254,21 @@ export const mutations = {
 }
 // actions
 export const actions = {
+  getIntersectionObserver ({ dispatch, state, actions }) {
+    if (state.io === null) {
+      state.io = new window.IntersectionObserver(
+        entries => {
+          for (let entry of entries) {
+            let message = entry.target.__vue__.message
+            dispatch('recordLastMessage', message.created_at)
+            console.log(message.created_at)
+            state.io.unobserve(entry.target)
+          }
+        }
+      )
+    }
+    return state.io
+  },
   putGod ({ dispatch, state, actions }, god) {
     var parm = god
     return dispatch('put', {url: '/api_god', body: parm, loading: false}).then(function (data) {

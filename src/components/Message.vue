@@ -61,9 +61,13 @@
     },
     mounted () {
       this.$nextTick(function () {
+        let self = this
+        this.$store.dispatch('getIntersectionObserver').then(function (io) {
+          io.observe(self.$el)
+        })
+        // this.$store.dispatch('getIntersectionObserver').observe(this.$el)
         var tool_tips_target = $(this.$el).find('.show-god-info')
         var popup_content = $(this.$el).find('.ui.card')
-        let self = this
         $(tool_tips_target).popup(
           {
             popup: $(popup_content),
