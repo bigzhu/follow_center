@@ -31,7 +31,7 @@
         新的消息
       </a>
     </div>
-    <bottom-loader :el="$el" element_class=".ui.fluid.card" v-on:bottom="call_back"></bottom-loader>
+    <bottom-loader v-on:bottom="call_back"></bottom-loader>
   </div>
 </template>
 

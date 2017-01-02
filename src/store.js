@@ -373,6 +373,7 @@ export const actions = {
       state.unread_message_count = data.unread_message_count
       if (data.messages.length === 0) { // 没有取到数
         console.log('get new get none')
+        console.log(data.followed_god_count)
         state.followed_god_count = data.followed_god_count
         if (search_key && state.search_messages.length === 0) {
           // oldMessage({ dispatch, state }, {search_key: search_key})
@@ -382,7 +383,7 @@ export const actions = {
           // oldMessage({ dispatch, state }, {limit: 2})
         }
       } else {
-        state.followed_god_count = -1
+        // state.followed_god_count = -1
         if (god_name) { // 查god的new
           commit('SET_GODS_NEW_MESSAGES', {god_name: god_name, messages: data.messages})
         } else if (explore) { // explore
