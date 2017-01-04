@@ -60,6 +60,9 @@
       }
     },
     watch: {
+      god_id: function () {
+        this.setGodInfo()
+      }
     },
     mounted () {
       this.setGodInfo()
@@ -115,7 +118,6 @@
         if (type) {
           this.god_info.avatar = this.god[type + '_user'].avatar
           this.god_info.description = myautolinker(this.god[type + '_user'].description, type)
-          console.log(this.god_info.description)
         } else {
           if (this.god.twitter_user) {
             this.setGodInfo('twitter')
