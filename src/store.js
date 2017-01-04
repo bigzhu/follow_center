@@ -260,6 +260,7 @@ export const actions = {
         entries => {
           for (let entry of entries) {
             let message = entry.target.__vue__.message
+            console.log(entry)
             dispatch('recordLastMessage', message.created_at)
             console.log(message.created_at)
             state.io.unobserve(entry.target)

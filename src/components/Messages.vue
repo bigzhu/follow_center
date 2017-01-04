@@ -106,8 +106,8 @@
       },
       call_back: function () {
         // 解救强迫症，记录最后一条的time
-        let created_at = this.messages[this.messages.length - 1].created_at
-        this.$store.dispatch('recordLastMessage', created_at)
+        // let created_at = this.messages[this.messages.length - 1].created_at
+        // this.$store.dispatch('recordLastMessage', created_at)
         if (!this.new_loading) {
           this.newMessage(get_count)
         }
