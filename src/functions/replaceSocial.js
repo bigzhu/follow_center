@@ -1,5 +1,6 @@
 import _ from 'lodash'
 export default function (social_type, text) {
+  if (!text) return ''
   let pattern = /\B@[a-z0-9_-]+/gi
   let list = text.match(pattern)
   list = _.uniq(list)
