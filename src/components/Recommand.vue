@@ -7,7 +7,6 @@
           </cat>
         </div>
         <div class="twelve wide column no-padding-bz">
-          <add-god></add-god>
           <god-item v-for="god in not_my_gods" :god="god" class="god-item">
           </god-item>
           <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !loading}"></div>
@@ -22,7 +21,6 @@
   import $ from 'jquery'
   import GodItem from './GodItem'
   import Cat from './Cat'
-  import AddGod from './AddGod'
   import BottomLoader from 'bz-bottom-loader'
 
   export default {
@@ -39,7 +37,6 @@
     },
     components: {
       Cat,
-      AddGod,
       GodItem,
       BottomLoader
     },

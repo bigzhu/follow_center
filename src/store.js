@@ -110,8 +110,8 @@ export const mutations = {
     )
     state.cat_gods[cat] = uniq_gods
   },
-  UNSHIFT_NOT_MY_GOD (state, cat, god) {
-    state.cat_gods[cat].unshift(god)
+  UNSHIFT_MY_GOD (state, {cat, god}) {
+    state.cat_my_gods[cat].unshift(god)
   },
   SET_MY_CATS (state, cats) {
     state.my_cats = cats

@@ -96,6 +96,11 @@
         facebook_loading: false
       }
     },
+    computed: {
+      cat: function () {
+        return this.$route.params.cat
+      }
+    },
     mounted () {
     },
     methods: {
@@ -155,7 +160,6 @@
       },
       startCheck: function (god_info) {
         this.setGodInfo(god_info)
-
         this.adding = false
         this.twitter_loading = true
         let self = this
@@ -222,9 +226,10 @@
       allDone: function (info) {
         this.disabled = false
         this.createGod()
-        this.$store.commit('UNSHIFT_NOT_MY_GOD', this.$route.params.cat, this.god_info)
-        this.$store.dispatch('queryCat')
+        this.$store.commit('UNSHIFT_MY_GOD', {cat: this.cat, god: this.god_info})
+        // this.$store.dispatch('queryCat')
         this.stat = 'button'
+        this.$emit('add_done', this.god_info)
       },
       setGodSocial: function (type) {
         if (this[type + '_info'].count !== -4) {
@@ -238,6 +243,7 @@
         this.setGodSocial('tumblr')
         this.setGodSocial('instagram')
         this.setGodSocial('facebook')
+        this.god_info.followed_at = window.Date.now() // 当前时间做为follow时间,才会排前面
       },
       setGodInfo: function (god_info) {
         this.god_info = god_info

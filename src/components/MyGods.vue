@@ -11,6 +11,7 @@
             <input v-model="key" type="text" placeholder="搜索目标">
             <i class="search icon"></i>
           </div>
+          <add-god></add-god>
           <god-item v-for="god in ordered_my_gods" :god="god" is_my="true">
           </god-item>
         </div>
@@ -23,6 +24,7 @@
   import $ from 'jquery'
   import _ from 'lodash'
   import GodItem from './GodItem'
+  import AddGod from './AddGod'
   import Cat from './Cat'
   export default {
     events: {
@@ -43,6 +45,7 @@
     },
     props: [],
     components: {
+      AddGod,
       Cat,
       GodItem
     },
@@ -54,7 +57,7 @@
         })
       },
       ordered_my_gods: function () {
-        return _.orderBy(this.filtered_my_gods, 'followed_at', -1)
+        return _.orderBy(this.filtered_my_gods, 'followed_at', 'desc')
       },
       my_gods () {
         if (this.$store.state.cat_my_gods[this.$route.params.cat]) {
