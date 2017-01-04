@@ -7,31 +7,9 @@
           </cat>
         </div>
         <div class="twelve wide column no-padding-bz">
-          <div class="ui center aligned basic segment add-newgod-bz"> 
-            <a v-show="stat==='button'||stat==='adding'" @click="showAddGodInput" href="javascript:void(0)" class="ui add-newgod-style">
-              <i class="add icon"></i>添加要跟踪的新目标
-            </a>
-            <div v-show="stat==='input'" class="ui action input">
-              <input @keyup.13="add" v-model="input_name" id="id_add_god" type="text" placeholder="帐号名，比如 bigzhu">
-              <div @click="add" class="ui button">添加</div>
-            </div>
-          </div>
-          <div v-show="not_my_gods.length === 0 && no_more && !loading && stat!=='adding'" class="ui icon message">
-            <i class="notched circle loading icon"></i>
-            <div class="content">
-              <div v-show="$route.params.cat!=='recommand'" class="header">
-                {{$route.params.cat}}缺货了
-              </div>
-              <div v-show="$route.params.cat==='recommand'" class="header">
-                你全关注完了？猛!
-              </div>
-              <p>要不你来加一个?</p>
-            </div>
-          </div>
-          <add-god :god_name="god_name" :call_back="addDone" v-show="stat==='adding'"></add-god>
+          <add-god></add-god>
           <god-item v-for="god in not_my_gods" :god="god" class="god-item">
           </god-item>
-
           <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !loading}"></div>
           <bottom-loader :el="$el" element_class=".god-item" v-on:bottom="bottomCall"></bottom-loader>
         </div>
@@ -41,7 +19,6 @@
 </template>
 
 <script>
-  import Vue from 'vue'
   import $ from 'jquery'
   import GodItem from './GodItem'
   import Cat from './Cat'
@@ -70,10 +47,7 @@
     },
     data: function () {
       return {
-        no_more: false,
-        god_name: '',
-        input_name: '',
-        stat: 'button'
+        no_more: false
       }
     },
     watch: {
@@ -155,25 +129,6 @@
     methods: {
       bottomCall: function () {
         this.$store.dispatch('getPublicGods', this.$route.params.cat)
-      },
-      addDone: function () {
-        this.stat = 'button'
-      },
-      add: function () {
-        this.god_name = this.input_name.trim()
-        this.stat = 'adding'
-      },
-      showAddGodInput: function () {
-        this.input_name = '' // 清空上次的输入
-        this.stat = 'input'
-        Vue.nextTick(
-          function () {
-            $('#id_add_god').focus()
-          }
-        )
-        // 这时要重新取一下god，以处理连续添加的情况
-        // 先不取了，连续添加很少见
-        // this.queryNotMyGods(this.$route.params.cat)
       },
       disableGodLoading: function () {
         this.loading = false
