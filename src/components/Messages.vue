@@ -36,7 +36,6 @@
 </template>
 
 <script>
-  import {checkLogin} from 'bz-lib/functions/user'
   var get_count = 50
   import Old from './Old.vue'
   import BottomLoader from 'bz-bottom-loader'
@@ -66,7 +65,7 @@
         return this.$store.state.unread_message_count
       },
       is_login () {
-        return checkLogin()
+        return this.$store.state.p.is_login
       },
       followed_god_count () {
         return this.$store.state.followed_god_count

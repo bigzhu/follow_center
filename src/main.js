@@ -12,13 +12,13 @@ import Vue from 'vue'
 // })
 import router from './router'
 
-import {checkLogin} from 'bz-lib/functions/user'
 import fastclick from 'fastclick'
 import App from './App.vue'
-
+import store from './store'
+store.commit('CHECK_LOGIN')
 router.beforeEach((to, from, next) => {
   // check is login?
-  if (!checkLogin() && (to.name === 'MyGods' || to.name === 'Collect')) {
+  if (!store.state.p.is_login && (to.name === 'MyGods' || to.name === 'Collect')) {
     window.location.href = '/login.html'
     // next('/Login')
     return
