@@ -62,9 +62,11 @@
     mounted () {
       this.$nextTick(function () {
         let self = this
-        this.$store.dispatch('getIntersectionObserver').then(function (io) {
-          io.observe(self.$el)
-        })
+        if (this.is_login) {
+          this.$store.dispatch('getIntersectionObserver').then(function (io) {
+            io.observe(self.$el)
+          })
+        }
         // this.$store.dispatch('getIntersectionObserver').observe(this.$el)
         var tool_tips_target = $(this.$el).find('.show-god-info')
         var popup_content = $(this.$el).find('.ui.card')
@@ -84,6 +86,9 @@
       })
     },
     computed: {
+      is_login () {
+        return this.$store.state.p.is_login
+      },
       href: function () {
         if (this.message.m_type === 'github') {
           return `https://github.com/${this.message.name}`
@@ -103,19 +108,6 @@
       }
     },
     methods: {
-      visibility: function () {
-        let _this = this
-        $(this.$el).visibility(
-          {
-            once: true,
-            onTopVisible: function (event) {
-              _this.$store.dispatch('recordLastMessage', _this.message.created_at)
-              // let color = random.color()
-              // $(_this.$el).addClass(color)
-            }
-          }
-        )
-      },
       toggleCollect: function (message) {
         if (message.collect) {
           this.$store.dispatch('uncollect', message.id).then(function (data) {
