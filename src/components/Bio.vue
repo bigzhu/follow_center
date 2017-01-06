@@ -58,8 +58,7 @@
         return _.take(this.$store.state.p.rich_list, 2)
       },
       others: function () {
-        // return _.chunk(this.$store.state.p.rich_list, 2)[1]
-        return  _.slice(this.$store.state.p.rich_list, 2)
+        return _.slice(this.$store.state.p.rich_list, 2)
       }
     },
     data: function () {
