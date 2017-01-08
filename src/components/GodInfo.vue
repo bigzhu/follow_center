@@ -197,6 +197,7 @@
   }
   .god-description {
     margin-top: 1em;
+    overflow: hidden;
   }
   .ui.segment.info-card-bz {
     border: none;
