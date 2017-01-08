@@ -254,6 +254,12 @@ export const mutations = {
 }
 // actions
 export const actions = {
+  postAnki ({ state, commit, dispatch }, front) {
+    var parm = {
+      front: front
+    }
+    return dispatch('post', {url: '/api_anki', body: parm, loading: true})
+  },
   getIntersectionObserver ({ dispatch, state, actions }) {
     if (state.io === null) {
       state.io = new window.IntersectionObserver(
