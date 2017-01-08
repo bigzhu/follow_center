@@ -16,6 +16,7 @@
     <div class="like-bz">
       <a @click="toggleCollect(message)" :class="{'hidden-bz':!message.collect}" class="bookmark-bz"><i :class="{'remove':!message.collect, 'light-bz': message.collect}" class="bookmark icon"></i></a>
       <router-link :to="{ name:'TheMessage', params:{id:message.id}}" class="more-infor-bz hidden-bz"><i class="ellipsis horizontal icon"></i></router-link>
+      <a @click="anki" class="bookmark-bz"><i class="add icon"></i></a>
     </div>
   </div>
 </template>
@@ -108,6 +109,10 @@
       }
     },
     methods: {
+      anki: function () {
+        let front = $(this.$el).find('.content-bz').html()
+        this.$store.dispatch('postAnki', front)
+      },
       toggleCollect: function (message) {
         if (message.collect) {
           this.$store.dispatch('uncollect', message.id).then(function (data) {
