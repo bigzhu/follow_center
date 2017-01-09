@@ -1,5 +1,5 @@
 <template>
-  <button class="ui circular icon basic button large monitor only un-read-bz" data-content="未读消息数">
+  <button class="ui circular icon basic button large monitor only un-read-bz" data-content="{{ $t("UnRead.unread") }}">
     <div data-content="Add users to your feed">
       {{unread_message_count}}
     </div>

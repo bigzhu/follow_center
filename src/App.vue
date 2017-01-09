@@ -10,7 +10,7 @@
           <div class="right menu ">
             <div class="item large monitor only">
               <form @keyup.13="search" v-on:submit.prevent class="ui  transparent icon input">
-                <input v-model="key" type="text" placeholder="搜索资讯">
+                <input v-model="key" type="text" placeholder="{{ $t("App.search") }}">
                 <i @click="search" class="search link icon"></i>
               </form>
             </div>
@@ -18,22 +18,22 @@
             <div v-show="user_name" class="ui simple dropdown item user-imfor-bz">
               <img :src="avatar" class="ui avatar image">
               <div class="menu login-menu-bz">
-                <a @click="$router.push({ name: 'God', params: { god_name: user_name }})" class="item">我发布的</a>
-                <a @click="logout" class="item">退出登录</a>
+                <a @click="$router.push({ name: 'God', params: { god_name: user_name }})" class="item">{{ $t("App.mine") }}</a>
+                <a @click="logout" class="item">{{ $t("App.logout") }}</a>
               </div>
             </div>
             <a v-show="user_name===''" href="/login.html" class="item">
-              登录
+              {{ $t("App.login") }}
             </a>
           </div>
         </div>
       </div>
       <nav v-show="show_bar" class="ui borderless main menu fix-bz bar-blow">
         <div class="ui container bar-selection">
-          <router-link :to="{'name': 'Recommand'}" :class="{'active': this.$route.name==='Recommand'}" class="item navi-bz move-left-bz">寻他</router-link>
-          <router-link v-show="user_name!=''" :to="{ name:'MyGods'}" :class="{'active': this.$route.name==='MyGods'}" class="item navi-bz">已跟踪</router-link>
-          <router-link v-show="user_name!=''" :to="{ name:'Collect'}" :class="{'active': this.$route.name==='Collect'}" class="item navi-bz">收藏</router-link>
-          <router-link :to="{ name:'Bio'}" :class="{'active': this.$route.name==='Bio'}" class="item navi-bz">传记</router-link>
+          <router-link :to="{'name': 'Recommand'}" :class="{'active': this.$route.name==='Recommand'}" class="item navi-bz move-left-bz">{{ $t("App.whattofollow") }}</router-link>
+          <router-link v-show="user_name!=''" :to="{ name:'MyGods'}" :class="{'active': this.$route.name==='MyGods'}" class="item navi-bz">{{ $t("App.following") }}</router-link>
+          <router-link v-show="user_name!=''" :to="{ name:'Collect'}" :class="{'active': this.$route.name==='Collect'}" class="item navi-bz">{{ $t("App.saved") }}</router-link>
+          <router-link :to="{ name:'Bio'}" :class="{'active': this.$route.name==='Bio'}" class="item navi-bz">{{ $t("App.Biography") }}</router-link>
         </div>
       </nav>
     </header>

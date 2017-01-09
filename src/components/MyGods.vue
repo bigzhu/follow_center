@@ -8,7 +8,7 @@
         </div>
         <div class="twelve wide column no-padding-bz">
           <div class="ui transparent icon input followed-search">
-            <input v-model="key" type="text" placeholder="搜索目标">
+            <input v-model="key" type="text" placeholder="{{ $t("MyGods.search") }}">
             <i class="search icon"></i>
           </div>
           <add-god></add-god>

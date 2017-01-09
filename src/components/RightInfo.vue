@@ -3,7 +3,7 @@
     <div class="ui card border-radius">
       <div class="content">
         <div class="description align-center">
-          <i class="wechat icon"></i>官方微信群
+          <i class="wechat icon"></i>{{ $t("RightInfo.wechat") }}
         </div>
       </div>
       <div class="ui small centered image">
@@ -11,18 +11,18 @@
       </div>
       <div class="content">
         <div class="description align-center">
-          <i class="qq icon"></i>答疑QQ群:&nbsp&nbsp484391016
+          <i class="qq icon"></i>{{ $t("RightInfo.qq") }}
         </div>
       </div>
     </div>
     <div v-show="registered_count !== -1" class="footer-content">
-      <a href="/about.html">关于</a>
+      <a href="/about.html">{{ $t("RightInfo.about") }}</a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="http://bigzhu.lorstone.com">博客</a>
+      <a href="http://bigzhu.lorstone.com">{{ $t("RightInfo.blog") }}</a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="/changelog.html">功能日志</a>
+      <a href="/changelog.html">{{ $t("RightInfo.changelog") }}</a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      注册人数：{{registered_count}}
+      {{ $t("RightInfo.register") }}：{{registered_count}}
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </br>© 2016 Follow Center
     </div>

@@ -2,7 +2,7 @@
   <div>
     <div v-html="value" v-show="!is_edit && value" class="remark-bz"></div>
     <p v-show="is_edit" v-html="value" @blur="save" contenteditable="true" class="remark-edit-content"></p>
-    <button v-show="is_edit" @click="save" class="ui mini basic button save-remark-bz">保存</button>
+    <button v-show="is_edit" @click="save" class="ui mini basic button save-remark-bz">{{ $t("GodRemark.save") }}</button>
     <a v-show="!is_edit" @click="edit" href="javascript:void(0)" class="remark-edit-bz">
       <i class="edit icon"></i>
     </a>

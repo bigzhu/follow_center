@@ -1,128 +1,157 @@
 // 按 component 名归类
 let cn = {
-  WaiterHeader: {
-    title: '服务系统'
+  AddGod: {
+    addnewgod: '添加要跟踪的新目标',
+    example: '帐号名，比如 bigzhu',
+    add: '添加',
+    adding: '添加中',
+    follownumber: '?人关注'
+  },
+  Bio: {
+    toptitle: '人物·传记',
+    topdescription: '他们是大人物，他们是小人物，他们在世界各地，演绎着比电影还精彩的人生。',
+    dowmtitle: '我们的故事',
+    downdescription: '从follow.center上关注我们'
+  },
+  GodInfo: {
+    edit: '编辑',
+    save: '保存'
+  },
+  Godltem: {
+    follownumber: '人关注',
+    public: '公开',
+    biography: '传记'
+  },
+  GodRemark: {
+    save: '保存',
   },
   Login: {
-    title: '登录您的账户',
-    user_name: '用户名',
-    password: '密码',
+    title: '发现更大更美好的世界',
+    withoutsns: '没有社交帐号? ',
+    hangout: '随意逛逛',
+    about: '关于Follow Center',
+    phone: '手机客户端下载',
+    andriod: '安卓手机端下载'
+  },
+  Message: {
+    nofollow: '您还没有关注任何人，从',
+    whattofollow: '寻他',
+    interesting: '里面寻找您感兴趣的人吧!',
     login: '登录',
-    error_info: '您的输入有误，请检验并重新输入。'
+    description: '后能看到更广阔的世界哟!',
+    nomessage: '好厉害，你已经把所有消息看完啦。再关注点人吧？',
+    wanttofollow: '寻他',
+    newmessage: '新的消息'
   },
-  infoBar: {
-    liushui: '交易流水的时间段',
-    reload: '刷新'
+  MyGods: {
+    search: '搜索目标'
   },
-  Payltem: {
-    numb: '订单号',
-    amount: '订单金额'
+  Old: {
+    search: '历史消息'
   },
-  PaySum: {
-    amount: '实时交易笔数',
-    money: '实时交易总金额',
-    true_amount: '实际交易金额'
+  RightInfo: {
+    wechat: '官方微信群',
+    qq: '答疑QQ群:&nbsp&nbsp484391016',
+    about: '关于';
+    blog: '博客';
+    changelog: '功能日志';
+    register: '注册人数'
   },
-  PayDetail: {
-    detail: '交易细节',
-    time: '交易时间',
-    numb: '交易单号',
-    type: '活动种类',
-    rule: '优惠规则',
-    ori: '原价',
-    unpar: '不参与优惠的金额',
-    payfor: '实际交易的金额',
-    weixin: '微信交易单号'
+  Top: {
+    backtotop: '回到顶部'
   },
-  SearchPH: {
-    numb: '请输入交易单号',
-    his: '搜索历史'
+  Unread: {
+    unread: '未读消息数'
   },
-  SearchP: {
-    del: '删除搜索历史'
-  },
-  SearchPN: {
-    nan: '暂无搜索历史'
-  },
-  SearchRH: {
-    numb: '请输入交易单号'
-  },
-  SearchEm: {
-    nan: '没有找到该笔交易'
-  },
-  PayNC: {
-    nan: '没有订单记录'
-  },
-  RightBar: {
-    out: '退出登录',
-    name: '商户名称',
-    numb: '商户号'
+  App: {
+    search: '搜索资讯',
+    mine: '我发布的',
+    logout: '退出登录',
+    login: '登录',
+    whattofollow: '寻他',
+    following: '已跟踪',
+    saved: '收藏',
+    biography: '传记'
   }
 }
 
-let th = {
-  WaiterHeader: {
-    title: 'ระบบสาํหรับพนักงาน'
+let en = {
+  AddGod: {
+    addnewgod: 'Add what you want to follow',
+    example: 'ID, for example: bigzhu',
+    add: 'Add',
+    adding: 'Adding',
+    follownumber: '? followers'
   },
-  // Login: {
-  //   title: 'ระบบสาํหรับพนักงาน',
-  //   user_name: 'ชื่อผู้ใช้งาน',
-  //   password: 'รหัสผ่าน',
-  //   login: 'เข้าสู่ระบบ',
-  //   error_info: 'ชือ่ผูใ้ช้หรอืรหสัผ่านไม่ถกูต้องกรุณาตรวจสอบและลองอกีครั้ง'
-  // },
-  Login: cn.Login,
-  infoBar: {
-    liushui: 'ชว่งเวลาการไหลของการทาํธุรกรรม',
-    reload: 'รีเฟรช'
+  Bio: {
+    toptitle: 'Biography',
+    topdescription: '他们是大人物，他们是小人物，他们在世界各地，演绎着比电影还精彩的人生。',
+    dowmtitle: 'Our story',
+    downdescription: 'Follow us from follow.center'
   },
-  Payltem: {
-    numb: 'หมายเลขการสั่งซื้อ',
-    amount: 'จำนวนเงินของการสั่งซื้อ'
+  GodInfo: {
+    edit: 'Edit',
+    save: 'Saved'
   },
-  PaySum: {
-    amount: 'จํานวนการทําธรุกรรมทั้งหมด',
-    money: 'ยอดจํานวนเงินการทําธรุกรรมณขนาดนน้ั',
-    true_amount: 'การทําธรุกรรมจาํนวนเงินทีต่อ้งจา่ยจริง'
+  Godltem: {
+    follownumber: 'Followers',
+    public: 'Public',
+    biography: 'Biography'
   },
-  PayDetail: {
-    detail: 'รายละเอียดการทําธุรกรรม',
-    time: 'เวลาการทําธุรกรรม',
-    numb: 'หมายเลขอ้างอิงการทําธุรกรรม',
-    type: 'ประเภทกิจกรรม&โปรโมชั่น',
-    rule: 'กติกาการใช้สทิธิ์ส่วนลด',
-    ori: 'ราคาเดิม',
-    unpar: 'จํานวนเงินไม่ร่วมรายการส่วนลด',
-    payfor: 'จํานวนเงินทตี่้องจ่ายจริงในการทําธุรกรรม',
-    weixin: 'หมายเลขอ้างอิงการทําธุรกรรมของ'
+  GodRemark: {
+    save: 'Saved',
   },
-  SearchPH: {
-    numb: 'กรุณาใสห่มายเลขอ้างอิงการทําธุรกรรม',
-    his: 'ประวัติการค้นหา'
+  Login: {
+    title: 'Finding the your world',
+    withoutsns: 'No social media? ',
+    hangout: 'Walk up',
+    about: 'About Follow Center',
+    phone: 'App',
+    andriod: 'Andriod App'
   },
-  SearchP: {
-    del: 'ลบประวัติการค้นหา'
+  Message: {
+    nofollow: 'From',
+    whattofollow: 'What to follow',
+    interesting: 'to find what you like!',
+    login: 'Login',
+    description: 'You will find a colorful and wide world!',
+    nomessage: 'Great! you have already read all the message.Finding more?',
+    wanttofollow: 'What to follow',
+    newmessage: 'New message'
   },
-  SearchPN: {
-    nan: 'ยังไม่มีประวัติการค้าหาในขณะนี้'
+  MyGods: {
+    search: 'Search'
   },
-  SearchRH: {
-    numb: 'กรุณาใสห่มายเลขอ้างอิงการทําธุรกรรม'
+  Old: {
+    search: 'History'
   },
-  SearchEm: {
-    nan: 'ต้องขอโทษด้วยที่ไม่ได้ในการค้นหาเนื้อหาที่เกี่ยวข้อง '
+  RightInfo: {
+    wechat: 'Wechat',
+    qq: 'QQ Q&A:&nbsp&nbsp484391016',
+    about: 'About';
+    blog: 'Blog';
+    changelog: 'Changelog';
+    register: 'Register'
   },
-  PayNC: {
-    nan: 'ยังไม่มีการบันทึกคําสั่งซื้อ'
+  Top: {
+    backtotop: 'Back to top'
   },
-  RightBar: {
-    out: 'ออกจากระบบ',
-    name: 'ชื่อร้านค้า',
-    numb: 'รหัสร้านค้า'
+  Unread: {
+    unread: 'Unread message'
+  },
+  App: {
+    search: 'Search',
+    mine: 'Mine',
+    logout: 'Logout',
+    login: 'Login',
+    whattofollow: 'What to follow',
+    following: 'Following',
+    saved: 'Saved',
+    biography: 'Biography'
   }
 }
 
 module.exports = {
   cn: cn,
-  th: th
+  en: en
 }

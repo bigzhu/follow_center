@@ -56,11 +56,11 @@
       <follow v-model="god_info.followed" :god_id="god_info.id"></follow>
       <button v-show="disable_edit" @click="save" class="ui basic button god-info-button-bz">
         <i class="icon file text"></i>
-        编辑
+        {{ $t("GodInfo.edit") }}
       </button>
       <button v-show="!disable_edit" @click="save" class="ui basic button god-info-button-bz">
         <i class="icon save"></i>
-        保存
+        {{ $t("GodInfo.save") }}
       </button>
     </div>
   </div>
