@@ -20,6 +20,8 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <a href="http://bigzhu.lorstone.com">博客</a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="/changelog.html">功能日志</a>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       注册人数：{{registered_count}}
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </br>© 2016 Follow Center

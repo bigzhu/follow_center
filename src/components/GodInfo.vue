@@ -197,11 +197,15 @@
   }
   .god-description {
     margin-top: 1em;
+    overflow: hidden;
+  }
+  .god-description p img {
+    width: 100%;
   }
   .ui.segment.info-card-bz {
     border: none;
     border-radius: 0.06em;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.13);
+    box-shadow: .5px 1px 1px 1px rgba(0,0,0,0.1);
   }
   .ui.form .inline.field>input.input-bz {
     border-radius: 0.06em;
