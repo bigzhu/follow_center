@@ -140,7 +140,7 @@
 <style>
   .ui.card.message-bz {
     border-radius: 0.06em;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.13);
+    box-shadow: .5px 1px 1px 1px rgba(0,0,0,0.1);
     position: relative;
   }
   .like-bz {
@@ -158,7 +158,7 @@
     opacity: 0;
   }
   .ui.card.message-bz:hover {
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: .5px 1px 1px 1px rgba(0,0,0,0.15);
   }
   .ui.card.message-bz:hover .hidden-bz {
     visibility: visible;

@@ -79,7 +79,7 @@
 <style>
   .ui.segment.bio-background {
     border-radius: 0.06em;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.13);
+    box-shadow: .5px 1px 1px 1px rgba(0,0,0,0.1);
     position: relative;
     border: none;
     background-color: #fff;

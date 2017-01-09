@@ -63,7 +63,7 @@
     border: none;
     border-radius: 0.06em;
     background: rgba(255, 255, 255, 0.74);
-    box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.07),0 2px 10px 0 rgba(34, 36, 38, 0.09);
+    box-shadow: .5px 1px 1px 1px rgba(0,0,0,0.1);
   }
   .ui.popup.phone-bz:before {
     background: rgba(255, 255, 255, 0.9);
