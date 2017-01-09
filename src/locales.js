@@ -33,7 +33,7 @@ let cn = {
     phone: '手机客户端下载',
     andriod: '安卓手机端下载'
   },
-  Message: {
+  Messages: {
     nofollow: '您还没有关注任何人，从',
     whattofollow: '寻他',
     interesting: '里面寻找您感兴趣的人吧!',
@@ -51,7 +51,7 @@ let cn = {
   },
   RightInfo: {
     wechat: '官方微信群',
-    qq: '答疑QQ群:&nbsp&nbsp484391016',
+    qq: '答疑QQ群:484391016',
     about: '关于',
     blog: '博客',
     changelog: '功能日志',
@@ -93,7 +93,7 @@ let en = {
     edit: 'Edit',
     save: 'Saved'
   },
-  Godltem: {
+  GodItem: {
     follownumber: 'Followers',
     public: 'Public',
     biography: 'Biography'
@@ -127,7 +127,7 @@ let en = {
   },
   RightInfo: {
     wechat: 'Wechat',
-    qq: 'QQ Q&A:&nbsp&nbsp484391016',
+    qq: 'QQ Q&A:484391016',
     about: 'About',
     blog: 'Blog',
     changelog: 'Changelog',

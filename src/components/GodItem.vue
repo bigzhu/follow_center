@@ -25,7 +25,7 @@
           <a class="followers-number-bz">
             {{god.followed_count}} {{ $t("GodItem.follownumber") }}
           </a>
-          <a href="javascript:void(0)"><span v-show="god.is_public===1" class="ui basic label public-personal">{{ $t("GodItem.public") }}</span></a>
+          <a href="javascript:void(0)"><span v-show="god.is_public===1" class="ui basic label public-personal"> {{ $t("GodItem.public") }}</span></a>
           <a @click="$router.push({ name: 'BioDetail', params: { god_name: god.name }})" href="javascript:void(0)"><span v-show="god.is_public===2" class="ui keppel label public-personal">{{ $t("GodItem.biography") }}</span></a>
           <div class="god-discription-bz" v-html="description"></div>
 

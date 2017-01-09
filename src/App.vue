@@ -10,7 +10,7 @@
           <div class="right menu ">
             <div class="item large monitor only">
               <form @keyup.13="search" v-on:submit.prevent class="ui  transparent icon input">
-                <input v-model="key" type="text" placeholder="{{ $t("App.search") }}">
+                <input v-model="key" type="text" :placeholder="$t('App.search')">
                 <i @click="search" class="search link icon"></i>
               </form>
             </div>
@@ -33,7 +33,7 @@
           <router-link :to="{'name': 'Recommand'}" :class="{'active': this.$route.name==='Recommand'}" class="item navi-bz move-left-bz">{{ $t("App.whattofollow") }}</router-link>
           <router-link v-show="user_name!=''" :to="{ name:'MyGods'}" :class="{'active': this.$route.name==='MyGods'}" class="item navi-bz">{{ $t("App.following") }}</router-link>
           <router-link v-show="user_name!=''" :to="{ name:'Collect'}" :class="{'active': this.$route.name==='Collect'}" class="item navi-bz">{{ $t("App.saved") }}</router-link>
-          <router-link :to="{ name:'Bio'}" :class="{'active': this.$route.name==='Bio'}" class="item navi-bz">{{ $t("App.Biography") }}</router-link>
+          <router-link :to="{ name:'Bio'}" :class="{'active': this.$route.name==='Bio'}" class="item navi-bz">{{ $t("App.biography") }}</router-link>
         </div>
       </nav>
     </header>
