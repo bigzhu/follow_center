@@ -415,7 +415,6 @@ export const actions = {
       if (is_my) {
         state.my_cats = data.cats
       } else {
-        console.log(data.cats)
         state.cats = data.cats
       }
       return data

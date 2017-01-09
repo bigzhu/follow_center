@@ -1,15 +1,15 @@
 import Vue from 'vue'
 // import VueRouter from 'vue-router'
-// import VueI18n from 'vue-i18n'
-// Vue.use(VueI18n)
+import VueI18n from 'vue-i18n'
+Vue.use(VueI18n)
 // set lang
-// var lang = window.localStorage.getItem('lang') || 'th'
-// Vue.config.lang = lang
-// // set locales
-// import locales from './locales'
-// Object.keys(locales).forEach(function (lang) {
-//   Vue.locale(lang, locales[lang])
-// })
+var lang = window.localStorage.getItem('lang') || 'cn'
+Vue.config.lang = lang
+// set locales
+import locales from './locales'
+Object.keys(locales).forEach(function (lang) {
+  Vue.locale(lang, locales[lang])
+})
 import router from './router'
 
 import fastclick from 'fastclick'
