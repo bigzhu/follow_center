@@ -23,10 +23,10 @@
             <h3>{{god.name}}</h3>
           </a>
           <a class="followers-number-bz">
-            {{god.followed_count}} 人关注
+            {{god.followed_count}} {{ $t("GodItem.follownumber") }}
           </a>
-          <a href="javascript:void(0)"><span v-show="god.is_public===1" class="ui basic label public-personal">公开</span></a>
-          <a @click="$router.push({ name: 'BioDetail', params: { god_name: god.name }})" href="javascript:void(0)"><span v-show="god.is_public===2" class="ui keppel label public-personal">传记</span></a>
+          <a href="javascript:void(0)"><span v-show="god.is_public===1" class="ui basic label public-personal">{{ $t("GodItem.public") }}</span></a>
+          <a @click="$router.push({ name: 'BioDetail', params: { god_name: god.name }})" href="javascript:void(0)"><span v-show="god.is_public===2" class="ui keppel label public-personal">{{ $t("GodItem.biography") }}</span></a>
           <div class="god-discription-bz" v-html="description"></div>
 
           <god-remark v-model="remark" :god_id="god.id"></god-remark>

@@ -1,5 +1,5 @@
 <template>
-  <button @click="top" data-content="回到顶部" class="ui circular basic icon button large monitor only top-bz"><i class="angle up icon"></i></button>
+  <button @click="top" data-content="{{ $t("Top.backtotop") }}" class="ui circular basic icon button large monitor only top-bz"><i class="angle up icon"></i></button>
 </template>
 
 <script>

@@ -5,14 +5,14 @@
     </div>
     <div v-show="followed_god_count===0" class="no-message">
       <img src="../../static/assets/no-message.svg">
-      <p>您还没有关注任何人，从<router-link :to="{'name': 'Recommand'}">寻他</router-link>里面寻找您感兴趣的人吧!</p>
+      <p>{{ $t("Messages.nofollow") }} <router-link :to="{'name': 'Recommand'}">{{ $t("Messages.whattofollow") }}</router-link>{{ $t("Messages.interesting") }}</p>
     </div>
 
     <transition name="slide-fade">
       <div v-show="!is_login && show_no_login" class="no-message">
         <img src="../../static/assets/no-message.svg">
         <p>
-          <a href="/login.html">登录</a>后能看到更广阔的世界哟!
+          <a href="/login.html">{{ $t("Messages.login") }}</a>{{ $t("Messages.description") }}
         </p>
       </div>
     </transition>
@@ -20,15 +20,15 @@
     <message v-for='message in messages' :message='message'>
     </message>
     <div v-show="followed_god_count>0 && unread_message_count===0" class="no-message">
-      <p>好厉害，你已经把所有消息看完啦。再关注点人吧？
-        <router-link :to="{'name': 'Recommand'}">寻他&gt;</router-link>
+      <p>{{ $t("Messages.nomessage") }}
+        <router-link :to="{'name': 'Recommand'}">{{ $t("Messages.wanttofollow") }}&gt;</router-link>
       </p> 
     </div>
     <div v-show="followed_god_count!==0" class='ui center aligned basic segment history-bz'>
       <div v-show="new_loading" class="ui active tiny inline loader"></div>
       <a :class="{ 'invisible_bz': !new_loading}" href='javascript:void(0)' class='history-search-bz loading'>
         <i v-show="!new_loading" class='icon new'></i>
-        新的消息
+        {{ $t("Messages.newmessage") }}
       </a>
     </div>
     <bottom-loader v-on:bottom="call_back"></bottom-loader>

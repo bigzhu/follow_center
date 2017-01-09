@@ -3,7 +3,7 @@
     <div v-show="old_loading" class="ui active tiny inline loader"></div>
     <a @click='old' href='javascript:void(0)' class='history-search-bz loading'>
       <i v-show="!old_loading" class='icon history'></i>
-      历史消息
+      {{ $t("Old.search") }}
     </a>
   </div>
 </template>

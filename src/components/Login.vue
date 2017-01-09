@@ -87,27 +87,27 @@
       <div class="ui header logo">
         <img src="../../static/assets/logo.png">
       </div>
-      <p class="discription">发现更大更美好的世界</p>
+      <p class="discription">{{ $t("Login.title") }}</p>
       <!-- <p>猥琐的跟踪牛人/美女的一举一动</p> -->
       <form class="ui large form oauth-width-bz">
         <div class="ui login">
           <oauth2 :oauths="oauths" :url="url" :function_name="function_name"></oauth2>
           <!-- </br> -->
-          <p>没有社交帐号? <a href="/#guest">随意逛逛</a></p>
+          <p>{{ $t("Login.withoutsns") }} <a href="/#guest"> {{ $t("Login.hangout") }}</a></p>
         </div>
       </form>      
     </div>
   </div>
   <div class="ui middle aligned center aligned grid login-footer">
     <div class="column">
-      <a href="/about.html">关于Follow Center</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="##" class="download-app">手机客户端下载</a>
+      <a href="/about.html">{{ $t("Login.about") }}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="##" class="download-app">{{ $t("Login.phone") }}</a>
     </div>
   </div>
   <div class="ui flowing popup top left transition visible animating scale out phone-bz">
     <div class="ui column divided center aligned grid">
       <div class="column">
-        <a href="/static/follow_center.apk" target="blank"><img src="../../static/assets/andriod.svg">&nbsp;&nbsp;&nbsp;安卓手机端下载</a>
+        <a href="/static/follow_center.apk" target="blank"><img src="../../static/assets/andriod.svg">&nbsp;&nbsp;&nbsp;{{ $t("Login.andriod") }}</a>
       </div>
     </div>
   </div>

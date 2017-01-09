@@ -2,8 +2,8 @@
   <div class="ui container">
     <!-- ================分割=================== -->
     <div class="ui center aligned header">
-      <h3>人物·传记</h3>
-      <p class="sub header">他们是大人物，他们是小人物，他们在世界各地，演绎着比电影还精彩的人生。</p>
+      <h3>{{ $t("Bio.toptitle") }}</h3>
+      <p class="sub header">{{ $t("Bio.topdescription") }}</p>
     </div>
     <!-- ================分割=================== -->
     <div class="card-bz-group">
@@ -23,8 +23,8 @@
       </div>
       <!-- ================分割=================== -->
       <div class="ui center aligned header">
-        <h3>我们的故事</h3>
-        <p class="sub header">从follow.center上关注我们</p>
+        <h3>{{ $t("Bio.downtitle") }}</h3>
+        <p class="sub header">{{ $t("Bio.downdescription") }}</p>
       </div>
       <!-- ================分割=================== -->
       <div v-for="bio in others" class="card-bz">

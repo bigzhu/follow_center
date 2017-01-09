@@ -2,16 +2,16 @@
   <div>
     <div class="ui center aligned basic segment add-newgod-bz"> 
       <a v-show="stat==='button'||stat==='adding'" @click="showAddGodInput" href="javascript:void(0)" class="ui add-newgod-style">
-        <i class="add icon"></i>添加要跟踪的新目标
+        <i class="add icon"></i>{{ $t("AddGod.addnewgod") }}
       </a>
       <div v-show="stat==='input'" class="ui action input">
-        <input @keyup.13="add" v-model="input_name" id="id_add_god" type="text" placeholder="帐号名，比如 bigzhu">
-        <div @click="add" class="ui button">添加</div>
+        <input @keyup.13="add" v-model="input_name" id="id_add_god" type="text" placeholder="{{ $t("AddGod.example") }}">
+        <div @click="add" class="ui button">{{ $t("AddGod.add") }}</div>
       </div>
     </div>
     <div v-show="stat==='adding'" class="ui segment newgod-info">
       <div v-show="adding" class="ui active inverted dimmer">
-        <div class="ui text loader">添加中</div>
+        <div class="ui text loader">{{ $t("AddGod.adding") }}</div>
       </div>
       <div class="ui stackable grid">
         <div class="six wide column">
@@ -34,7 +34,7 @@
               <h3>{{god_name}}</h3>
             </a>
             <a class="followers-number-bz">
-              ? 人关注
+              {{ $t("AddGod.follownumber") }}
             </a>
             <div class="god-discription-bz" v-html="description"></div>
             <follow :class="{'disabled': disabled}" v-model="god_info.followed" :god_id="0" class="button-to-follow-bz"></follow>
