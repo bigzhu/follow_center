@@ -23,7 +23,7 @@ let cn = {
     biography: '传记'
   },
   GodRemark: {
-    save: '保存',
+    save: '保存'
   },
   Login: {
     title: '发现更大更美好的世界',
@@ -52,9 +52,9 @@ let cn = {
   RightInfo: {
     wechat: '官方微信群',
     qq: '答疑QQ群:&nbsp&nbsp484391016',
-    about: '关于';
-    blog: '博客';
-    changelog: '功能日志';
+    about: '关于',
+    blog: '博客',
+    changelog: '功能日志',
     register: '注册人数'
   },
   Top: {
@@ -99,7 +99,7 @@ let en = {
     biography: 'Biography'
   },
   GodRemark: {
-    save: 'Saved',
+    save: 'Saved'
   },
   Login: {
     title: 'Finding the your world',
@@ -128,9 +128,9 @@ let en = {
   RightInfo: {
     wechat: 'Wechat',
     qq: 'QQ Q&A:&nbsp&nbsp484391016',
-    about: 'About';
-    blog: 'Blog';
-    changelog: 'Changelog';
+    about: 'About',
+    blog: 'Blog',
+    changelog: 'Changelog',
     register: 'Register'
   },
   Top: {
