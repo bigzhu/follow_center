@@ -16,7 +16,7 @@
     <div class="like-bz">
       <a @click="toggleCollect(message)" :class="{'hidden-bz':!message.collect}" class="bookmark-bz"><i :class="{'remove':!message.collect, 'light-bz': message.collect}" class="bookmark icon"></i></a>
       <router-link :to="{ name:'TheMessage', params:{id:message.id}}" class="more-infor-bz hidden-bz"><i class="ellipsis horizontal icon"></i></router-link>
-      <a @click="anki" class="bookmark-bz"><i class="add icon"></i></a>
+      <a @click="anki" class="hidden-bz anki-bz">Anki</a>
     </div>
   </div>
 </template>
@@ -187,6 +187,12 @@
   }
   .content-bz {
     margin-top: 0.5em;
+  }
+  .anki-bz {
+    padding-right: 0.4rem;
+  }
+  .anki-bz:hover {
+    color: #57ADE3;
   }
   @media (max-width: 767px) {
     .hidden-bz {
