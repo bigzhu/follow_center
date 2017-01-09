@@ -199,6 +199,9 @@
     margin-top: 1em;
     overflow: hidden;
   }
+  .god-description p img {
+    width: 100%;
+  }
   .ui.segment.info-card-bz {
     border: none;
     border-radius: 0.06em;
