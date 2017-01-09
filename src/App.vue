@@ -10,7 +10,7 @@
           <div class="right menu ">
             <div class="item large monitor only">
               <form @keyup.13="search" v-on:submit.prevent class="ui  transparent icon input">
-                <input v-model="key" type="text" placeholder="{{ $t("App.search") }}">
+                <input v-model="key" type="text" :placeholder="$t('App.search')">
                 <i @click="search" class="search link icon"></i>
               </form>
             </div>
