@@ -115,7 +115,7 @@ let en = {
     phone: 'App',
     andriod: 'Andriod App'
   },
-  Message: {
+  Messages: {
     nofollow: 'From',
     whattofollow: 'What to follow',
     interesting: 'to find what you like!',
