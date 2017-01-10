@@ -91,7 +91,7 @@ let en = {
   Bio: {
     toptitle: 'Biography',
     topdescription: 'Follow your dream',
-    dowmtitle: 'Our story',
+    downtitle: 'Our story',
     downdescription: 'Follow us from follow.center'
   },
   GodInfo: {
