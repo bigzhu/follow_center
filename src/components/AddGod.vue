@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="ui center aligned basic segment add-newgod-bz"> 
+    <div class="ui basic segment add-newgod-bz"> 
       <a v-show="stat==='button'||stat==='adding'" @click="showAddGodInput" href="javascript:void(0)" class="ui add-newgod-style">
         <i class="add icon"></i>{{ $t("AddGod.addnewgod") }}
       </a>
       <div v-show="stat==='input'" class="ui action input">
-        <input @keyup.13="add" v-model="input_name" id="id_add_god" type="text" placeholder="{{ $t("AddGod.example") }}">
+        <input @keyup.13="add" v-model="input_name" id="id_add_god" type="text" :placeholder="$t('AddGod.example')">
         <div @click="add" class="ui button">{{ $t("AddGod.add") }}</div>
       </div>
     </div>

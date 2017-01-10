@@ -73,7 +73,7 @@
 <style >
   .ui.button.follow-button {
     box-shadow: none!important;
-    border: 0.1em solid rgba(0,0,0,.15);
+    border: 0.1em solid rgba(0,0,0,.05);
     border-radius: 0.06em;
     font-size: 0.9em;
     margin-right: 0px;

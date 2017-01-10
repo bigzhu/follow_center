@@ -85,7 +85,8 @@
 </script>
 <style>
   .followed-search {
-    padding: 1em 0em;
+    margin: .2em 0em;
+    float: right;
   }
   .ui.items.no-margin {
     margin: 0;
