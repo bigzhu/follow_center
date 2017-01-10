@@ -200,7 +200,7 @@
     overflow: hidden;
   }
   .god-description p img {
-    width: 100%;
+    max-width: 100%;
   }
   .ui.segment.info-card-bz {
     border: none;
