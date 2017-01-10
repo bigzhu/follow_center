@@ -46,12 +46,12 @@
       showFollow: function () {
         this.$emit('input', 1)
         this.loading = false
-        this.desc = '关注中$t("Follow.following")'
+        this.desc = this.$t('Follow.following')
       },
       showUnfollow: function () {
         this.$emit('input', 0)
         this.loading = false
-        this.desc = '关注$t("Follow.tofollow")'
+        this.desc = this.$t('Follow.tofollow')
       },
       toggleFollow: function () {
         let self = this
