@@ -140,6 +140,7 @@
   .ui.segment.recommand-god-bz {
     padding: 0;
     border: none;
+    margin-top: 1rem;
     overflow: hidden;
     border-radius: 0.06em;
     box-shadow: .5px 1px 1px 1px rgba(0,0,0,0.1);
