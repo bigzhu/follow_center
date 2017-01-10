@@ -20,7 +20,8 @@ let cn = {
   Godltem: {
     follownumber: '人关注',
     public: '公开',
-    biography: '传记'
+    biography: '传记',
+    shield: '屏蔽这人'
   },
   GodRemark: {
     save: '保存'
@@ -63,6 +64,10 @@ let cn = {
   Unread: {
     unread: '未读消息数'
   },
+  Follow: {
+    following: '关注中',
+    tofollow: '关注'
+  },
   App: {
     search: '搜索资讯',
     mine: '我发布的',
@@ -85,7 +90,7 @@ let en = {
   },
   Bio: {
     toptitle: 'Biography',
-    topdescription: '他们是大人物，他们是小人物，他们在世界各地，演绎着比电影还精彩的人生。',
+    topdescription: 'Follow your dream',
     dowmtitle: 'Our story',
     downdescription: 'Follow us from follow.center'
   },
@@ -96,7 +101,8 @@ let en = {
   GodItem: {
     follownumber: 'Followers',
     public: 'Public',
-    biography: 'Biography'
+    biography: 'Biography',
+    shield: 'Shielding this account'
   },
   GodRemark: {
     save: 'Saved'
@@ -138,6 +144,10 @@ let en = {
   },
   Unread: {
     unread: 'Unread message'
+  },
+  Follow: {
+    following: 'Following',
+    tofollow: 'Follow'
   },
   App: {
     search: 'Search',
