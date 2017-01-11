@@ -238,6 +238,9 @@
     .message-bz {
       box-shadow: rgba(0, 0, 0, 0.03) 0px 0px 0px 1px, rgba(0, 0, 0, 0.03) 0px 1px 3px 0px !important;
     }
+    .anki-bz {
+      margin-top: 0.1rem;
+    }
   }
 </style>
 
