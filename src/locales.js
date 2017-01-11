@@ -21,7 +21,7 @@ let cn = {
     follownumber: '人关注',
     public: '公开',
     biography: '传记',
-    shield: '屏蔽这人'
+    block: '屏蔽这人'
   },
   GodRemark: {
     save: '保存'
@@ -56,7 +56,8 @@ let cn = {
     about: '关于',
     blog: '博客',
     changelog: '功能日志',
-    register: '注册人数'
+    register: '注册人数',
+    app: 'APP'
   },
   Top: {
     backtotop: '回到顶部'
@@ -77,6 +78,19 @@ let cn = {
     following: '已跟踪',
     saved: '收藏',
     biography: '传记'
+  },
+  UserSet: {
+    id: '我的账号',
+    change_id: '换账号登录',
+    logout: '退出登录',
+    anki_id: '我的Anki账号',
+    username: '用户名',
+    password: '密码',
+    login: '登录',
+    block_sns: '屏蔽的社交网络',
+    block_id: '屏蔽的账号',
+    number: '屏蔽人数：',
+    block_manage: '屏蔽管理'
   }
 }
 
@@ -102,7 +116,7 @@ let en = {
     follownumber: 'Followers',
     public: 'Public',
     biography: 'Biography',
-    shield: 'Shielding this account'
+    block: 'blocking this account'
   },
   GodRemark: {
     save: 'Saved'
@@ -137,7 +151,8 @@ let en = {
     about: 'About',
     blog: 'Blog',
     changelog: 'Changelog',
-    register: 'Register'
+    register: 'Register',
+    app: 'APP'
   },
   Top: {
     backtotop: 'Back to top'
@@ -158,6 +173,19 @@ let en = {
     following: 'Following',
     saved: 'Saved',
     biography: 'Biography'
+  },
+  UserSet: {
+    id: 'My ID',
+    change_id: 'Change ID to login',
+    logout: 'Logout',
+    anki_id: 'My Anki',
+    username: 'Username',
+    password: 'Password',
+    login: 'Login',
+    block_sns: 'Blocking the Social Network',
+    block_id: 'Blocked',
+    number: 'The number of blocked people:',
+    block_manage: 'Manage the people you blocked'
   }
 }
 
