@@ -4,7 +4,7 @@
       <a target="_blank" :href="href">
         <i :class="'right floated ' + message.m_type + ' icon god-icon-bz icon-bz'"></i>
       </a>
-      <time-len :the_time="message.created_at" class="right floated meta time-bz"></time-len>
+      <time-len :the_time="message.created_at" :lang="lang" class="right floated meta time-bz"></time-len>
       <img :src="avatar" class="ui avatar image show-god-info">
       <a @click="$router.push({ name: 'God', params: { god_name: message.user_name }})" class="user-name-a">
         {{message.name}}
@@ -118,6 +118,9 @@
       })
     },
     computed: {
+      lang () {
+        return window.localStorage.getItem('lang') || 'cn'
+      },
       is_login () {
         return this.$store.state.p.is_login
       },

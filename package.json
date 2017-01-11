@@ -24,7 +24,7 @@
     "bz-semantic-ui-input": "^2.0.2",
     "bz-semantic-ui-segment": "^2.0.1",
     "bz-semantic-ui-sidebar": "^2.0.1",
-    "bz-time-len": "^2.1.2",
+    "bz-time-len": "^2.1.3",
     "bz-web-socket": "^2.0.5",
     "fastclick": "^1.0.6",
     "lodash": "^4.17.3",
