@@ -13,8 +13,10 @@ import BioDetail from './components/BioDetail.vue'
 import TheMessage from './components/TheMessage'
 import God from './components/God'
 import Search from './components/Search'
+import UserEdit from './components/UserEdit'
 
 const routes = [
+  { path: '/UserEdit/:key', name: 'UserEdit', component: UserEdit },
   { path: '/Search/:key', name: 'Search', component: Search },
   { path: '/', name: 'Main', component: Main },
   { path: '/God/:god_name', name: 'God', component: God },

@@ -178,7 +178,7 @@
     position: relative;
   }
   .like-bz {
-    padding: 0em 0.5em 0.2em 0em;
+    padding: 0.5em 0.5em 0em 0em;
   }
   .like-bz a {
     float: right;
@@ -223,7 +223,7 @@
     margin-top: 0.5em;
   }
   .anki-bz {
-    padding-right: 0.4rem;
+    padding-right: 0.2rem;
     margin-top: 0.22rem;
   }
   .anki-bz:hover {
