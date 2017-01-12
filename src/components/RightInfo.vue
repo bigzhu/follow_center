@@ -16,17 +16,15 @@
       </div>
     </div>
     <div v-show="registered_count !== -1" class="footer-content">
-      <a href="/about.html">{{ $t("RightInfo.about") }}</a>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="http://bigzhu.lorstone.com">{{ $t("RightInfo.blog") }}</a>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="/changelog.html">{{ $t("RightInfo.changelog") }}</a>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="/changelog.html">{{ $t("RightInfo.changelog") }}</a>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ $t("RightInfo.register") }}：{{registered_count}}
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      </br>© 2016 Follow Center
+      <a class="footer-element" href="/about.html">{{ $t("RightInfo.about") }}</a>
+      <a class="footer-element" href="http://bigzhu.lorstone.com">{{ $t("RightInfo.blog") }}</a>
+      <a class="footer-element" href="/changelog.html">{{ $t("RightInfo.changelog") }}</a>
+      <a class="footer-element" href="/changelog.html">{{ $t("RightInfo.app") }}</a>
+      </br><span class="footer-element">语言选择:</span><a class="footer-element" href="/changelog.html">中文</a>
+      <a class="footer-element" href="/changelog.html">English</a>
+      </br>
+      <span class="footer-element">{{ $t("RightInfo.register") }}：{{registered_count}}</span>
+      <span>© 2017 Follow Center</span>
     </div>
   </div>
 </template>
@@ -57,4 +55,8 @@
 </script>
 
 <style>
+.footer-element {
+  padding-right: 2rem;
+  margin-top: 1rem;
+}
 </style>
