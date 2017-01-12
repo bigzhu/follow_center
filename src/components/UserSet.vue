@@ -5,8 +5,8 @@
       <div class="username-bz">
         <i :class="user_info.user_type + ' icon'"></i> 
         <span>{{user_info.user_name}}</span>
-        <button class="ui button change-id-bz">{{ $t("UserSet.change_id") }}</button>
-        <button class="ui button">{{ $t("UserSet.logout") }}</button>
+        <button class="ui button user-set-button-bz change-id-bz">{{ $t("UserSet.change_id") }}</button>
+        <a href="/api_logout" class="ui button user-set-button-bz">{{ $t("UserSet.logout") }}</a>
       </div>
       <h4 class="title">{{ $t("UserSet.anki_id") }}</h4>
       <div class="username-bz">
@@ -22,7 +22,7 @@
             <div class="field">
               <input type="text" placeholder="">
             </div>
-            <button class="ui button">{{ $t("UserSet.login") }}</button>
+            <button class="ui button user-set-button-bz">{{ $t("UserSet.login") }}</button>
           </div>
         </div>
 
@@ -126,7 +126,7 @@
   .username-bz {
     color: #858585;
   }
-  .ui.segment.userset-bz button {
+  .ui.button.user-set-button-bz {
     border-radius: 0.06rem;
     border: 1px solid #858585;
     padding: .7rem 1.5rem;
