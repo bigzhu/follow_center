@@ -14,8 +14,10 @@ import TheMessage from './components/TheMessage'
 import God from './components/God'
 import Search from './components/Search'
 import UserSet from './components/UserSet'
+import ChangeLog from './components/ChangeLog'
 
 const routes = [
+  { path: '/ChangeLog', name: 'ChangeLog', component: ChangeLog },
   { path: '/UserSet', name: 'UserSet', component: UserSet },
   { path: '/Search/:key', name: 'Search', component: Search },
   { path: '/', name: 'Main', component: Main },

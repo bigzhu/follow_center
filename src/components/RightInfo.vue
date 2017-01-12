@@ -57,6 +57,5 @@
 <style>
 .footer-element {
   padding-right: 2rem;
-  margin-top: 1rem;
 }
 </style>
