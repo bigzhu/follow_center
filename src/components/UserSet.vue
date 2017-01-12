@@ -16,13 +16,13 @@
           <div class="inline fields">
             <label>{{ $t("UserSet.username") }}</label>
             <div class="field">
-              <input type="text" placeholder="">
+              <input v-model="anki.user_name" type="text" placeholder="">
             </div>
             <label>{{ $t("UserSet.password") }}</label>
             <div class="field">
-              <input type="text" placeholder="">
+              <input v-model="anki.password" type="password" placeholder="">
             </div>
-            <button class="ui button user-set-button-bz">{{ $t("UserSet.login") }}</button>
+            <button @click="ankiLogin" class="ui button user-set-button-bz">{{ $t("UserSet.login") }}</button>
           </div>
         </div>
 
@@ -90,6 +90,9 @@
     computed: {
       user_info: function () {
         return this.$store.state.p.user_info
+      },
+      anki: function () {
+        return this.$store.state.anki
       }
     },
     data: function () {
@@ -102,6 +105,15 @@
       })
     },
     methods: {
+      ankiLogin: function () {
+        if (this.anki.user_name === null || this.anki.user_name === '') {
+          throw new Error('请填入anki用户名')
+        }
+        if (this.anki.password === null || this.anki.password === '') {
+          throw new Error('请填入anki密码')
+        }
+        this.$store.dispatch('loginAnki', this.anki)
+      }
     }
   }
 </script>

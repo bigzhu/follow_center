@@ -18,6 +18,10 @@ function initCatGod (state, cat) {
 }
 // state
 export const state = {
+  anki: {
+    user_name: null,
+    password: null
+  },
   io: null, // IntersectionObserver
   show_how_to_use_collect: false, // 是否显示收藏引导
   local_unread_message_count: 0, // 取过来还未读的信息
@@ -254,6 +258,9 @@ export const mutations = {
 }
 // actions
 export const actions = {
+  loginAnki ({ state, commit, dispatch }, anki) {
+    return dispatch('post', {url: '/api_login_anki', body: anki, loading: true})
+  },
   postAnki ({ state, commit, dispatch }, front) {
     var parm = {
       front: front
