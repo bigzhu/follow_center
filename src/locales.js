@@ -70,6 +70,7 @@ let cn = {
     tofollow: '关注'
   },
   App: {
+    settings: '设置',
     search: '搜索资讯',
     mine: '我发布的',
     logout: '退出登录',
@@ -165,6 +166,7 @@ let en = {
     tofollow: 'Follow'
   },
   App: {
+    settings: 'Settings',
     search: 'Search',
     mine: 'Mine',
     logout: 'Logout',

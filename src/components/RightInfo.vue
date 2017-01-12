@@ -18,8 +18,7 @@
     <div v-show="registered_count !== -1" class="footer-content">
       <a class="footer-element" href="/about.html">{{ $t("RightInfo.about") }}</a>
       <a class="footer-element" href="http://bigzhu.lorstone.com">{{ $t("RightInfo.blog") }}</a>
-      <a class="footer-element" href="/changelog.html">{{ $t("RightInfo.changelog") }}</a>
-      <a class="footer-element" href="/changelog.html">{{ $t("RightInfo.app") }}</a>
+      <a class="footer-element" @click="$router.push({ name: 'ChangeLog'})" href="javascript:;">{{ $t("RightInfo.changelog") }}</a>
       </br><span class="footer-element">语言选择:</span><a class="footer-element" href="/changelog.html">中文</a>
       <a class="footer-element" href="/changelog.html">English</a>
       </br>
