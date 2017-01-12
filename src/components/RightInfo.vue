@@ -22,6 +22,8 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <a href="/changelog.html">{{ $t("RightInfo.changelog") }}</a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="/changelog.html">{{ $t("RightInfo.changelog") }}</a>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       {{ $t("RightInfo.register") }}：{{registered_count}}
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </br>© 2016 Follow Center

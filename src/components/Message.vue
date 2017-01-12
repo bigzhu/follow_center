@@ -178,7 +178,7 @@
     position: relative;
   }
   .like-bz {
-    padding: 0em 0.5em 0.2em 0em;
+    padding: 0.5em 0.5em 0em 0em;
   }
   .like-bz a {
     float: right;
@@ -222,8 +222,8 @@
   .content-bz {
     margin-top: 0.5em;
   }
-  .anki-bz {
-    padding-right: 0.4rem;
+  .anki-bz svg{
+    margin-right: 0.2rem;
     margin-top: 0.22rem;
   }
   .anki-bz:hover {
@@ -237,6 +237,9 @@
     }
     .message-bz {
       box-shadow: rgba(0, 0, 0, 0.03) 0px 0px 0px 1px, rgba(0, 0, 0, 0.03) 0px 1px 3px 0px !important;
+    }
+    .anki-bz svg{
+      margin-top: 0.11rem;
     }
   }
 </style>
