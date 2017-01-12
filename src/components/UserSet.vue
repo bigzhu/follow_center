@@ -3,8 +3,8 @@
     <div class="ui segment userset-bz">
       <h4 class="title">{{ $t("UserSet.id") }}</h4>
       <div class="username-bz">
-        <i class="twitter icon"></i> 
-        <span>Sinow</span>
+        <i :class="user_info.user_type + ' icon'"></i> 
+        <span>{{user_info.user_name}}</span>
         <button class="ui button change-id-bz">{{ $t("UserSet.change_id") }}</button>
         <button class="ui button">{{ $t("UserSet.logout") }}</button>
       </div>
@@ -25,40 +25,40 @@
             <button class="ui button">{{ $t("UserSet.login") }}</button>
           </div>
         </div>
-        
+
       </div>
       <h4 class="title">{{ $t("UserSet.block_sns") }}<div class="ui icon button help-btn-bz" data-tooltip="屏蔽之后就看不到此类社交网络的信息" data-position="top center">
-        ?
+          ?
       </div></h4>
-      
-        <div class="ui form block-sns-bz">
-          <div class="inline fields">
-            <div class="field">
-              <div class="ui radio checkbox">
-                <input type="radio" name="fruit" tabindex="0" class="hidden">
-                <label><i class="twitter icon"></i>Twitter</label>
-              </div>
+
+      <div class="ui form block-sns-bz">
+        <div class="inline fields">
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="fruit" tabindex="0" class="hidden">
+              <label><i class="twitter icon"></i>Twitter</label>
             </div>
-            <div class="field">
-              <div class="ui radio checkbox">
-                <input type="radio" name="fruit" tabindex="0" class="hidden">
-                <label><i class="tumblr icon"></i>Tumblr</label>
-              </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="fruit" tabindex="0" class="hidden">
+              <label><i class="tumblr icon"></i>Tumblr</label>
             </div>
-            <div class="field">
-              <div class="ui radio checkbox">
-                <input type="radio" name="fruit" tabindex="0" class="hidden">
-                <label><i class="github icon"></i>Github</label>
-              </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="fruit" tabindex="0" class="hidden">
+              <label><i class="github icon"></i>Github</label>
             </div>
-            <div class="field">
-              <div class="ui radio checkbox">
-                <input type="radio" name="fruit" tabindex="0" class="hidden">
-                <label><i class="instagram icon"></i>Instagram</label>
-              </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="fruit" tabindex="0" class="hidden">
+              <label><i class="instagram icon"></i>Instagram</label>
             </div>
           </div>
         </div>
+      </div>
       <h4 class="title">{{ $t("UserSet.block_id") }}</h4>
       <div class="username-bz">
         <span>{{ $t("UserSet.number") }}</span>&nbsp;&nbsp;&nbsp;<span>18</span>
@@ -88,6 +88,9 @@
     components: {
     },
     computed: {
+      user_info: function () {
+        return this.$store.state.p.user_info
+      }
     },
     data: function () {
       return {
