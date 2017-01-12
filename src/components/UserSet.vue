@@ -5,7 +5,7 @@
       <div class="username-bz">
         <i :class="user_info.user_type + ' icon'"></i> 
         <span>{{user_info.user_name}}</span>
-        <button class="ui button user-set-button-bz change-id-bz">{{ $t("UserSet.change_id") }}</button>
+        <a href="/login.html" class="ui button user-set-button-bz change-id-bz">{{ $t("UserSet.change_id") }}</a>
         <a href="/api_logout" class="ui button user-set-button-bz">{{ $t("UserSet.logout") }}</a>
       </div>
       <h4 class="title">{{ $t("UserSet.anki_id") }}</h4>
