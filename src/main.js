@@ -18,7 +18,7 @@ import store from './store'
 store.commit('CHECK_LOGIN')
 router.beforeEach((to, from, next) => {
   // check is login?
-  if (!store.state.p.is_login && (to.name === 'MyGods' || to.name === 'Collect')) {
+  if (!store.state.p.is_login && (to.name === 'UserSet' || to.name === 'MyGods' || to.name === 'Collect')) {
     window.location.href = '/login.html'
     // next('/Login')
     return
