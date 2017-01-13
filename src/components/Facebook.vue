@@ -32,8 +32,8 @@
         }
       },
       the_text: function () {
-        if (this.text) {
-          return myautolinker(this.text, 'facebook')
+        if (this.message.text) {
+          return myautolinker(this.message.text, 'facebook')
         }
         return ''
       }
