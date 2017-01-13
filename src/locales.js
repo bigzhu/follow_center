@@ -88,7 +88,7 @@ let cn = {
     username: '用户名',
     password: '密码',
     login: '设置',
-    block_sns: '屏蔽的社交网络',
+    block_sns: '屏蔽社交网络',
     block_id: '屏蔽的账号',
     number: '屏蔽人数：',
     block_manage: '屏蔽管理'

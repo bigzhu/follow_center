@@ -2,62 +2,48 @@
   <div class="ui container">
     <div class="ui segment userset-bz">
       <h4 class="title">{{ $t("UserSet.id") }}</h4>
-      <div class="username-bz">
-        <i :class="user_info.user_type + ' icon'"></i> 
-        <span>{{user_info.user_name}}</span>
-        <a href="/login.html" class="ui button user-set-button-bz change-id-bz">{{ $t("UserSet.change_id") }}</a>
-        <a href="/api_logout" class="ui button user-set-button-bz">{{ $t("UserSet.logout") }}</a>
+      <div class="userimfor-bz">
+        <div class="username-bz">
+          <i :class="user_info.user_type + ' icon'"></i> 
+          <span>{{user_info.user_name}}</span>
+        </div>
+          <a href="/login.html" class="ui button user-set-button-bz change-id-bz">{{ $t("UserSet.change_id") }}</a>
+          <a href="/api_logout" class="ui button user-set-button-bz ">{{ $t("UserSet.logout") }}</a>
       </div>
-      <h4 class="title">{{ $t("UserSet.anki_id") }}</h4>
+      <h4 class="title">{{ $t("UserSet.anki_id") }}<div class="ui icon button help-btn-bz" data-tooltip="https://ankiweb.net" data-position="top center">
+            ?
+        </div>
+      </h4>
       <div class="username-bz">
         <!-- <img src="../assets/anki.svg">
         <span>Sinow</span> -->
         <div class="ui form user-bz">
-          <div class="inline fields">
-            <label>{{ $t("UserSet.username") }}</label>
-            <div class="field">
-              <input v-model="anki.user_name" type="text" placeholder="">
+            <div class="inline fields user-anki-meassge-bz">
+              <label>{{ $t("UserSet.username") }}</label>
+              <div class="field">
+                <input v-model="anki.user_name" type="text" placeholder="">
+              </div>
             </div>
-            <label>{{ $t("UserSet.password") }}</label>
-            <div class="field">
-              <input v-model="anki.password" type="password" placeholder="">
+            <div class="inline fields user-anki-meassge-bz">
+              <label>{{ $t("UserSet.password") }}</label>
+              <div class="field">
+                <input v-model="anki.password" type="password" placeholder="">
+              </div>
             </div>
             <button @click="ankiLogin" class="ui button user-set-button-bz">{{ $t("UserSet.login") }}</button>
-          </div>
+            <!-- <a href="">重新设置Anki账号&nbsp;&gt;</a> -->
         </div>
-
       </div>
-      <h4 class="title">{{ $t("UserSet.block_sns") }}<div class="ui icon button help-btn-bz" data-tooltip="屏蔽之后就看不到此类社交网络的信息" data-position="top center">
-          ?
-      </div></h4>
-        <div class="ui form block-sns-bz">
-          <div class="inline fields">
-            <div class="field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden">
-                <label><i class="twitter icon"></i>Twitter</label>
-              </div>
-            </div>
-            <div class="field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden">
-                <label><i class="tumblr icon"></i>Tumblr</label>
-              </div>
-            </div>
-            <div class="field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden">
-                <label><i class="github icon"></i>Github</label>
-              </div>
-            </div>
-            <div class="field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden">
-                <label><i class="instagram icon"></i>Instagram</label>
-              </div>
-            </div>
-          </div>
+      <h4 class="title">{{ $t("UserSet.block_sns") }}
+        <div class="ui icon button help-btn-bz" data-tooltip="屏蔽之后就看不到此类社交网络的信息" data-position="top center">
+            ?
         </div>
+      </h4>
+      <div>
+        <button class="ui button user-set-button-bz twitter"><i class="twitter icon"></i>Twitter</button>
+        <button class="ui button user-set-button-bz tumblr"><i class="tumblr icon"></i>Tumblr</button>
+        <button class="ui button user-set-button-bz github"><i class="github icon"></i>Github</button>
+        <button class="ui button user-set-button-bz instagram"><i class="instagram icon"></i>Instagram</button>
       </div>
       <h4 class="title">{{ $t("UserSet.block_id") }}</h4>
       <div class="username-bz">
@@ -149,14 +135,12 @@
   .ui.segment.userset-bz h4.title:first-child {
     margin-top: 0;
   }
-  .username-bz {
+  .userimfor-bz {
     color: #858585;
+    display: inline;
   }
-  .ui.button.user-set-button-bz {
-    border-radius: 0.06rem;
-    border: 1px solid #858585;
-    padding: .7rem 1.5rem;
-    background-color: transparent;
+  .username-bz {
+    display: inline;
   }
   .ui.button.change-id-bz {
     margin-left: 2rem;
@@ -164,14 +148,12 @@
   }
   .ui.form.user-bz .inline.fields>label {
     color: #858585;
+    width: 5%;
     font-size: normal;
     font-weight: normal;
   }
   .ui.form.user-bz .inline.fields .field>input {
     border-radius: 0.06rem;
-  }
-  .ui.form.block-sns-bz .ui.checkbox label {
-    color: #858585;
   }
   .ui.icon.button.help-btn-bz {
     padding: 0.2rem;
@@ -184,4 +166,74 @@
     color: #fff;
     font-family: "Times New Roman"
   }
+  .ui.button.user-set-button-bz {
+    border-radius: 0.06rem;
+    border: 1px solid #858585;
+    padding: .7rem 1.5rem;
+    color: #858585;
+    background-color: transparent;
+  }
+  .ui.button.user-set-button-bz.twitter{
+    background-color: #55ACEE;
+    color: #FFFFFF;
+    border-color: #55ACEE;
+  }
+  .ui.button.user-set-button-bz.tumblr {
+    background-color: #3d698e;
+    border-color: #3d698e;
+    color: #FFFFFF;
+  }
+  .ui.button.user-set-button-bz.instagram {
+    background-color: #DE326C;
+    color: #FFFFFF;
+    border-color: #DE326C;
+  }
+  .ui.button.user-set-button-bz.github {
+    background-color: #333333;
+    color: #FFFFFF;
+    border-color: #333333;
+  }
+  .ui.button.user-set-button-bz.twitter:hover {
+    background-color: #3E8CC7;
+  }
+  .ui.button.user-set-button-bz.tumblr:hover {
+    background-color: #2C5272;
+  }
+  .ui.button.user-set-button-bz.instagram:hover {
+    background-color: #C4275C;
+  }
+  .ui.button.user-set-button-bz.github:hover {
+    background-color: #222222;
+  }
+  @media (max-width : 767px) {
+    .ui.form.user-bz input {
+      width: 100%;
+    }
+    .username-bz {
+      width: 100%;
+    }
+    .user-set-button-bz {
+      width: 100%;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+    .ui.form.user-bz .inline.fields>label {
+      width: 22%;
+      margin-right: 0;
+    }
+    .ui.form.user-bz .inline.fields .field {
+      width: 78%;
+      padding: 0;
+    }
+    .ui.form.user-bz .inline.fields .field input {
+      width: 100%;
+    }
+    .ui.button.change-id-bz {
+      margin: 1rem 0;
+    }
+    .user-anki-meassge-bz {
+      margin-bottom: 1rem
+    }
+  }
+
 </style>
