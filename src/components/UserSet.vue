@@ -34,26 +34,26 @@
         <div class="ui form block-sns-bz">
           <div class="inline fields">
             <div class="field">
-              <div class="ui radio checkbox">
-                <input type="radio" name="fruit" tabindex="0" class="hidden">
+              <div class="ui checkbox">
+                <input type="checkbox" tabindex="0" class="hidden">
                 <label><i class="twitter icon"></i>Twitter</label>
               </div>
             </div>
             <div class="field">
-              <div class="ui radio checkbox">
-                <input type="radio" name="fruit" tabindex="0" class="hidden">
+              <div class="ui checkbox">
+                <input type="checkbox" tabindex="0" class="hidden">
                 <label><i class="tumblr icon"></i>Tumblr</label>
               </div>
             </div>
             <div class="field">
-              <div class="ui radio checkbox">
-                <input type="radio" name="fruit" tabindex="0" class="hidden">
+              <div class="ui checkbox">
+                <input type="checkbox" tabindex="0" class="hidden">
                 <label><i class="github icon"></i>Github</label>
               </div>
             </div>
             <div class="field">
-              <div class="ui radio checkbox">
-                <input type="radio" name="fruit" tabindex="0" class="hidden">
+              <div class="ui checkbox">
+                <input type="checkbox" tabindex="0" class="hidden">
                 <label><i class="instagram icon"></i>Instagram</label>
               </div>
             </div>
@@ -141,7 +141,7 @@
   .ui.form.user-bz .inline.fields .field>input {
     border-radius: 0.06rem;
   }
-  .ui.form.block-sns-bz .ui.radio.checkbox label {
+  .ui.form.block-sns-bz .ui.checkbox label {
     color: #858585;
   }
   .ui.icon.button.help-btn-bz {
