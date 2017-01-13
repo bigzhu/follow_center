@@ -11,27 +11,29 @@
           <a href="/api_logout" class="ui button user-set-button-bz ">{{ $t("UserSet.logout") }}</a>
       </div>
       <h4 class="title">{{ $t("UserSet.anki_id") }}<div class="ui icon button help-btn-bz" data-tooltip="https://ankiweb.net" data-position="top center">
-            ?
+          ?
         </div>
       </h4>
-      <div class="username-bz">
-        <!-- <img src="../assets/anki.svg">
-        <span>Sinow</span> -->
-        <div class="ui form user-bz">
-            <div class="inline fields user-anki-meassge-bz">
-              <label>{{ $t("UserSet.username") }}</label>
-              <div class="field">
-                <input v-model="anki.user_name" type="text" placeholder="">
-              </div>
+      <div class="username-bz" >
+        <div v-show="!show_anki_input" class="ui form user-bz">
+          <img src="../assets/anki.svg">
+          <span>{{anki.user_name}}</span>
+          <a @click="show_anki_input=true" href="javascript:;">{{ $t("UserSet.reset") }}&nbsp;&gt;</a>
+        </div>
+        <div v-show="show_anki_input" class="ui form user-bz">
+          <div class="inline fields user-anki-meassge-bz">
+            <label>{{ $t("UserSet.username") }}</label>
+            <div class="field">
+              <input v-model="anki.user_name" type="text" placeholder="">
             </div>
-            <div class="inline fields user-anki-meassge-bz">
-              <label>{{ $t("UserSet.password") }}</label>
-              <div class="field">
-                <input v-model="anki.password" type="password" placeholder="">
-              </div>
+          </div>
+          <div class="inline fields user-anki-meassge-bz">
+            <label>{{ $t("UserSet.password") }}</label>
+            <div class="field">
+              <input v-model="anki.password" type="password" placeholder="">
             </div>
+          </div>
             <button @click="ankiLogin" class="ui button user-set-button-bz ankiset-button-bz">{{ $t("UserSet.set") }}</button>
-            <!-- <a href="">{{ $t("UserSet.reset") }}&nbsp;&gt;</a> -->
         </div>
       </div>
       <h4 class="title">{{ $t("UserSet.block_sns") }}
@@ -88,7 +90,8 @@
     },
     data: function () {
       return {
-        block_count: 0
+        block_count: 0,
+        show_anki_input: true
       }
     },
     mounted: function () {
@@ -96,7 +99,13 @@
 
       this.$store.dispatch('getRegisteredCount')
       if (this.anki.user_name == null) {
-        this.$store.dispatch('getAnki')
+        this.$store.dispatch('getAnki').then(function (data) {
+          if (self.anki.user_name !== null) {
+            self.show_anki_input = false
+          }
+        })
+      } else {
+        this.show_anki_input = false
       }
       this.$store.dispatch('getBlock', {count: true}).then(function (data) {
         console.log(data)
@@ -108,13 +117,16 @@
     },
     methods: {
       ankiLogin: function () {
+        let self = this
         if (this.anki.user_name === null || this.anki.user_name === '') {
           throw new Error('请填入anki用户名')
         }
         if (this.anki.password === null || this.anki.password === '') {
           throw new Error('请填入anki密码')
         }
-        this.$store.dispatch('loginAnki', this.anki)
+        this.$store.dispatch('loginAnki', this.anki).then(function (data) {
+          self.show_anki_input = false
+        })
       }
     }
   }
