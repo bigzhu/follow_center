@@ -11,7 +11,7 @@ export default function (social_type, text) {
       text = text.replace(new RegExp(key, 'g'), a)
     }
   )
-  console.log(text)
+  return text
 }
 
 // 组出a来
