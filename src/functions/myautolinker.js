@@ -5,7 +5,7 @@ export default function (text, type) {
     return Autolinker.link(text, {mention: type})
   } else {
     let link_text = Autolinker.link(text)
-    link_text = replaceSocial(type, text)
+    link_text = replaceSocial(type, link_text)
     return link_text
   }
 }
