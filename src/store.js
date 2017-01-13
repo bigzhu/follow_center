@@ -279,6 +279,7 @@ export const actions = {
       state.io = new window.IntersectionObserver(
         entries => {
           for (let entry of entries) {
+            if (entry.target.__vue__ === null) continue // bigzhu need check this, why __vue__ can be null
             let message = entry.target.__vue__.message
             if (entry.target.__vue__.$route.path !== '/') {
               continue
