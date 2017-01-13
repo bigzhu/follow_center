@@ -212,10 +212,10 @@
     .username-bz {
       width: 100%;
     }
-    .user-set-button-bz {
+    .ui.button.user-set-button-bz {
       width: 100%;
       display: inline-block;
-      margin-top: 1rem;
+      margin-bottom: 0.5rem;
     }
     .ui.form.user-bz .inline.fields>label {
       width: 22%;
