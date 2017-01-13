@@ -258,6 +258,13 @@ export const mutations = {
 }
 // actions
 export const actions = {
+  getAnki ({ state, commit, dispatch }) {
+    return dispatch('get', {url: '/api_anki', loading: true}).then(function (data) {
+      if (data.anki !== null) {
+        state.anki = data.anki
+      }
+    })
+  },
   loginAnki ({ state, commit, dispatch }, anki) {
     return dispatch('post', {url: '/api_login_anki', body: anki, loading: true})
   },

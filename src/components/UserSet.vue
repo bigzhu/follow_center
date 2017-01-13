@@ -100,6 +100,9 @@
       }
     },
     mounted: function () {
+      if (this.anki.user_name == null) {
+        this.$store.dispatch('getAnki')
+      }
       this.$nextTick(function () {
         // code that assumes this.$el is in-document
       })
