@@ -34,7 +34,7 @@
             <i class="hide icon"></i>
           </a>
           <div>
-            <a @click="block(god)" href="javascript:void(0)" data-tooltip="$t('GodItem.block')" class="hide-god-bz">
+            <a @click="block(god)" href="javascript:void(0)" :data-tooltip="$t('GodItem.block')" class="hide-god-bz">
               <i v-show="!loading" class="hide icon"></i>
               <i v-show="loading"class="spinner loading icon"></i>
             </a>
