@@ -146,6 +146,7 @@
     },
     methods: {
       anki: function () {
+        if (this.message.anki) return
         let self = this
         let front = $(this.$el).find('.content-bz').html()
         this.$store.dispatch('postAnki', {front: front, message_id: this.message.id}).then(function () {
