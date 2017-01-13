@@ -268,10 +268,7 @@ export const actions = {
   loginAnki ({ state, commit, dispatch }, anki) {
     return dispatch('post', {url: '/api_login_anki', body: anki, loading: true})
   },
-  postAnki ({ state, commit, dispatch }, front) {
-    var parm = {
-      front: front
-    }
+  postAnki ({ state, commit, dispatch }, parm) {
     return dispatch('post', {url: '/api_anki', body: parm, loading: true})
   },
   getIntersectionObserver ({ dispatch, state, actions }) {
