@@ -38,7 +38,7 @@
           if (this.my_gods.length === 0) {
             this.loading = true
           }
-          this.$store.dispatch('getMyGods', this.$route.params.cat)
+          this.$store.dispatch('getMyGods', {cat: this.$route.params.cat})
         },
         deep: true
       }
@@ -73,7 +73,7 @@
       }
     },
     mounted () {
-      this.$store.dispatch('getMyGods', this.$route.params.cat)
+      this.$store.dispatch('getMyGods', {cat: this.$route.params.cat})
       $('body').visibility()
     },
     methods: {

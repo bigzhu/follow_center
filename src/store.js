@@ -463,11 +463,13 @@ export const actions = {
       return data
     })
   },
-  getMyGods ({ state, commit, dispatch }, cat) {
-    let parm = {cat: cat}
+  getMyGods ({ state, commit, dispatch }, parm) {
     return dispatch('get', {url: '/api_my_gods', body: parm}).then(function (data) {
-      commit('SET_CAT_MY_GODS', {cat: cat, gods: data.gods})
+      commit('SET_CAT_MY_GODS', {cat: parm.cat, gods: data.gods})
     })
+  },
+  getGods ({ state, commit, dispatch }, parm) {
+    return dispatch('get', {url: '/api_gods', body: parm})
   },
   getGod ({ state, commit, dispatch }, val) {
     let god_name

@@ -15,10 +15,10 @@ import God from './components/God'
 import Search from './components/Search'
 import UserSet from './components/UserSet'
 import ChangeLog from './components/ChangeLog'
-import Blocked from './components/Blocked'
+import GodBlocked from './components/GodBlocked'
 
 const routes = [
-  { path: '/Blocked', name: 'Blocked', component: Blocked },
+  { path: '/GodBlocked', name: 'GodBlocked', component: GodBlocked },
   { path: '/ChangeLog', name: 'ChangeLog', component: ChangeLog },
   { path: '/UserSet', name: 'UserSet', component: UserSet },
   { path: '/Search/:key', name: 'Search', component: Search },

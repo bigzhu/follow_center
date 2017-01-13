@@ -17,7 +17,7 @@ let cn = {
     edit: '编辑',
     save: '保存'
   },
-  Godltem: {
+  GodItem: {
     follownumber: '人关注',
     public: '公开',
     biography: '传记',
