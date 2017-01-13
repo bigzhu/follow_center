@@ -87,11 +87,13 @@ let cn = {
     anki_id: '我的Anki账号',
     username: '用户名',
     password: '密码',
-    login: '设置',
+    set: '设置Anki账号',
     block_sns: '屏蔽社交网络',
     block_id: '屏蔽的账号',
     number: '屏蔽人数：',
-    block_manage: '屏蔽管理'
+    block_manage: '屏蔽管理',
+    reset: '重新设置Anki账号',
+    blockreminder: '屏蔽之后就看不到此类社交网络的信息'
   }
 }
 
@@ -183,11 +185,13 @@ let en = {
     anki_id: 'My Anki',
     username: 'Username',
     password: 'Password',
-    login: 'Set',
+    set: 'Set your Anki',
     block_sns: 'Blocking the Social Network',
     block_id: 'Blocked',
     number: 'The number of blocked people:',
-    block_manage: 'Manage the people you blocked'
+    block_manage: 'Manage the people you blocked',
+    reset: 'Reset your Anki',
+    blockreminder: "You don't want to see this kind of message"
   }
 }
 
