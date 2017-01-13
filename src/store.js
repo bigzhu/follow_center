@@ -315,6 +315,9 @@ export const actions = {
     }
     return dispatch('post', {url: '/api_god', body: parm, loading: false})
   },
+  getBlock ({ state, commit, dispatch }, parm) {
+    return dispatch('get', {url: '/api_block', body: parm, loading: true})
+  },
   postBlock ({ state, commit, dispatch }, god_id) {
     let parm = {god_id: god_id}
     return dispatch('post', {url: '/api_block', body: parm, loading: false}).then(function (data) {

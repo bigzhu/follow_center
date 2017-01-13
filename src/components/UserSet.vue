@@ -61,12 +61,12 @@
       </div>
       <h4 class="title">{{ $t("UserSet.block_id") }}</h4>
       <div class="username-bz">
-        <span>{{ $t("UserSet.number") }}</span>&nbsp;&nbsp;&nbsp;<span>18</span>
+        <span>{{ $t("UserSet.number") }}</span>&nbsp;&nbsp;&nbsp;<span>{{block_count}}</span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href=""><i class="low vision icon"></i>{{ $t("UserSet.block_manage") }}</a></span>
       </div>
     </div>
     <footer>
-      <div v-show="registered_count !== -1" class="footer-content">
+      <div class="footer-content">
         <a href="/about.html">{{ $t("RightInfo.about") }}</a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="http://bigzhu.lorstone.com">{{ $t("RightInfo.blog") }}</a>
@@ -93,16 +93,27 @@
       },
       anki: function () {
         return this.$store.state.anki
+      },
+      registered_count () {
+        return this.$store.state.registered_count
       }
     },
     data: function () {
       return {
+        block_count: 0
       }
     },
     mounted: function () {
+      let self = this
+
+      this.$store.dispatch('getRegisteredCount')
       if (this.anki.user_name == null) {
         this.$store.dispatch('getAnki')
       }
+      this.$store.dispatch('getBlock', {count: true}).then(function (data) {
+        console.log(data)
+        self.block_count = data.count
+      })
       this.$nextTick(function () {
         // code that assumes this.$el is in-document
       })
