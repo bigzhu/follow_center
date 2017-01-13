@@ -30,20 +30,22 @@
                 <input v-model="anki.password" type="password" placeholder="">
               </div>
             </div>
-            <button @click="ankiLogin" class="ui button user-set-button-bz">{{ $t("UserSet.login") }}</button>
-            <!-- <a href="">重新设置Anki账号&nbsp;&gt;</a> -->
+            <button @click="ankiLogin" class="ui button user-set-button-bz ankiset-button-bz">{{ $t("UserSet.set") }}</button>
+            <!-- <a href="">{{ $t("UserSet.reset") }}&nbsp;&gt;</a> -->
         </div>
       </div>
       <h4 class="title">{{ $t("UserSet.block_sns") }}
-        <div class="ui icon button help-btn-bz" data-tooltip="屏蔽之后就看不到此类社交网络的信息" data-position="top center">
+        <div class="ui icon button help-btn-bz" :data-tooltip="$t('UserSet.blockreminder')" data-position="top center">
             ?
         </div>
       </h4>
       <div>
         <button class="ui button user-set-button-bz twitter"><i class="twitter icon"></i>Twitter</button>
         <button class="ui button user-set-button-bz tumblr"><i class="tumblr icon"></i>Tumblr</button>
-        <button class="ui button user-set-button-bz github"><i class="github icon"></i>Github</button>
+        <button class="ui button user-set-button-bz facebook"><i class="facebook icon"></i>Facebook</button>
         <button class="ui button user-set-button-bz instagram"><i class="instagram icon"></i>Instagram</button>
+        <button class="ui button user-set-button-bz github"><i class="github icon"></i>Github</button>
+        
       </div>
       <h4 class="title">{{ $t("UserSet.block_id") }}</h4>
       <div class="username-bz">
@@ -140,6 +142,7 @@
   }
   .username-bz {
     display: inline;
+    font-size: 1.1rem;
   }
   .ui.button.change-id-bz {
     margin-left: 2rem;
@@ -164,6 +167,9 @@
     margin-left: 1rem;
     color: #fff;
     font-family: "Times New Roman"
+  }
+  .ui.button.user-set-button-bz.ankiset-button-bz {
+    width: 17.5rem;
   }
   .ui.button.user-set-button-bz {
     border-radius: 0.06rem;
@@ -192,8 +198,13 @@
     color: #FFFFFF;
     border-color: #333333;
   }
+  .ui.button.user-set-button-bz.facebook {
+    background-color: #324E88;
+    color: #FFFFFF;
+    border-color: #324E88;
+  }
   .ui.button.user-set-button-bz.twitter:hover {
-    background-color: #3E8CC7;
+    background-color: #4392CD;
   }
   .ui.button.user-set-button-bz.tumblr:hover {
     background-color: #2C5272;
@@ -204,11 +215,17 @@
   .ui.button.user-set-button-bz.github:hover {
     background-color: #222222;
   }
+  .ui.button.user-set-button-bz.facebook:hover {
+    background-color: #233C72;
+  }
   @media (max-width : 767px) {
     .ui.form.user-bz input {
       width: 100%;
     }
     .username-bz {
+      width: 100%;
+    }
+    .ui.button.user-set-button-bz.ankiset-button-bz {
       width: 100%;
     }
     .ui.button.user-set-button-bz {
