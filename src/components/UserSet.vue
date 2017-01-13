@@ -3,10 +3,10 @@
     <div class="ui segment userset-bz">
       <h4 class="title">{{ $t("UserSet.id") }}</h4>
       <div class="username-bz">
-        <i class="twitter icon"></i> 
-        <span>Sinow</span>
-        <button class="ui button change-id-bz">{{ $t("UserSet.change_id") }}</button>
-        <button class="ui button">{{ $t("UserSet.logout") }}</button>
+        <i :class="user_info.user_type + ' icon'"></i> 
+        <span>{{user_info.user_name}}</span>
+        <a href="/login.html" class="ui button user-set-button-bz change-id-bz">{{ $t("UserSet.change_id") }}</a>
+        <a href="/api_logout" class="ui button user-set-button-bz">{{ $t("UserSet.logout") }}</a>
       </div>
       <h4 class="title">{{ $t("UserSet.anki_id") }}</h4>
       <div class="username-bz">
@@ -16,21 +16,20 @@
           <div class="inline fields">
             <label>{{ $t("UserSet.username") }}</label>
             <div class="field">
-              <input type="text" placeholder="">
+              <input v-model="anki.user_name" type="text" placeholder="">
             </div>
             <label>{{ $t("UserSet.password") }}</label>
             <div class="field">
-              <input type="text" placeholder="">
+              <input v-model="anki.password" type="password" placeholder="">
             </div>
-            <button class="ui button">{{ $t("UserSet.login") }}</button>
+            <button @click="ankiLogin" class="ui button user-set-button-bz">{{ $t("UserSet.login") }}</button>
           </div>
         </div>
-        
+
       </div>
       <h4 class="title">{{ $t("UserSet.block_sns") }}<div class="ui icon button help-btn-bz" data-tooltip="屏蔽之后就看不到此类社交网络的信息" data-position="top center">
-        ?
+          ?
       </div></h4>
-      
         <div class="ui form block-sns-bz">
           <div class="inline fields">
             <div class="field">
@@ -59,14 +58,15 @@
             </div>
           </div>
         </div>
+      </div>
       <h4 class="title">{{ $t("UserSet.block_id") }}</h4>
       <div class="username-bz">
-        <span>{{ $t("UserSet.number") }}</span>&nbsp;&nbsp;&nbsp;<span>18</span>
+        <span>{{ $t("UserSet.number") }}</span>&nbsp;&nbsp;&nbsp;<span>{{block_count}}</span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href=""><i class="low vision icon"></i>{{ $t("UserSet.block_manage") }}</a></span>
       </div>
     </div>
     <footer>
-      <div v-show="registered_count !== -1" class="footer-content">
+      <div class="footer-content">
         <a href="/about.html">{{ $t("RightInfo.about") }}</a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="http://bigzhu.lorstone.com">{{ $t("RightInfo.blog") }}</a>
@@ -88,17 +88,46 @@
     components: {
     },
     computed: {
+      user_info: function () {
+        return this.$store.state.p.user_info
+      },
+      anki: function () {
+        return this.$store.state.anki
+      },
+      registered_count () {
+        return this.$store.state.registered_count
+      }
     },
     data: function () {
       return {
+        block_count: 0
       }
     },
     mounted: function () {
+      let self = this
+
+      this.$store.dispatch('getRegisteredCount')
+      if (this.anki.user_name == null) {
+        this.$store.dispatch('getAnki')
+      }
+      this.$store.dispatch('getBlock', {count: true}).then(function (data) {
+        console.log(data)
+        self.block_count = data.count
+      })
       this.$nextTick(function () {
         // code that assumes this.$el is in-document
       })
     },
     methods: {
+      ankiLogin: function () {
+        if (this.anki.user_name === null || this.anki.user_name === '') {
+          throw new Error('请填入anki用户名')
+        }
+        if (this.anki.password === null || this.anki.password === '') {
+          throw new Error('请填入anki密码')
+        }
+        this.$store.dispatch('loginAnki', this.anki)
+      }
     }
   }
 </script>
@@ -123,7 +152,7 @@
   .username-bz {
     color: #858585;
   }
-  .ui.segment.userset-bz button {
+  .ui.button.user-set-button-bz {
     border-radius: 0.06rem;
     border: 1px solid #858585;
     padding: .7rem 1.5rem;

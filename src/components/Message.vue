@@ -61,6 +61,7 @@
   import Tumblr from './Tumblr'
   import Facebook from './Facebook'
   import TimeLen from 'bz-time-len'
+  import Vue from 'vue'
 
   export default {
     props: {
@@ -119,7 +120,7 @@
     },
     computed: {
       lang () {
-        return window.localStorage.getItem('lang') || 'cn'
+        return Vue.config.lang
       },
       is_login () {
         return this.$store.state.p.is_login
@@ -243,4 +244,3 @@
     }
   }
 </style>
-

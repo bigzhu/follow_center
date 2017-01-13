@@ -18,6 +18,7 @@
             <div v-show="user_name" class="ui simple dropdown item user-imfor-bz">
               <img :src="avatar" class="ui avatar image">
               <div class="menu login-menu-bz">
+                <a @click="$router.push({ name: 'UserSet'})" class="item">{{ $t("App.settings") }}</a>
                 <a @click="$router.push({ name: 'God', params: { god_name: user_name }})" class="item">{{ $t("App.mine") }}</a>
                 <a @click="logout" class="item">{{ $t("App.logout") }}</a>
               </div>

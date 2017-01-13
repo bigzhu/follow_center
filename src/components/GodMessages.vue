@@ -7,6 +7,13 @@
     <!--
     <div class='ui active centered inline loader' v-bind:class="{ 'invisible_bz': !new_loading}"></div>
     -->
+    <div class='ui center aligned basic segment history-bz'>
+      <div v-show="new_loading" class="ui active tiny inline loader"></div>
+      <a :class="{ 'invisible_bz': !new_loading}" href='javascript:void(0)' class='history-search-bz loading'>
+        <i v-show="!new_loading" class='icon new'></i>
+        {{ $t("Messages.newmessage") }}
+      </a>
+    </div>
     <bottom-loader :el="$el" element_class=".ui.fluid.card" v-on:bottom="call_back"></bottom-loader>
   </div>
 </template>

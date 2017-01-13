@@ -18,6 +18,10 @@ function initCatGod (state, cat) {
 }
 // state
 export const state = {
+  anki: {
+    user_name: null,
+    password: null
+  },
   io: null, // IntersectionObserver
   show_how_to_use_collect: false, // 是否显示收藏引导
   local_unread_message_count: 0, // 取过来还未读的信息
@@ -254,6 +258,16 @@ export const mutations = {
 }
 // actions
 export const actions = {
+  getAnki ({ state, commit, dispatch }) {
+    return dispatch('get', {url: '/api_anki', loading: true}).then(function (data) {
+      if (data.anki !== null) {
+        state.anki = data.anki
+      }
+    })
+  },
+  loginAnki ({ state, commit, dispatch }, anki) {
+    return dispatch('post', {url: '/api_login_anki', body: anki, loading: true})
+  },
   postAnki ({ state, commit, dispatch }, front) {
     var parm = {
       front: front
@@ -266,8 +280,10 @@ export const actions = {
         entries => {
           for (let entry of entries) {
             let message = entry.target.__vue__.message
-            console.log(entry)
-            console.log(entry.target)
+            if (entry.target.__vue__.$route.path !== '/') {
+              continue
+            }
+            console.log(entry.target.__vue__.$route.path)
             dispatch('recordLastMessage', message.created_at)
             state.io.unobserve(entry.target)
           }
@@ -298,6 +314,9 @@ export const actions = {
       cat: cat
     }
     return dispatch('post', {url: '/api_god', body: parm, loading: false})
+  },
+  getBlock ({ state, commit, dispatch }, parm) {
+    return dispatch('get', {url: '/api_block', body: parm, loading: true})
   },
   postBlock ({ state, commit, dispatch }, god_id) {
     let parm = {god_id: god_id}
@@ -476,8 +495,6 @@ export const actions = {
     var parm = { last_time: time }
     return dispatch('put', {url: '/api_last', body: parm, loading: false}).then(function (data) {
       state.unread_message_count = data.unread_message_count
-      console.log(data)
-      console.log(state.unread_message_count)
       commit('SET_LAST_TIME', parseInt(time, 10))
       commit('REFRESH_LOCAL_UNREAD_MESSAGE_COUNT')
       // 如果<20了，就预加载一些
