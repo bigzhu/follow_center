@@ -16,8 +16,8 @@
       </h4>
       <div class="username-bz" >
         <div v-show="!show_anki_input" class="ui form user-bz">
-          <img src="../assets/anki.svg">
-          <span>{{anki.user_name}}</span>
+          <img class="anki-img-bz" src="../assets/anki-colorful.svg">
+          <span class="anki-name-bz">{{anki.user_name}}</span>
           <a @click="show_anki_input=true" href="javascript:;">{{ $t("UserSet.reset") }}&nbsp;&gt;</a>
         </div>
         <div v-show="show_anki_input" class="ui form user-bz">
@@ -229,6 +229,12 @@
   }
   .ui.button.user-set-button-bz.facebook:hover {
     background-color: #233C72;
+  }
+  .anki-img-bz {
+    margin-bottom: -0.34rem;
+  }
+  .anki-name-bz {
+    margin-right: 1rem;
   }
   @media (max-width : 767px) {
     .ui.form.user-bz input {
