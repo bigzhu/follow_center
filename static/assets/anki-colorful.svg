@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="97.5964605%" id="linearGradient-1">
+            <stop stop-color="#404040" stop-opacity="0.784561821" offset="0%"></stop>
+            <stop stop-color="#8A8A8A" stop-opacity="0.78795856" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="72.5086929%" y1="34.3563028%" x2="26.5472291%" y2="92.8578943%" id="linearGradient-2">
+            <stop stop-color="#228AD7" offset="0%"></stop>
+            <stop stop-color="#C8E3F5" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="87.7700592%" y1="0%" x2="38.4202289%" y2="108.883479%" id="linearGradient-3">
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.627604167" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(0.000000, -1.000000)">
+            <rect id="Rectangle" fill="url(#linearGradient-1)" x="0" y="1.33333333" width="15.517642" height="16.4919217" rx="3"></rect>
+            <path d="" id="Path-2" stroke="#979797"></path>
+            <polygon id="Star" stroke="#FFFFFF" stroke-linejoin="round" fill="url(#linearGradient-2)" transform="translate(10.493244, 9.651258) rotate(-19.000000) translate(-10.493244, -9.651258) " points="11.3271161 14.7233289 6.3186474 17.3553666 7.27517981 11.7806213 3.22324351 7.83256483 8.82288175 7.01922046 11.3271161 1.9471497 13.8313505 7.01922046 17.7632436 7.59032578 16.9914886 9.83075422 15.3790524 11.7806213 15.6814199 13.5428426 14.6431639 16.4659699"></polygon>
+            <path d="M0,1.33333333 L17.0191249,1.33333333 L17.0191249,12.358145 C17.0191249,12.358145 12.6836699,9.51133836 9.53953403,8.52749013 C6.39539815,7.54364189 0,8.06033709 0,8.06033709 L0,1.33333333 Z" id="Rectangle" fill="url(#linearGradient-3)"></path>
+        </g>
+    </g>
+</svg>
