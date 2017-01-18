@@ -19,7 +19,7 @@
         <i :class="{'remove':!message.collect, 'light-bz': message.collect}" class="bookmark icon"></i>
       </a>
       <a @mouseleave="anki_color='#B3B3B3'" @mousemove="anki_color='#57ADE3'" @click="anki" :class="{'hidden-bz':!message.anki}" class="anki-bz">
-        <svg width="19px" height="20px" viewBox="51 -272 19 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <svg width="17px" height="18px" viewBox="51 -272 19 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
           <desc>Created with Sketch.</desc>
           <defs>
