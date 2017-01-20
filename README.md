@@ -47,10 +47,10 @@ Twitter 类的社交网是不会关心你上次看到哪的, 只给你最新的,
 
 [Follow Center](https://follow.center) 也就顺便做了分类和推荐的作用, 也做了[传记](https://follow.center/Bio)功能, 但确实没时间写什么文章, 再说了, 我知道的有价值用户也不多.
 
-希望能给我推荐, 希望能帮我写[传记](https://follow.center/Bio)
+希望能给我推荐, 希望能帮我写[传记](https://follow.center/Bio).
 ## 挖个洞
-不是所有时候都方便科学上网的, 再说有的网站真的没考虑我们这些艰难出去网络不佳的用户(说的就是你 Tumblr!)
+不是所有时候都方便科学上网的, 再说有的网站真的没考虑我们这些艰难出去网络不佳的用户(说的就是你 Tumblr!).
 
 [Follow Center](https://follow.center) 不用科学上网也能上, 用起来感觉比原网站要快.
 ## 学英语
-我个人的需求了, 一键把资讯同步到[anki](https://ankiweb.net), 拿着[anki](https://ankiweb.net), 随时可以复习.
+我个人的需求了, 身为英语渣, 一键把资讯同步到[anki](https://ankiweb.net), 拿着[anki](https://ankiweb.net), 图文并茂, 随时可以复习.
