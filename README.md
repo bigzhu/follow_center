@@ -18,7 +18,7 @@
 ## 高清大图直接看
 无论 Twitter 还是 Instagram, 看图都很不方便, 要点, 点了还要等加载, 加载了了还不是最高清的大图.
 
-[Follow Center](https://follow.center) 直接给你最高清的大图, Instagram 的图还可以保存哦.
+[Follow Center](https://follow.center) 直接给你最高清的大图, Instagram 的图还可以保存.
 
 > 我才不会告诉你我是为了看小黄图才费心做的.
 
