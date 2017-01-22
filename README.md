@@ -1,6 +1,6 @@
 # 为什么要做follow center
 
->Follow Center 是一个:
+>[Follow Center](https://follow.center) 是一个:
 
 > * 聚合了很多社交站点的阅读器? 
 > * 名人推荐? 

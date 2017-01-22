@@ -58,9 +58,9 @@
     watch: {
       'unread_message_count': function (val, oldVal) {
         if (this.unread_message_count === 0) {
-          document.title = 'Follow Center'
+          document.title = 'Follow your dreams'
         } else {
-          document.title = `(${this.unread_message_count}) Follow Center`
+          document.title = `(${this.unread_message_count}) Follow your dreams`
         }
       },
       'loading': function (val, oldVal) {

@@ -27,7 +27,7 @@ let cn = {
     save: '保存'
   },
   Login: {
-    title: '发现更大更美好的世界',
+    title: 'Follow your dreams',
     withoutsns: '没有社交帐号? ',
     hangout: '随意逛逛',
     about: '关于Follow Center',
@@ -125,7 +125,7 @@ let en = {
     save: 'Saved'
   },
   Login: {
-    title: 'Finding the your world',
+    title: 'Follow your dreams',
     withoutsns: 'No social media? ',
     hangout: 'Walk up',
     about: 'About Follow Center',
