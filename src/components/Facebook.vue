@@ -26,6 +26,9 @@
       },
       description: function () {
         if (this.message.content.description) {
+          if (this.message.text) {
+            if (this.message.text.includes(this.message.content.description)) return ''
+          }
           return myautolinker(this.message.content.description, 'facebook')
         } else {
           return ''
