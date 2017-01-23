@@ -17,11 +17,11 @@
     computed: {
       img_url: function () {
         if (this.message.extended_entities.pictrue) {
-          var img_url = this.message.extended_entities.pictrue
+          let img_url = this.message.extended_entities.pictrue
           img_url = window.btoa(window.btoa(img_url))
-          return (window.bz_url || '') + '/api_sp/' + img_url
+          return '/api_sp/' + img_url
         } else {
-          return null
+          return ''
         }
       },
       description: function () {
