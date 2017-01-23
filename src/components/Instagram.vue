@@ -16,7 +16,9 @@
     computed: {
       img_url: function () {
         let img_url = this.message.extended_entities.url
-        img_url = img_url.replace('s640x640', 's1080x1080').replace('s750x750', 's1080x1080').replace('/e35/', '')
+        console.log(img_url)
+        img_url = img_url.replace('s640x640', 's1080x1080').replace('s750x750', 's1080x1080') // .replace('/e35/', '/').replace('/e15/', '/')
+        console.log(img_url)
         img_url = window.btoa(window.btoa(img_url))
         return '/api_sp/' + img_url
       },
