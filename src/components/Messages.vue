@@ -9,7 +9,7 @@
     </div>
 
     <transition name="slide-fade">
-      <div v-show="!is_login && show_no_login" class="no-message">
+      <div v-show="!checkLogin() && show_no_login" class="no-message">
         <img src="../../static/assets/no-message.svg">
         <p>
           <a href="/login.html">{{ $t("Messages.login") }}</a>{{ $t("Messages.description") }}
@@ -40,6 +40,7 @@
   import Old from './Old.vue'
   import BottomLoader from 'bz-bottom-loader'
   import Message from './Message.vue'
+  import checkLogin from 'bz-lib/functions/checkLogin'
 
   module.exports = {
     components: {
@@ -64,9 +65,6 @@
       unread_message_count () {
         return this.$store.state.unread_message_count
       },
-      is_login () {
-        return this.$store.state.p.is_login
-      },
       followed_god_count () {
         return this.$store.state.followed_god_count
       },
@@ -89,6 +87,7 @@
       this.fetchData()
     },
     methods: {
+      checkLogin: checkLogin,
       fetchData: function () {
         if (!this.god_name) {
           if (this.messages.length === 0) {
