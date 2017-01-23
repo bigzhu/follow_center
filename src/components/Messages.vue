@@ -36,6 +36,8 @@
 </template>
 
 <script>
+  import $ from 'jquery'
+  import _ from 'lodash'
   var get_count = 50
   import Old from './Old.vue'
   import BottomLoader from 'bz-bottom-loader'
@@ -85,9 +87,22 @@
         setTimeout(function () { self.show_no_login = false }, 6000)
       }
       this.fetchData()
+      this.$nextTick(function () {
+        this.bindScroll()
+      })
     },
     methods: {
       checkLogin: checkLogin,
+      bindScroll: function () {
+        let self = this
+        $(window).scroll(
+          _.throttle(
+            function () {
+              self.$store.commit('CHECK_BAR')
+            }, 100
+          )
+        )
+      },
       fetchData: function () {
         if (!this.god_name) {
           if (this.messages.length === 0) {
