@@ -62,7 +62,7 @@ let cn = {
   Top: {
     backtotop: '回到顶部'
   },
-  Unread: {
+  UnRead: {
     unread: '未读消息数'
   },
   Follow: {
@@ -160,7 +160,7 @@ let en = {
   Top: {
     backtotop: 'Back to top'
   },
-  Unread: {
+  UnRead: {
     unread: 'Unread message'
   },
   Follow: {
