@@ -62,7 +62,7 @@ let cn = {
   Top: {
     backtotop: '回到顶部'
   },
-  Unread: {
+  UnRead: {
     unread: '未读消息数'
   },
   Follow: {
@@ -79,6 +79,9 @@ let cn = {
     following: '已跟踪',
     saved: '收藏',
     biography: '传记'
+  },
+  Loading: {
+    loading: '加载中'
   },
   UserSet: {
     id: '我的账号',
@@ -160,7 +163,7 @@ let en = {
   Top: {
     backtotop: 'Back to top'
   },
-  Unread: {
+  UnRead: {
     unread: 'Unread message'
   },
   Follow: {
@@ -177,6 +180,9 @@ let en = {
     following: 'Following',
     saved: 'Saved',
     biography: 'Biography'
+  },
+  Loading: {
+    loading: 'Loading'
   },
   UserSet: {
     id: 'My ID',
