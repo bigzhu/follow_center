@@ -80,6 +80,9 @@ let cn = {
     saved: '收藏',
     biography: '传记'
   },
+  Loading: {
+    loading: '加载中'
+  },
   UserSet: {
     id: '我的账号',
     change_id: '换账号登录',
@@ -177,6 +180,9 @@ let en = {
     following: 'Following',
     saved: 'Saved',
     biography: 'Biography'
+  },
+  Loading: {
+    loading: 'Loading'
   },
   UserSet: {
     id: 'My ID',
