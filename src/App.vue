@@ -45,6 +45,7 @@
   import $ from 'jquery'
   import store from './store'
   import NProgress from 'nprogress'
+  import checkLogin from 'bz-lib/functions/checkLogin'
   export default {
     store,
     data () {
@@ -72,9 +73,6 @@
       }
     },
     computed: {
-      is_login () {
-        return this.$store.state.p.is_login
-      },
       show_bar () {
         return this.$store.state.show_bar
       },
@@ -92,8 +90,7 @@
       }
     },
     mounted () {
-      this.$store.commit('CHECK_LOGIN')
-      if (this.is_login) { this.$store.dispatch('getUserInfo') }
+      if (checkLogin()) { this.$store.dispatch('getUserInfo') }
       this.$nextTick(function () {
         $('.fix-bz').visibility(
           {
