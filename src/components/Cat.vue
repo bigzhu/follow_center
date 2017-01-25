@@ -4,13 +4,13 @@
       <div class="ui secondary vertical pointing menu loading">
         <slot></slot>
 
-        <div class="ui basic segment add-newgod-bz">
+        <div class="ui basic segment add-newgod-bz internally celled grid">
           <a  @click="" href="javascript:void(0)" class="ui add-newgod-style" v-show="just_my&&!add_cat_input_stat" @click="showAddCatInput">
             <i class="add icon"></i>{{ $t("AddCat.addnewcat") }}
           </a>
-          <div v-show="add_cat_input_stat" class="ui action input">
-            <input @keyup.13="addCat" v-model="input_cat" id="id_add_cat" type="text" :placeholder="$t('AddCat.example')">
-            <div @click="addCat" class="ui button">{{ $t("AddCat.add") }}</div>
+          <div v-show="add_cat_input_stat" class="ui action input row">
+            <input @keyup.13="addCat" v-model="input_cat" id="id_add_cat" type="text" :placeholder="$t('AddCat.example')" class="thirteen wide column">
+            <div @click="addCat" class="ui button three wide column">{{ $t("AddCat.add") }}</div>
           </div>
         </div>
 
