@@ -88,7 +88,7 @@
       }
       this.fetchData()
       this.$nextTick(function () {
-        this.bindScroll()
+        // this.bindScroll()
       })
     },
     methods: {

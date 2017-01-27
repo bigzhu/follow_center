@@ -1,6 +1,3 @@
-<style >
-</style>
-
 <template>
   <div>
     <h3 v-show="message.title" class="ui center aligned header">
@@ -14,6 +11,9 @@
       </a>
       <br>
     </template>
+    <video v-if="video" :controls="true" type='video/mp4' class="padding-top-bz">
+      <source :src="video">
+    </video>
   </div>
 </template>
 
@@ -25,11 +25,11 @@
     props: ['message'],
     computed: {
       medias: function () {
-        if (this.message.extended_entities) {
+        if (this.message.extended_entities && this.message.type === 'photo') {
           return _.map(
             this.message.extended_entities, function (d) {
               // var caption, height, img_height, img_url, img_width, t
-              var img_url = (window.bz_url || '') + '/api_sp/' + window.btoa(window.btoa(d.original_size.url))
+              var img_url = '/api_sp/' + window.btoa(window.btoa(d.original_size.url))
               // img_url = d.original_size.url
               // img_height = d.original_size.height
               // img_width = d.original_size.width
@@ -47,6 +47,11 @@
       text: function () {
         if (this.message.text !== null) {
           return myautolinker(this.message.text, 'tumblr')
+        }
+      },
+      video: function () {
+        if (this.message.extended_entities && this.message.type === 'video') {
+          return this.message.extended_entities.video_url
         }
       }
     },

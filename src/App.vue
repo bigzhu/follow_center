@@ -90,6 +90,7 @@
       }
     },
     mounted () {
+      this.$store.commit('CHECK_LOGIN')
       if (checkLogin()) { this.$store.dispatch('getUserInfo') }
       this.$nextTick(function () {
         $('.fix-bz').visibility(

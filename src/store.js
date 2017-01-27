@@ -489,6 +489,7 @@ export const actions = {
     })
   },
   recordLastMessage ({ state, commit, dispatch }, time) {
+    console.log('recordLastMessage')
     if (state.last_time > parseInt(time, 10)) {
       return
     }
