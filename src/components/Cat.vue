@@ -4,8 +4,8 @@
       <div class="ui secondary vertical pointing menu loading">
         <slot></slot>
 
-        <div class="ui basic segment add-newgod-bz internally celled grid">
-          <a  @click="" href="javascript:void(0)" class="ui add-newgod-style" v-show="just_my&&!add_cat_input_stat" @click="showAddCatInput">
+        <div class="ui basic segment add-newgod-bz internally celled grid" v-show="just_my">
+          <a  @click="" href="javascript:void(0)" class="ui add-newgod-style" v-show="!add_cat_input_stat" @click="showAddCatInput">
             <i class="add icon"></i>{{ $t("AddCat.addnewcat") }}
           </a>
           <div v-show="add_cat_input_stat" class="ui action input row" style="border-top-left-radius: 4px;transform: translate(0px,1px);">
