@@ -17,15 +17,18 @@
     computed: {
       img_url: function () {
         if (this.message.extended_entities.pictrue) {
-          var img_url = this.message.extended_entities.pictrue
+          let img_url = this.message.extended_entities.pictrue
           img_url = window.btoa(window.btoa(img_url))
-          return (window.bz_url || '') + '/api_sp/' + img_url
+          return '/api_sp/' + img_url
         } else {
-          return null
+          return ''
         }
       },
       description: function () {
         if (this.message.content.description) {
+          if (this.message.text) {
+            if (this.message.text.includes(this.message.content.description)) return ''
+          }
           return myautolinker(this.message.content.description, 'facebook')
         } else {
           return ''

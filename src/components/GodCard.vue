@@ -1,10 +1,10 @@
 <template>
   <div :class="{ 'popup': popup, 'transition': popup, 'centered': !popup }" class="ui card column card-radius">
     <div v-show="god.god_id === 0" class="ui active inverted dimmer">
-      <div class="ui text loader">Loading</div>
+      <div class="ui text loader">{{$t('Loading.loading')}}</div>
     </div>
     <div v-show="god.name==''" class="ui active inverted dimmer">
-      <div class="ui text loader">Loading</div>
+      <div class="ui text loader">{{$t('Loading.loading')}}</div>
     </div>
 
     <a @click="go(god.name)" :class="{'ui': popup, 'small': popup, 'centered': popup}" class="image">

@@ -7,6 +7,12 @@ let cn = {
     adding: '添加中',
     follownumber: '?人关注'
   },
+  AddCat: {
+    addnewcat: '添加临时分类',
+    example: '分类，比如 程序员',
+    add: '添加',
+    adding: '添加中'
+  },
   Bio: {
     toptitle: '人物·传记',
     topdescription: '他们是大人物，他们是小人物，他们在世界各地，演绎着比电影还精彩的人生。',
@@ -27,7 +33,7 @@ let cn = {
     save: '保存'
   },
   Login: {
-    title: '发现更大更美好的世界',
+    title: 'Follow your dreams',
     withoutsns: '没有社交帐号? ',
     hangout: '随意逛逛',
     about: '关于Follow Center',
@@ -80,6 +86,9 @@ let cn = {
     saved: '收藏',
     biography: '传记'
   },
+  Loading: {
+    loading: '加载中'
+  },
   UserSet: {
     id: '我的账号',
     change_id: '换账号登录',
@@ -105,6 +114,12 @@ let en = {
     adding: 'Adding',
     follownumber: '? followers'
   },
+  AddCat: {
+    addnewcat: 'Add a new category',
+    example: 'CATEGORY, for example: coder',
+    add: 'Add',
+    adding: 'Adding'
+  },
   Bio: {
     toptitle: 'Biography',
     topdescription: 'Follow your dream',
@@ -125,7 +140,7 @@ let en = {
     save: 'Saved'
   },
   Login: {
-    title: 'Finding the your world',
+    title: 'Follow your dreams',
     withoutsns: 'No social media? ',
     hangout: 'Walk up',
     about: 'About Follow Center',
@@ -177,6 +192,9 @@ let en = {
     following: 'Following',
     saved: 'Saved',
     biography: 'Biography'
+  },
+  Loading: {
+    loading: 'Loading'
   },
   UserSet: {
     id: 'My ID',
