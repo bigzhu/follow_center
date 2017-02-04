@@ -1,16 +1,15 @@
 <template>
-  <div>
+  <div class="cat-bz">
     <div class="large monitor only">
       <div class="ui secondary vertical pointing menu loading">
         <slot></slot>
-
-        <div class="ui basic segment add-newgod-bz internally celled grid" v-show="just_my">
+        <div class="ui basic segment add-newgod-bz internally celled grid addcat-bz" v-show="just_my">
           <a  @click="" href="javascript:void(0)" class="ui add-newgod-style" v-show="!add_cat_input_stat" @click="showAddCatInput">
             <i class="add icon"></i>{{ $t("AddCat.addnewcat") }}
           </a>
-          <div v-show="add_cat_input_stat" class="ui action input row" style="border-top-left-radius: 4px;transform: translate(0px,1px);">
-            <input @keyup.13="addCat" v-model="input_cat" id="id_add_cat" type="text" :placeholder="$t('AddCat.example')" class="thirteen wide column">
-            <div @click="addCat" class="ui button three wide column" style="padding-left: 0px;padding-right: 0px;    border-top-right-radius: 0px;border-bottom-right-radius: 0px;">{{ $t("AddCat.add") }}</div>
+          <div v-show="add_cat_input_stat" class="ui action input row addcat-style-bz">
+            <input @keyup.13="addCat" v-model="input_cat" id="id_add_cat" type="text" :placeholder="$t('AddCat.example')" class="eleven wide column">
+            <div @click="addCat" class="ui button five wide column addcat-btn-bz">{{ $t("AddCat.add") }}&gt;</div>
           </div>
         </div>
 
@@ -88,4 +87,37 @@
 </script>
 
 <style>
+  #id_add_cat {
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(34,36,38,.15);
+    border-radius: 0px;
+  }
+  #id_add_god {
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(34,36,38,.15);
+    border-radius: 0px;
+  }
+  .ui.button.addcat-btn-bz {
+    background-color: transparent;
+  }
+  .ui.input.row.addcat-style-bz {
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+  }
+  .ui.celled.grid>.row>.column {
+    box-shadow: none;
+  }
+  .ui.segment.add-newgod-bz:last-child {
+    margin-top: 1.8rem;
+  }
+  .ui.segment.add-newgod-bz.celled.grid.addcat-bz {
+    padding: 1rem 0rem;
+  }
 </style>
