@@ -104,8 +104,8 @@ let cn = {
     reset: '重新设置Anki账号',
     blockreminder: '屏蔽之后就看不到此类社交网络的信息'
   },
-  GodBlocked:{
-    tips:'暂时没有屏蔽的人'
+  GodBlocked: {
+    tips: '暂时没有屏蔽的人'
   }
 }
 
@@ -213,12 +213,11 @@ let en = {
     block_manage: 'Manage the people you blocked',
     reset: 'Reset your Anki',
     blockreminder: "You don't want to see this kind of message"
-  }
-   GodBlocked:{
-    tips:'Nobody is been blocked'
+  },
+  GodBlocked: {
+    tips: 'Nobody is been blocked'
   }
 }
-
 module.exports = {
   cn: cn,
   en: en
