@@ -2,12 +2,15 @@
   <div class="ui main container">
     <div class="ui stackable grid">
       <div class="row">
-        <div class="four wide column top-margin">
+        <div class="sixteen wide column ui card message-bz nobody-bz">
+            <img class="nobody-image-bz" src="../assets/nobody.svg">
+        </div>
+        <!-- <div class="four wide column top-margin">
         </div>
         <div class="twelve wide column no-padding-bz">
           <god-item v-for="god in gods" :god="god">
           </god-item>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -60,4 +63,15 @@
 </script>
 
 <style>
+  .nobody-bz {
+    width: 100%;
+    height: 35rem;
+  }
+  .nobody-image-bz {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -177.5px;
+    margin-left: -144px;
+  }
 </style>
