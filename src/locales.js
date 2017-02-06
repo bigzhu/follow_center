@@ -7,6 +7,12 @@ let cn = {
     adding: '添加中',
     follownumber: '?人关注'
   },
+  AddCat: {
+    addnewcat: '添加临时分类',
+    example: '分类，比如 程序员',
+    add: '添加',
+    adding: '添加中'
+  },
   Bio: {
     toptitle: '人物·传记',
     topdescription: '他们是大人物，他们是小人物，他们在世界各地，演绎着比电影还精彩的人生。',
@@ -107,6 +113,12 @@ let en = {
     add: 'Add',
     adding: 'Adding',
     follownumber: '? followers'
+  },
+  AddCat: {
+    addnewcat: 'Add a new category',
+    example: 'CATEGORY, for example: coder',
+    add: 'Add',
+    adding: 'Adding'
   },
   Bio: {
     toptitle: 'Biography',
