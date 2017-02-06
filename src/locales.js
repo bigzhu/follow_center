@@ -214,6 +214,9 @@ let en = {
     reset: 'Reset your Anki',
     blockreminder: "You don't want to see this kind of message"
   }
+   GodBlocked:{
+    tips:'Nobody is been blocked'
+  }
 }
 
 module.exports = {
