@@ -3,7 +3,10 @@
     <div class="ui stackable grid">
       <div class="row">
         <div class="sixteen wide column ui card message-bz nobody-bz">
-            <img class="nobody-image-bz" src="../assets/nobody.svg">
+          <div class="nobody-image-bz">
+            <img src="../assets/nobody.svg">
+            <p>{{ $t("GodBlocked.tips") }}</p>
+          </div> 
         </div>
         <!-- <div class="four wide column top-margin">
         </div>
@@ -73,5 +76,11 @@
     left: 50%;
     margin-top: -177.5px;
     margin-left: -144px;
+  }
+  .nobody-bz p {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.14rem;
+    color: #9096A2;
   }
 </style>

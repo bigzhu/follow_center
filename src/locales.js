@@ -103,6 +103,9 @@ let cn = {
     block_manage: '屏蔽管理',
     reset: '重新设置Anki账号',
     blockreminder: '屏蔽之后就看不到此类社交网络的信息'
+  },
+  GodBlocked:{
+    tips:'暂时没有屏蔽的人'
   }
 }
 
