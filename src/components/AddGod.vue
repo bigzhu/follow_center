@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="ui basic segment add-newgod-bz"> 
+    <div class="ui basic segment add-newgod-bz new-god-bz"> 
       <a v-show="stat==='button'||stat==='adding'" @click="showAddGodInput" href="javascript:void(0)" class="ui add-newgod-style">
         <i class="add icon"></i>{{ $t("AddGod.addnewgod") }}
       </a>
-      <div v-show="stat==='input'" class="ui action input">
-        <input @keyup.13="add" v-model="input_name" id="id_add_god" type="text" :placeholder="$t('AddGod.example')">
-        <div @click="add" class="ui button">{{ $t("AddGod.add") }}</div>
+      <div v-show="stat==='input'" class="ui action input row">
+        <input @keyup.13="add" v-model="input_name" id="id_add_god" type="text" :placeholder="$t('AddGod.example')" class="eleven wide column">
+        <div @click="add" class="ui button five wide column addcat-btn-bz">{{ $t("AddGod.add") }}&gt;</div>
       </div>
     </div>
     <div v-show="stat==='adding'" class="ui segment newgod-info">
@@ -259,3 +259,12 @@
     }
   }
 </script>
+<style>
+  .ui.segment.add-newgod-bz.new-god-bz {
+    margin-top: 1.8rem;
+  }
+  .followed-search {
+    margin-top: 1.9rem;
+    float: right;
+  }
+</style>
