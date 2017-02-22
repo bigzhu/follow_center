@@ -506,6 +506,7 @@ export const actions = {
         }
         dispatch('getNew', {after: after, limit: 50})
       }
+      return data
     })
   },
   oldMessage ({ state, commit, dispatch }, {god_name, search_key, limit}) {

@@ -54,3 +54,6 @@ Twitter 类的社交网是不会关心你上次看到哪的, 只给你最新的,
 [Follow Center](https://follow.center) 不用科学上网也能上, 用起来感觉比原网站要快.
 ## 学英语
 我个人的需求了, 身为英语渣, 一键把资讯同步到[anki](https://ankiweb.net), 拿着[anki](https://ankiweb.net), 图文并茂, 随时可以复习.
+
+# change log
+* 可以同步到 anki, 方便学英语
