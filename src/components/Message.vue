@@ -6,9 +6,9 @@
       </a>
       <time-len :the_time="message.created_at" :lang="lang" class="right floated meta time-bz"></time-len>
       <img :src="avatar" class="ui avatar image show-god-info">
-      <a @click="$router.push({ name: 'God', params: { god_name: message.user_name }})" class="user-name-a">
+      <router-link :to="{ name: 'God', params: { god_name: message.user_name }}" class="user-name-a">
         {{message.name}}
-      </a>
+      </router-link>
       <god-card :god="god_info" :god_id="god_info.god_id" :popup="true">
       </god-card>
       <component class="content-bz" :is="message.m_type" :message="message"></component>
