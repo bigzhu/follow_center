@@ -19,10 +19,18 @@
       <a class="footer-element" href="/about.html">{{ $t("RightInfo.about") }}</a>
       <a class="footer-element" href="http://bigzhu.lorstone.com">{{ $t("RightInfo.blog") }}</a>
       <a class="footer-element" @click="$router.push({ name: 'ChangeLog'})" href="javascript:;">{{ $t("RightInfo.changelog") }}</a>
-      </br><span class="footer-element">语言选择:</span><a class="footer-element" @click="lang='cn'" href="javascript:;">中文</a>
-      <a @click="lang='en'" class="footer-element" href="javascript:;">English</a>
-      </br>
-      <span class="footer-element">{{ $t("RightInfo.register") }}：{{registered_count}}</span>
+      <div class="ui selection dropdown language">
+        <input type="hidden">
+        <i class="dropdown icon"></i>
+        <div class="default text">Language</div>
+        <div class="menu">
+          <div class="item" @click="lang='cn'" data-value="1">English</div>
+          <div class="item" @click="lang='en'" data-value="0">中文</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-content">
+    <span class="footer-element">{{ $t("RightInfo.register") }}：{{registered_count}}</span>
       <span>© 2017 Follow Center</span>
     </div>
   </div>
@@ -69,5 +77,14 @@
 <style>
 .footer-element {
   padding-right: 2rem;
+}
+.footer-content:last-child {
+  margin-top: 0.5rem;
+}
+.ui.selection.dropdown.language {
+  border-radius: 1px;
+  min-width: 2rem;
+  max-width: 8rem;
+  margin-top: 1rem;
 }
 </style>

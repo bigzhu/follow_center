@@ -114,7 +114,7 @@
   .footer-content {
     color: #9A9A9A;
     margin-top: 30px;
-    padding: 15px 15px;
+    padding: 15px 0px;
     width: auto;
     font-size: 1rem;
     border-top: 1px solid #eee;
@@ -122,9 +122,6 @@
   }
   .no-message {
     color: #9A9A9A;
-    /*
-    margin-top: 30px;
-    */
     padding: 15px 15px;
     width: auto;
     font-size: 1rem;
