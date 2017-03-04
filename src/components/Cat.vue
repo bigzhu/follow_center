@@ -77,6 +77,7 @@
         // window.alert(this.input_cat)
         this.cats.splice(0, 0, {cat: this.input_cat})
         this.add_cat_input_stat = false
+        this.$router.push({name: this.route_name, params: {cat: this.input_cat}})
       },
       selectCat: function () {
         this.$router.push({name: this.route_name, params: {cat: this.$route.params.cat}})
