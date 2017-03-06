@@ -7,11 +7,13 @@
           </cat>
         </div>
         <div class="twelve wide column no-padding-bz">
-          <div class="ui transparent icon input followed-search">
-            <input v-model="key" type="text" :placeholder="$t('MyGods.search')">
-            <i class="search icon"></i>
+          <div class="mygod-head">
+            <add-god class="add-god"></add-god>
+            <div class="ui transparent icon input followed-search">
+              <input v-model="key" type="text" :placeholder="$t('MyGods.search')">
+              <i class="search icon"></i>
+            </div>
           </div>
-          <add-god></add-god>
           <god-item v-for="god in ordered_my_gods" :god="god" is_my="true">
           </god-item>
         </div>
@@ -94,5 +96,13 @@
     .newgod-name h3 {
       display: inline;
     }
+  }
+  .mygod-head {
+    position: relative;
+  }
+  .ui.input.followed-search {
+    position: absolute;
+    right: 0;
+    top: 0.1rem;
   }
 </style>

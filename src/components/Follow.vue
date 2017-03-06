@@ -89,4 +89,7 @@
     color: #FFF;
     text-shadow: none;
   }
+  .ui.bottom.button.button-to-follow-bz.keppel.button {
+    border: none!important;
+  }
 </style>
