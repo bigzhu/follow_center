@@ -9,7 +9,7 @@
         <div @click="add" class="ui button five wide column addcat-btn-bz">{{ $t("AddGod.add") }}&gt;</div>
       </div>
     </div>
-    <div v-show="stat==='adding'" class="ui segment newgod-info">
+    <div v-show="stat==='adding'" class="ui segment newgod-info recommand-god-bz god-item">
       <div v-show="adding" class="ui active inverted dimmer">
         <div class="ui text loader">{{ $t("AddGod.adding") }}</div>
       </div>
@@ -262,9 +262,5 @@
 <style>
   .ui.segment.add-newgod-bz.new-god-bz {
     margin-top: 1.8rem;
-  }
-  .followed-search {
-    margin-top: 1.9rem;
-    float: right;
   }
 </style>
