@@ -197,7 +197,7 @@
     bottom: 2em;
     right: 2em;
     width: 9em;
-    border: 1px solid #858585!important;
+    border: 1px solid rgba(133, 133, 133, 0.15)!important;
   }
   .god-avatar-bz {
     height: 300px;
