@@ -10,9 +10,9 @@
     <tbody>
       <tr v-for="apply_del in apply_dels">
         <td>
-          <a @click="$router.push({ name: 'God', params: { god_name: apply_del.god_name }})">
+          <router-link :to="{ name: 'God', params: { god_name: apply_del.god_name }}">
             {{apply_del.god_name}}
-          </a>
+          </router-link>
         </td>
         <td>
           <button class="ui {{apply_del.type}} button">

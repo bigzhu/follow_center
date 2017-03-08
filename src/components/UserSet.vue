@@ -52,7 +52,7 @@
       <h4 class="title">{{ $t("UserSet.block_id") }}</h4>
       <div class="username-bz">
         <span>{{ $t("UserSet.number") }}</span>&nbsp;&nbsp;&nbsp;<span>{{block_count}}</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a @click="$router.push({name:'GodBlocked'})" href="javascript:;"><i class="low vision icon"></i>{{ $t("UserSet.block_manage") }}</a></span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><router-link :to="{name:'GodBlocked'}"><i class="low vision icon"></i>{{ $t("UserSet.block_manage") }}</router-link></span>
       </div>
     </div>
     <footer>

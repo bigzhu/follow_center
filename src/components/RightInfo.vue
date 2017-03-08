@@ -18,7 +18,7 @@
     <div v-show="registered_count !== -1" class="footer-content">
       <a class="footer-element" href="/about.html">{{ $t("RightInfo.about") }}</a>
       <a class="footer-element" href="http://bigzhu.lorstone.com">{{ $t("RightInfo.blog") }}</a>
-      <a class="footer-element" @click="$router.push({ name: 'ChangeLog'})" href="javascript:;">{{ $t("RightInfo.changelog") }}</a>
+      <router-link class="footer-element" :to="{ name: 'ChangeLog'}">{{ $t("RightInfo.changelog") }}</router-link>
       <div class="ui selection dropdown language">
         <input type="hidden">
         <i class="dropdown icon"></i>
