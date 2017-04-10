@@ -3,7 +3,7 @@
     <div class="ui stackable grid">
       <div class="row">
         <div class="eleven wide column no-padding-bz">
-          <messages></messages>
+          <Messages></Messages>
         </div>
         <div class="five wide column computer only ">
           <div class="blank-bz"></div>
